@@ -1,0 +1,8 @@
+import java.util.ArrayList;
+
+public class Blopic {
+	private ArrayList<String> list=new ArrayList<String>();
+	public Blopic(){
+
+	}
+}

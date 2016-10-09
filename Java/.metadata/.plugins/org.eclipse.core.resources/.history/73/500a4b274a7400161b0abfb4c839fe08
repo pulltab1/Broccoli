@@ -1,0 +1,12 @@
+import java.awt.Color;
+
+import rennyu.RFrame;
+
+public class Main{
+	public static Editer editer;
+	
+	public static void main(String[] args) {
+		if(args.length!=1)throw new Exception();
+		editer=new Editer(args[0])
+	}
+}

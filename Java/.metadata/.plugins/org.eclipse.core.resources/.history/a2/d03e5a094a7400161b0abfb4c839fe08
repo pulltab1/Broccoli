@@ -1,0 +1,10 @@
+import rennyu.RFrame;
+
+public class Editer {
+	public RFrame frame;
+	public Blopic bp;
+
+	public Editer(String port) throws Exception{
+		bp=new Blopic(port);
+	}
+}

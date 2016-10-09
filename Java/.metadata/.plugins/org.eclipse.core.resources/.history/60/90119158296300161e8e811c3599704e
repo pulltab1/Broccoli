@@ -1,0 +1,41 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import rennyu.RFrame;
+
+public class Main{
+	public static RFrame frame;
+	public static Blopic bp=new Blopic("COM2");
+	public static void main(String[] args) {
+		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame.setVisible(true);
+		
+		bp.load();
+		
+		while(!frame.update()){
+			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),Color.BLACK,true);
+			
+			
+			
+			/*
+			s.write(swi);
+			led[1]=(byte) Integer.parseInt(
+
+			ws.read());
+			s.write(led);
+			s.read();
+
+			s.write(reg);
+			s.read();
+			int r=Integer.parseInt(s.read())<<8|Integer.parseInt(s.read());
+
+			frame.drawCircle(frame.getWidth()/2,frame.getHeight()/2,r/10,Color.RED,true);
+			*/
+		}
+
+		s.write((byte)0xff);
+		s.close();
+		System.exit(0);
+	}
+}

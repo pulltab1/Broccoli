@@ -1,0 +1,68 @@
+import java.awt.Color;
+
+import rennyu.RFrame;
+
+public class Editer {
+	public RFrame frame;
+	public Blopic bp;
+	
+	private static final Color BGColor=new Color(230,230,230);
+	
+	public Editer(String port) throws Exception{
+		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame.setVisible(true);
+		bp=new Blopic(port);
+		bp.load();
+	}
+	
+	public void setOutputState(byte count) throws Exception{
+		byte data[]={1,0};
+		byte key=1;
+		if(bp.hash.containsKey(key)){
+			if(count<bp.hash.get(key).size()){
+				data[0]=(byte)bp.hash.get(key).get(count);
+			}
+		}
+	}
+	public boolean getSwitchState(byte count) throws Exception{
+		byte data[]={2,0};
+		byte key=2;
+		boolean flag=false;
+		if(bp.hash.containsKey(key)){
+			if(count<bp.hash.get(key).size()){
+				data[0]=(byte)bp.hash.get(key).get(count);
+				String[] res=bp.query(data);
+				flag=Integer.parseInt(res[1])!=0;
+			}
+		}
+		return flag;
+	}
+	public short getResistorValue(byte count) throws Exception{
+		byte data[]={3,0,1,2};
+		byte key=3;
+		short val=-1;
+		if(bp.hash.containsKey(key)){
+			if(count<bp.hash.get(key).size()){
+				data[0]=(byte)bp.hash.get(key).get(count);
+				String[] res=bp.query(data);
+				val=(short) (Short.parseShort(res[1])<<8|Short.parseShort(res[2]));
+			}
+		}
+		return val;
+	}
+	public void run() throws Exception{
+		while(!frame.update()){
+			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),BGColor,true);
+			
+		}
+	}
+	public void close() throws Exception{
+		if(bp!=null){
+			bp.close();
+		}
+		if(frame!=null){
+			frame.setVisible(false);
+		}
+		System.exit(0);
+	}
+}

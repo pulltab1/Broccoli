@@ -1,0 +1,100 @@
+import java.awt.Color;
+import java.awt.Point;
+
+import rennyu.RFrame;
+
+public class Editer {
+	private static final Color BGColor=new Color(230,230,230);
+	private static final int MODULE_DISTANCE=100;
+	private RFrame frame;
+	private Blopic blopic;
+	private Module[] module;
+
+	private Point camera;
+	private Point mouse_old_point;
+
+	public Editer(String port) throws Exception{
+		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame.setVisible(true);
+		blopic=new Blopic(port);
+		blopic.load();
+
+		module=new Module[blopic.list.size()];
+		for(int i=0;i<blopic.list.size();i++){
+			module[i]=new Module(frame,i*MODULE_DISTANCE,0,blopic.list.get(i),new Color(255,0,0));
+		}
+
+		camera=new Point(0,frame.getHeight()/2);
+	}
+
+	private void setOutputState(byte count) throws Exception{
+		byte data[]={1,0};
+		byte key=1;
+		if(blopic.hash.containsKey(key)){
+			if(count<blopic.hash.get(key).size()){
+				data[0]=(byte)blopic.hash.get(key).get(count);
+			}
+		}
+	}
+	private boolean getSwitchState(byte count) throws Exception{
+		byte data[]={2,0};
+		byte key=2;
+		boolean flag=false;
+		if(blopic.hash.containsKey(key)){
+			if(count<blopic.hash.get(key).size()){
+				data[0]=(byte)blopic.hash.get(key).get(count);
+				String[] res=blopic.query(data);
+				flag=Integer.parseInt(res[1])!=0;
+			}
+		}
+		return flag;
+	}
+	private short getResistorValue(byte count) throws Exception{
+		byte data[]={3,0,1,2};
+		byte key=3;
+		short val=-1;
+		if(blopic.hash.containsKey(key)){
+			if(count<blopic.hash.get(key).size()){
+				data[0]=(byte)blopic.hash.get(key).get(count);
+				String[] res=blopic.query(data);
+				val=(short) (Short.parseShort(res[1])<<8|Short.parseShort(res[2]));
+			}
+		}
+		return val;
+	}
+
+	private void moveCamera(){
+		if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)>0){
+			if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)==1){
+				mouse_old_point=frame.getMousePosition();
+			}
+			else{
+				camera.x+=frame.getMousePosition().x-mouse_old_point.x;
+				camera.y+=frame.getMousePosition().y-mouse_old_point.y;
+				mouse_old_point=frame.getMousePosition();
+			}
+		}
+	}
+	private void drawModule(){
+		for(int i=0;i<module.length;i++){
+			module[i].draw(camera.x,camera.y);
+		}
+	}
+
+	public void run() throws Exception{
+		while(!frame.update()){
+			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),BGColor,true);
+			drawModule();
+			moveCamera();
+		}
+	}
+	public void close() throws Exception{
+		if(blopic!=null){
+			blopic.close();
+		}
+		if(frame!=null){
+			frame.setVisible(false);
+		}
+		System.exit(0);
+	}
+}

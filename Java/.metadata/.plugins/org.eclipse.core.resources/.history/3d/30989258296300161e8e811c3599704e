@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+public class Blopic {
+	private ArrayList<String> list=new ArrayList<String>();
+	private Serial serial;
+	public Blopic(String name){
+		serial=new Serial("COM2");
+		serial.write((byte)0x00);
+
+		while(true){
+			String buf=serial.read();
+			list.add(buf);
+			if(buf.equals("start"))
+				break;
+		}
+	}
+}

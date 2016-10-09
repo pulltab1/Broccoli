@@ -1,0 +1,100 @@
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import rennyu.RFrame;
+
+public class Main{
+	public static Serial s;
+	public static RFrame frame;
+	public static void main(String[] args) {
+		HashMap<String,ArrayList<String>> list=new HashMap<String,ArrayList<String>>();
+
+		s=new Serial("COM2");
+		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame.setVisible(true);
+		s.write((byte)0x00);
+
+		System.out.println("---check_master---");
+
+		while(true){
+			String buf=s.read();
+			System.out.println(buf);
+			if(buf.equals("start")){
+				break;
+			}
+		}
+
+		System.out.println("---check_block---");
+
+		while(true){
+			String str=s.read();
+			
+			if(list.get(str.split(":")[1])==null){
+				list.put(str.split(":")[1],new ArrayList<String>());
+			}
+			list.get(str.split(":")[1]).add(str.split(":")[1]);
+			
+			System.out.println(str);
+			
+			if(Integer.parseInt(str.split(":")[1])==0xff){
+				break;
+			}
+		}
+		System.out.println("---check_end---");
+		int flag=1;
+		byte[] led={1,1};
+		byte[] swi={2,0};
+		byte[] reg={3,0,1,2};
+		byte a=0;
+		while(!frame.update()){
+			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),Color.BLACK,true);
+
+			for(int i=0;i<list.size();i++){
+				for(int j=0;j<list.get(i).size();j++){
+					switch(Integer.parseInt(list.get(i).get(j))){
+					case 0x01:
+						frame.drawBox(i*20,20,i*20+20,40,Color.RED,true);
+						break;
+					case 0x02:
+						frame.drawBox(i*20,20,i*20+20,40,Color.GREEN,true);
+						break;
+					case 0x03:
+						frame.drawBox(i*20,20,i*20+20,40,Color.BLUE,true);
+						break;
+					case 0xff:
+						frame.drawBox(i*20,20,i*20+20,40,Color.YELLOW,true);
+						break;
+					default:
+						System.out.println(list.get(i));
+						break;
+					}
+				}
+			}
+			byte count=0;
+			for(int i=0;i<list.size();i++){
+				
+			}
+			
+			
+			/*
+			s.write(swi);
+			led[1]=(byte) Integer.parseInt(
+			
+			ws.read());
+			s.write(led);
+			s.read();
+
+			s.write(reg);
+			s.read();
+			int r=Integer.parseInt(s.read())<<8|Integer.parseInt(s.read());
+			
+			frame.drawCircle(frame.getWidth()/2,frame.getHeight()/2,r/10,Color.RED,true);
+			*/
+		}
+
+		s.write((byte)0xff);
+		s.close();
+		System.exit(0);
+	}
+}

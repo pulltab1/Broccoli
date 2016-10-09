@@ -1,0 +1,64 @@
+import java.awt.Color;
+import java.util.ArrayList;
+
+import rennyu.RFrame;
+
+public class Main{
+	public static Serial s;
+	public static RFrame frame;
+	public static void main(String[] args) {
+		ArrayList<String> list=new ArrayList<String>();
+
+		s=new Serial("/dev/tty.usbmodem1421");
+		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame.setVisible(true);
+		s.write((byte)0x00);
+
+		System.out.println("---check_master---");
+
+		while(true){
+			String buf=s.read();
+			System.out.println(buf);
+			if(buf.equals("start")||buf.equals("restart")){
+				break;
+			}
+		}
+
+		System.out.println("---check_block---");
+
+		while(true){
+			list.add(s.read());
+			System.out.println(list.get(list.size()-1));
+			if(Integer.parseInt(list.get(list.size()-1).split(":")[0])==255){
+				break;
+			}
+		}
+		System.out.println("---check_end---");
+		byte addr=0x01;
+		int old=0x00;
+		while(!frame.update()){
+			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),Color.BLACK,true);
+
+			s.write((byte)0x02);
+			s.write((byte)0x00);
+			int b= Integer.parseInt(s.read());
+			s.write((byte)0x01);
+			s.write((byte)b);
+			s.read();
+			s.write((byte)0x03);
+			s.write((byte)0x00);
+			b= Integer.parseInt(s.read());
+			s.write((byte)0x03);
+			s.write((byte)0x01);
+
+			b=b<<8|Integer.parseInt(s.read());
+			//System.out.println(b);
+			
+			frame.drawCircle(frame.getWidth()/2,frame.getHeight()/2,b,Color.RED,true);
+		}
+
+		s.write((byte)0xff);
+		s.close();
+		System.exit(0);
+	}
+}

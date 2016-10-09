@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Blopic {
+	private HashMap<String,ArrayList<String>> list=new HashMap<String,ArrayList<String>>();
+	private Serial serial;
+	public Blopic(String name){
+		serial=new Serial(name);
+	}
+	public void load(){
+		while(!serial.read().equals("start"));
+		while(true){
+			String[] str=serial.read().split(":");
+			if(!list.containsKey(str[1])){
+				list.put(str[1],new ArrayList<String>());
+			}
+			list.get(str[1]).add(str[0]);
+			System.out.println(str[1]+":"+str[0]);
+			if(Integer.parseInt(str[1])==0xff){
+				break;
+			}
+		}
+	}
+	
+	
+	public void close(){
+		serial.write((byte)0xff);
+		serial.close();
+	}
+}
