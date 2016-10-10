@@ -22,11 +22,11 @@ void InitBlopic(){
   //初期状態に
   Mode=0; 
 }
-
 void EntryRequest(){
   byte buf=0x00;
   byte count=1;
-  while(buf!=0xff){
+  int timeout=0;
+  while(buf!=0xff&&timeout<500){
     Wire.requestFrom(BROADCAST_ADDRESS,1);
     if(Wire.available()>0){
       buf = Wire.read();
@@ -35,8 +35,14 @@ void EntryRequest(){
       Wire.endTransmission();
       Serial.print(String(count, DEC)+":"+String(buf, DEC)+"@");
       count++;
+      timeout=0;
     }
+    else{
+      timeout++;
+    }
+    delay(1);
   }
+  Serial.print("end@");
 }
 
 void CommandRequest(){
