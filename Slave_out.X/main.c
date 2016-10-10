@@ -11,8 +11,8 @@
 #define DELAY_OF_ADDRESS_CHANGE (100)
 
 //リクエスト用定数
-#define WALL_PIN (0)
-#define LED_PIN (4)
+#define WALL_PIN (RA0)
+#define LED_PIN (RA4)
 
 void main()
 {

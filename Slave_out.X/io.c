@@ -40,10 +40,10 @@ void analogWrite(unsigned char pin, unsigned char value){
 unsigned short analogRead(unsigned char pin){
     unsigned short temp;
 
-     GO_nDONE = 1 ;         // PICにアナログ値読取り開始を指示
-     while(GO_nDONE) ;      // PICが読取り完了するまで待つ
-     temp = ADRESH ;        // PICは読取った値をADRESHとADRESLのレジスターにセットする
-     temp = ( temp << 8 ) | ADRESL ;  // 10ビットの分解能力です
+     GO_nDONE = 1;
+     while(GO_nDONE);
+     temp = ADRESH;
+     temp = ( temp << 8 ) | ADRESL;
 
      return temp ;
 }

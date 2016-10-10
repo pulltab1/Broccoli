@@ -2885,7 +2885,7 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 14 "io.h"
+# 26 "io.h"
 union{
 unsigned short HL;
 unsigned char H;
@@ -2937,10 +2937,10 @@ void analogWrite(unsigned char pin, unsigned char value){
 unsigned short analogRead(unsigned char pin){
 unsigned short temp;
 
-GO_nDONE = 1 ;
-while(GO_nDONE) ;
-temp = ADRESH ;
-temp = ( temp << 8 ) | ADRESL ;
+GO_nDONE = 1;
+while(GO_nDONE);
+temp = ADRESH;
+temp = ( temp << 8 ) | ADRESL;
 
 return temp ;
 }

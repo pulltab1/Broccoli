@@ -1,5 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"14 io.h
+"26 io.h
 [u S270 `us 1 `uc 1 `uc 1 ]
 [n S270 . HL H L ]
 "1938 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
@@ -2147,18 +2147,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"18 io.h
+"30 io.h
 [v _HL `S270 ~T0 @X0 1 e ]
-[; ;io.h: 14: union{
-[; ;io.h: 15: unsigned short HL;
-[; ;io.h: 16: unsigned char H;
-[; ;io.h: 17: unsigned char L;
-[; ;io.h: 18: }HL;
-[; ;io.h: 19: void pinMode(unsigned char pin,unsigned char mode);
-[; ;io.h: 20: void digitalWrite(unsigned char pin,char output);
-[; ;io.h: 21: char digitalRead(unsigned char pin);
-[; ;io.h: 22: void analogWrite(unsigned char pin,unsigned char output);
-[; ;io.h: 23: unsigned short analogRead(unsigned char pin);
+[; ;io.h: 26: union{
+[; ;io.h: 27: unsigned short HL;
+[; ;io.h: 28: unsigned char H;
+[; ;io.h: 29: unsigned char L;
+[; ;io.h: 30: }HL;
+[; ;io.h: 31: void pinMode(unsigned char pin,unsigned char mode);
+[; ;io.h: 32: void digitalWrite(unsigned char pin,char output);
+[; ;io.h: 33: char digitalRead(unsigned char pin);
+[; ;io.h: 34: void analogWrite(unsigned char pin,unsigned char output);
+[; ;io.h: 35: unsigned short analogRead(unsigned char pin);
 "4 io.c
 [v _pinMode `(v ~T0 @X0 1 ef2`uc`uc ]
 {
@@ -2307,20 +2307,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 "41
 [v _temp `us ~T0 @X0 1 a ]
 [; ;io.c: 41: unsigned short temp;
-[; ;io.c: 43: GO_nDONE = 1 ;
+[; ;io.c: 43: GO_nDONE = 1;
 "43
 [e = _GO_nDONE -> -> 1 `i `b ]
-[; ;io.c: 44: while(GO_nDONE) ;
+[; ;io.c: 44: while(GO_nDONE);
 "44
 [e $U 283  ]
 [e :U 284 ]
 [e :U 283 ]
 [e $ _GO_nDONE 284  ]
 [e :U 285 ]
-[; ;io.c: 45: temp = ADRESH ;
+[; ;io.c: 45: temp = ADRESH;
 "45
 [e = _temp -> _ADRESH `us ]
-[; ;io.c: 46: temp = ( temp << 8 ) | ADRESL ;
+[; ;io.c: 46: temp = ( temp << 8 ) | ADRESL;
 "46
 [e = _temp -> | << -> _temp `ui -> 8 `i -> _ADRESL `ui `us ]
 [; ;io.c: 48: return temp ;

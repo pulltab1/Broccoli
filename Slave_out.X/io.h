@@ -8,6 +8,18 @@
 #define OUTPUT          0x04
 #define OUTPUT_PWM      0x05
 
+#define RA0 0
+#define RA1 1
+#define RA2 2
+#define RA3 3
+#define RA4 4
+#define RA5 5
+
+#define AN0 0
+#define AN1 1
+#define AN2 2
+#define AN3 3
+
 #define LOW 0
 #define HIGH 1
 

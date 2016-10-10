@@ -1,13 +1,13 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"14 io.h
+"26 io.h
 [u S270 `us 1 `uc 1 `uc 1 ]
 [n S270 . HL H L ]
 [p mainexit ]
 "8 osccon.h
 [v _initOSCCON `(v ~T0 @X0 0 ef ]
-"19 io.h
+"31 io.h
 [v _pinMode `(v ~T0 @X0 0 ef2`uc`uc ]
-"20
+"32
 [v _digitalWrite `(v ~T0 @X0 0 ef2`uc`uc ]
 "21 i2c.h
 [v _i2cInit `(v ~T0 @X0 0 ef1`i ]
@@ -2142,18 +2142,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 186: extern unsigned char __resetbits;
 [; ;pic.h: 187: extern __bit __powerdown;
 [; ;pic.h: 188: extern __bit __timeout;
-"18 io.h
+"30 io.h
 [v _HL `S270 ~T0 @X0 1 e ]
-[; ;io.h: 14: union{
-[; ;io.h: 15: unsigned short HL;
-[; ;io.h: 16: unsigned char H;
-[; ;io.h: 17: unsigned char L;
-[; ;io.h: 18: }HL;
-[; ;io.h: 19: void pinMode(unsigned char pin,unsigned char mode);
-[; ;io.h: 20: void digitalWrite(unsigned char pin,char output);
-[; ;io.h: 21: char digitalRead(unsigned char pin);
-[; ;io.h: 22: void analogWrite(unsigned char pin,unsigned char output);
-[; ;io.h: 23: unsigned short analogRead(unsigned char pin);
+[; ;io.h: 26: union{
+[; ;io.h: 27: unsigned short HL;
+[; ;io.h: 28: unsigned char H;
+[; ;io.h: 29: unsigned char L;
+[; ;io.h: 30: }HL;
+[; ;io.h: 31: void pinMode(unsigned char pin,unsigned char mode);
+[; ;io.h: 32: void digitalWrite(unsigned char pin,char output);
+[; ;io.h: 33: char digitalRead(unsigned char pin);
+[; ;io.h: 34: void analogWrite(unsigned char pin,unsigned char output);
+[; ;io.h: 35: unsigned short analogRead(unsigned char pin);
 "7 config.h
 [p x FOSC=INTOSC ]
 "8
