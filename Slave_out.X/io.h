@@ -23,11 +23,6 @@
 #define LOW 0
 #define HIGH 1
 
-union{
-   unsigned short HL;
-   unsigned char H;
-   unsigned char L;
-}HL;
 void pinMode(unsigned char pin,unsigned char mode);//ピンのモードを設定
 void digitalWrite(unsigned char pin,char output);//ピン出力の設定
 char digitalRead(unsigned char pin);//ピン入力の設定

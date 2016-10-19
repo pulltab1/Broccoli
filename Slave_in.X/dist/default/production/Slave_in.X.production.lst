@@ -1,9 +1,9 @@
 
 
-Microchip Technology PIC LITE Macro Assembler V1.37 build -260352376 
-                                                                                               Mon Oct 10 23:00:50 2016
+Microchip Technology PIC LITE Macro Assembler V1.35 build -356382666 
+                                                                                               Wed Oct 19 13:16:38 2016
 
-Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110536
+Microchip Technology Omniscient Code Generator v1.35 (Free mode) build 201507080246
      1                           	processor	12F1822
      2                           	opt	pw 120
      3                           	opt	lm
@@ -644,7 +644,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
    638  0066  0084               	movwf	4
    639  0067  3000               	movlw	high __pbssBANK0
    640  0068  0085               	movwf	5
-   641  0069  3014               	movlw	20
+   641  0069  3012               	movlw	18
    642  006A  21FE               	fcall	clear_ram0
    643  006B                     end_of_initialization:	
    644                           ;End of C runtime variable initialization code
@@ -663,1424 +663,1422 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
    657                           
    658                           	psect	bssBANK0
    659  0020                     __pbssBANK0:	
-   660  0020                     _HL:	
+   660  0020                     _rcv_flg:	
    661  0020                     	ds	2
-   662  0022                     _rcv_flg:	
-   663  0022                     	ds	2
-   664  0024                     _rcv:	
-   665  0024                     	ds	8
-   666  002C                     _snd:	
-   667  002C                     	ds	8
-   668                           
-   669                           	psect	clrtext
-   670  01FE                     clear_ram0:	
-   671                           ;	Called with FSR0 containing the base address, and
-   672                           ;	WREG with the size to clear
-   673                           
-   674  01FE  0064               	clrwdt	;clear the watchdog before getting into this loop
-   675  01FF                     clrloop0:	
-   676  01FF  0180               	clrf	0	;clear RAM location pointed to by FSR
-   677  0200  3101               	addfsr 0,1
-   678  0201  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
-   679  0202  29FF               	goto	clrloop0	;have we reached the end yet?
-   680  0203  3400               	retlw	0	;all done for this memory range, return
-   681                           
-   682                           	psect	cstackCOMMON
-   683  0070                     __pcstackCOMMON:	
-   684  0070                     ?_initOSCCON:	
-   685  0070                     ?_i2cInterrupt:	
-   686                           ; 1 bytes @ 0x0
-   687                           
-   688  0070                     ??_i2cInterrupt:	
-   689                           ; 1 bytes @ 0x0
-   690                           
-   691  0070                     ?_digitalRead:	
-   692                           ; 1 bytes @ 0x0
-   693                           
-   694  0070                     ?_main:	
-   695                           ; 1 bytes @ 0x0
-   696                           
-   697                           
-   698                           ; 1 bytes @ 0x0
-   699  0070                     	ds	2
-   700  0072                     i2cInterrupt@x:	
-   701                           
-   702                           ; 1 bytes @ 0x2
-   703  0072                     	ds	1
-   704  0073                     ??_initOSCCON:	
-   705  0073                     ?_delay_us:	
-   706                           ; 1 bytes @ 0x3
-   707                           
-   708  0073                     ?_i2cInit:	
-   709                           ; 1 bytes @ 0x3
-   710                           
-   711  0073                     ?_digitalWrite:	
-   712                           ; 1 bytes @ 0x3
-   713                           
-   714  0073                     ??_digitalRead:	
-   715                           ; 1 bytes @ 0x3
-   716                           
-   717  0073                     ?_i2cReceiveCheck:	
-   718                           ; 1 bytes @ 0x3
-   719                           
-   720  0073                     ?_analogRead:	
-   721                           ; 2 bytes @ 0x3
-   722                           
-   723  0073                     digitalWrite@value:	
-   724                           ; 2 bytes @ 0x3
-   725                           
-   726  0073                     delay_us@time:	
-   727                           ; 1 bytes @ 0x3
-   728                           
-   729  0073                     i2cInit@address:	
-   730                           ; 2 bytes @ 0x3
-   731                           
-   732                           
-   733                           ; 2 bytes @ 0x3
-   734  0073                     	ds	1
-   735  0074                     ??_digitalWrite:	
-   736  0074                     digitalRead@pin:	
-   737                           ; 1 bytes @ 0x4
-   738                           
-   739                           
-   740                           ; 1 bytes @ 0x4
-   741  0074                     	ds	1
-   742  0075                     ??_delay_us:	
-   743  0075                     ??_i2cInit:	
-   744                           ; 1 bytes @ 0x5
-   745                           
-   746  0075                     ??_i2cReceiveCheck:	
-   747                           ; 1 bytes @ 0x5
-   748                           
-   749  0075                     digitalWrite@pin:	
-   750                           ; 1 bytes @ 0x5
-   751                           
-   752  0075                     i2cReceiveCheck@ans:	
-   753                           ; 1 bytes @ 0x5
-   754                           
-   755  0075                     analogRead@temp:	
-   756                           ; 2 bytes @ 0x5
-   757                           
-   758                           
-   759                           ; 2 bytes @ 0x5
-   760  0075                     	ds	1
-   761  0076                     delay_us@i:	
-   762                           
-   763                           ; 2 bytes @ 0x6
-   764  0076                     	ds	2
-   765  0078                     ?_pinMode:	
-   766  0078                     pinMode@mode:	
-   767                           ; 1 bytes @ 0x8
-   768                           
-   769                           
-   770                           ; 1 bytes @ 0x8
-   771  0078                     	ds	1
-   772                           
-   773                           	psect	cstackBANK0
-   774  0034                     __pcstackBANK0:	
-   775  0034                     ??_pinMode:	
-   776  0034                     ??_analogRead:	
-   777                           ; 1 bytes @ 0x0
-   778                           
-   779                           
-   780                           ; 1 bytes @ 0x0
-   781  0034                     	ds	1
-   782  0035                     pinMode@pin:	
-   783                           
-   784                           ; 1 bytes @ 0x1
-   785  0035                     	ds	5
-   786  003A                     ??_main:	
-   787                           
-   788                           ; 1 bytes @ 0x6
-   789  003A                     	ds	3
-   790  003D                     main@Mode:	
-   791                           
-   792                           ; 2 bytes @ 0x9
-   793  003D                     	ds	2
-   794                           
-   795                           	psect	maintext
-   796  00F7                     __pmaintext:	
+   662  0022                     _rcv:	
+   663  0022                     	ds	8
+   664  002A                     _snd:	
+   665  002A                     	ds	8
+   666                           
+   667                           	psect	clrtext
+   668  01FE                     clear_ram0:	
+   669                           ;	Called with FSR0 containing the base address, and
+   670                           ;	WREG with the size to clear
+   671                           
+   672  01FE  0064               	clrwdt	;clear the watchdog before getting into this loop
+   673  01FF                     clrloop0:	
+   674  01FF  0180               	clrf	0	;clear RAM location pointed to by FSR
+   675  0200  3101               	addfsr 0,1
+   676  0201  0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+   677  0202  29FF               	goto	clrloop0	;have we reached the end yet?
+   678  0203  3400               	retlw	0	;all done for this memory range, return
+   679                           
+   680                           	psect	cstackCOMMON
+   681  0070                     __pcstackCOMMON:	
+   682  0070                     ?_initOSCCON:	
+   683  0070                     ?_i2cInterrupt:	
+   684                           ; 0 bytes @ 0x0
+   685                           
+   686  0070                     ??_i2cInterrupt:	
+   687                           ; 0 bytes @ 0x0
+   688                           
+   689  0070                     ?_main:	
+   690                           ; 0 bytes @ 0x0
+   691                           
+   692  0070                     ?_digitalRead:	
+   693                           ; 0 bytes @ 0x0
+   694                           
+   695                           
+   696                           ; 1 bytes @ 0x0
+   697  0070                     	ds	2
+   698  0072                     i2cInterrupt@x:	
+   699                           
+   700                           ; 1 bytes @ 0x2
+   701  0072                     	ds	1
+   702  0073                     ??_initOSCCON:	
+   703  0073                     ?_delay_us:	
+   704                           ; 0 bytes @ 0x3
+   705                           
+   706  0073                     ?_i2cInit:	
+   707                           ; 0 bytes @ 0x3
+   708                           
+   709  0073                     ?_digitalWrite:	
+   710                           ; 0 bytes @ 0x3
+   711                           
+   712  0073                     ??_digitalRead:	
+   713                           ; 0 bytes @ 0x3
+   714                           
+   715  0073                     ?_i2cReceiveCheck:	
+   716                           ; 0 bytes @ 0x3
+   717                           
+   718  0073                     ?_analogRead:	
+   719                           ; 2 bytes @ 0x3
+   720                           
+   721  0073                     digitalWrite@value:	
+   722                           ; 2 bytes @ 0x3
+   723                           
+   724  0073                     delay_us@time:	
+   725                           ; 1 bytes @ 0x3
+   726                           
+   727  0073                     i2cInit@address:	
+   728                           ; 2 bytes @ 0x3
+   729                           
+   730                           
+   731                           ; 2 bytes @ 0x3
+   732  0073                     	ds	1
+   733  0074                     ??_digitalWrite:	
+   734  0074                     digitalRead@pin:	
+   735                           ; 0 bytes @ 0x4
+   736                           
+   737                           
+   738                           ; 1 bytes @ 0x4
+   739  0074                     	ds	1
+   740  0075                     ??_delay_us:	
+   741  0075                     ??_i2cInit:	
+   742                           ; 0 bytes @ 0x5
+   743                           
+   744  0075                     ??_i2cReceiveCheck:	
+   745                           ; 0 bytes @ 0x5
+   746                           
+   747  0075                     digitalWrite@pin:	
+   748                           ; 0 bytes @ 0x5
+   749                           
+   750  0075                     i2cReceiveCheck@ans:	
+   751                           ; 1 bytes @ 0x5
+   752                           
+   753  0075                     analogRead@temp:	
+   754                           ; 2 bytes @ 0x5
+   755                           
+   756                           
+   757                           ; 2 bytes @ 0x5
+   758  0075                     	ds	1
+   759  0076                     delay_us@i:	
+   760                           
+   761                           ; 2 bytes @ 0x6
+   762  0076                     	ds	2
+   763  0078                     ?_pinMode:	
+   764  0078                     pinMode@mode:	
+   765                           ; 0 bytes @ 0x8
+   766                           
+   767                           
+   768                           ; 1 bytes @ 0x8
+   769  0078                     	ds	1
+   770                           
+   771                           	psect	cstackBANK0
+   772  0032                     __pcstackBANK0:	
+   773  0032                     ??_pinMode:	
+   774  0032                     ??_analogRead:	
+   775                           ; 0 bytes @ 0x0
+   776                           
+   777                           
+   778                           ; 0 bytes @ 0x0
+   779  0032                     	ds	1
+   780  0033                     pinMode@pin:	
+   781                           
+   782                           ; 1 bytes @ 0x1
+   783  0033                     	ds	5
+   784  0038                     ??_main:	
+   785                           
+   786                           ; 0 bytes @ 0x6
+   787  0038                     	ds	3
+   788  003B                     main@Mode:	
+   789                           
+   790                           ; 2 bytes @ 0x9
+   791  003B                     	ds	2
+   792                           
+   793                           	psect	maintext
+   794  00F7                     __pmaintext:	
+   795 ;;
+   796 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
    797 ;;
-   798 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
-   799 ;;
-   800 ;; *************** function _main *****************
-   801 ;; Defined at:
-   802 ;;		line 18 in file "main.c"
-   803 ;; Parameters:    Size  Location     Type
-   804 ;;		None
-   805 ;; Auto vars:     Size  Location     Type
-   806 ;;  Mode            2    9[BANK0 ] int 
-   807 ;; Return value:  Size  Location     Type
-   808 ;;                  1    wreg      void 
-   809 ;; Registers used:
-   810 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-   811 ;; Tracked objects:
-   812 ;;		On entry : B1F/0
-   813 ;;		On exit  : 0/0
-   814 ;;		Unchanged: 0/0
-   815 ;; Data sizes:     COMMON   BANK0   BANK1
-   816 ;;      Params:         0       0       0
-   817 ;;      Locals:         0       2       0
-   818 ;;      Temps:          0       3       0
-   819 ;;      Totals:         0       5       0
-   820 ;;Total ram usage:        5 bytes
-   821 ;; Hardware stack levels required when called:    3
-   822 ;; This function calls:
-   823 ;;		_analogRead
-   824 ;;		_digitalRead
-   825 ;;		_digitalWrite
-   826 ;;		_i2cInit
-   827 ;;		_i2cReceiveCheck
-   828 ;;		_initOSCCON
-   829 ;;		_pinMode
-   830 ;; This function is called by:
-   831 ;;		Startup code after reset
-   832 ;; This function uses a non-reentrant model
-   833 ;;
-   834                           
-   835                           
-   836                           ;psect for function _main
-   837  00F7                     _main:	
+   798 ;; *************** function _main *****************
+   799 ;; Defined at:
+   800 ;;		line 18 in file "main.c"
+   801 ;; Parameters:    Size  Location     Type
+   802 ;;		None
+   803 ;; Auto vars:     Size  Location     Type
+   804 ;;  Mode            2    9[BANK0 ] int 
+   805 ;; Return value:  Size  Location     Type
+   806 ;;		None               void
+   807 ;; Registers used:
+   808 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+   809 ;; Tracked objects:
+   810 ;;		On entry : B1F/0
+   811 ;;		On exit  : 0/0
+   812 ;;		Unchanged: 0/0
+   813 ;; Data sizes:     COMMON   BANK0   BANK1
+   814 ;;      Params:         0       0       0
+   815 ;;      Locals:         0       2       0
+   816 ;;      Temps:          0       3       0
+   817 ;;      Totals:         0       5       0
+   818 ;;Total ram usage:        5 bytes
+   819 ;; Hardware stack levels required when called:    3
+   820 ;; This function calls:
+   821 ;;		_analogRead
+   822 ;;		_digitalRead
+   823 ;;		_digitalWrite
+   824 ;;		_i2cInit
+   825 ;;		_i2cReceiveCheck
+   826 ;;		_initOSCCON
+   827 ;;		_pinMode
+   828 ;; This function is called by:
+   829 ;;		Startup code after reset
+   830 ;; This function uses a non-reentrant model
+   831 ;;
+   832                           
+   833                           
+   834                           ;psect for function _main
+   835  00F7                     _main:	
+   836                           
+   837                           ;main.c: 20: int Mode = 0;
    838                           
-   839                           ;main.c: 20: int Mode = 0;
-   840                           
-   841                           ;incstack = 0
-   842                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-   843  00F7  0020               	movlb	0	; select bank0
-   844  00F8  01BD               	clrf	main@Mode
-   845  00F9  01BE               	clrf	main@Mode+1
-   846                           
-   847                           ;main.c: 22: initOSCCON();
-   848  00FA  2204               	fcall	_initOSCCON
-   849                           
-   850                           ;main.c: 24: pinMode((0),0x04);
-   851  00FB  3004               	movlw	4
-   852  00FC  0020               	movlb	0	; select bank0
-   853  00FD  00BA               	movwf	??_main
-   854  00FE  083A               	movf	??_main,w
-   855  00FF  00F8               	movwf	pinMode@mode
-   856  0100  3000               	movlw	0
-   857  0101  206E               	fcall	_pinMode
-   858                           
-   859                           ;main.c: 25: pinMode((4),0x01);
-   860  0102  01F8               	clrf	pinMode@mode
-   861  0103  0AF8               	incf	pinMode@mode,f
-   862  0104  3004               	movlw	4
-   863  0105  206E               	fcall	_pinMode
-   864                           
-   865                           ;main.c: 26: pinMode((3),0x03);
-   866  0106  3003               	movlw	3
-   867  0107  0020               	movlb	0	; select bank0
-   868  0108  00BA               	movwf	??_main
-   869  0109  083A               	movf	??_main,w
-   870  010A  00F8               	movwf	pinMode@mode
-   871  010B  3003               	movlw	3
-   872  010C  206E               	fcall	_pinMode
-   873                           
-   874                           ;main.c: 27: i2cInit((0x00));
-   875  010D  3000               	movlw	0
-   876  010E  00F3               	movwf	i2cInit@address
-   877  010F  00F4               	movwf	i2cInit@address+1
-   878  0110  2163               	fcall	_i2cInit
-   879                           
-   880                           ;main.c: 28: snd[0] = (0x02);
-   881  0111  3002               	movlw	2
-   882  0112  0020               	movlb	0	; select bank0
-   883  0113  00BA               	movwf	??_main
-   884  0114  083A               	movf	??_main,w
-   885  0115  00AC               	movwf	_snd
-   886  0116                     l1118:	
-   887                           ;main.c: 30: while(1) {
-   888                           
-   889                           
-   890                           ;main.c: 31: if (i2cReceiveCheck() != 0) {
-   891  0116  21C7               	fcall	_i2cReceiveCheck
-   892  0117  0873               	movf	?_i2cReceiveCheck,w
-   893  0118  0474               	iorwf	?_i2cReceiveCheck+1,w
-   894  0119  1903               	btfsc	3,2
-   895  011A  2916               	goto	l1118
-   896                           
-   897                           ;main.c: 32: GIE = 0;
-   898  011B  138B               	bcf	11,7	;volatile
-   899                           
-   900                           ;main.c: 33: switch(Mode){
-   901  011C  2953               	goto	l1144
-   902  011D                     l1122:	
-   903                           ;main.c: 34: case 0:
-   904                           
-   905                           
-   906                           ;main.c: 35: SSP1ADD = rcv[0]<<1;
-   907  011D  0020               	movlb	0	; select bank0
-   908  011E  3524               	lslf	_rcv,w
-   909  011F  0024               	movlb	4	; select bank4
-   910  0120  0092               	movwf	18	;volatile
-   911                           
-   912                           ;main.c: 36: digitalWrite((0),1);
-   913  0121  01F3               	clrf	digitalWrite@value
-   914  0122  0AF3               	incf	digitalWrite@value,f
-   915  0123  3000               	movlw	0
-   916  0124  21AA               	fcall	_digitalWrite
-   917                           
-   918                           ;main.c: 37: Mode=1;
-   919  0125  3001               	movlw	1
-   920  0126  0020               	movlb	0	; select bank0
-   921  0127  00BD               	movwf	main@Mode
-   922  0128  3000               	movlw	0
-   923  0129  00BE               	movwf	main@Mode+1
-   924                           
-   925                           ;main.c: 38: break;
-   926  012A  2961               	goto	l163
-   927  012B                     l1128:	
-   928                           ;main.c: 41: case 0:
+   839                           ;incstack = 0
+   840                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+   841  00F7  0020               	movlb	0	; select bank0
+   842  00F8  01BB               	clrf	main@Mode
+   843  00F9  01BC               	clrf	main@Mode+1
+   844                           
+   845                           ;main.c: 22: initOSCCON();
+   846  00FA  2204               	fcall	_initOSCCON
+   847                           
+   848                           ;main.c: 24: pinMode((0),0x04);
+   849  00FB  3004               	movlw	4
+   850  00FC  0020               	movlb	0	; select bank0
+   851  00FD  00B8               	movwf	??_main
+   852  00FE  0838               	movf	??_main,w
+   853  00FF  00F8               	movwf	pinMode@mode
+   854  0100  3000               	movlw	0
+   855  0101  206E               	fcall	_pinMode
+   856                           
+   857                           ;main.c: 25: pinMode((5),0x01);
+   858  0102  01F8               	clrf	pinMode@mode
+   859  0103  0AF8               	incf	pinMode@mode,f
+   860  0104  3005               	movlw	5
+   861  0105  206E               	fcall	_pinMode
+   862                           
+   863                           ;main.c: 26: pinMode((3),0x03);
+   864  0106  3003               	movlw	3
+   865  0107  0020               	movlb	0	; select bank0
+   866  0108  00B8               	movwf	??_main
+   867  0109  0838               	movf	??_main,w
+   868  010A  00F8               	movwf	pinMode@mode
+   869  010B  3003               	movlw	3
+   870  010C  206E               	fcall	_pinMode
+   871                           
+   872                           ;main.c: 27: i2cInit((0x00));
+   873  010D  3000               	movlw	0
+   874  010E  00F3               	movwf	i2cInit@address
+   875  010F  00F4               	movwf	i2cInit@address+1
+   876  0110  2163               	fcall	_i2cInit
+   877                           
+   878                           ;main.c: 28: snd[0] = (0x02);
+   879  0111  3002               	movlw	2
+   880  0112  0020               	movlb	0	; select bank0
+   881  0113  00B8               	movwf	??_main
+   882  0114  0838               	movf	??_main,w
+   883  0115  00AA               	movwf	_snd
+   884  0116                     l1114:	
+   885                           ;main.c: 30: while(1) {
+   886                           
+   887                           
+   888                           ;main.c: 31: if (i2cReceiveCheck() != 0) {
+   889  0116  21C7               	fcall	_i2cReceiveCheck
+   890  0117  0873               	movf	?_i2cReceiveCheck,w
+   891  0118  0474               	iorwf	?_i2cReceiveCheck+1,w
+   892  0119  1903               	btfsc	3,2
+   893  011A  2916               	goto	l1114
+   894                           
+   895                           ;main.c: 32: GIE = 0;
+   896  011B  138B               	bcf	11,7	;volatile
+   897                           
+   898                           ;main.c: 33: switch(Mode){
+   899  011C  2953               	goto	l1140
+   900  011D                     l1118:	
+   901                           ;main.c: 34: case 0:
+   902                           
+   903                           
+   904                           ;main.c: 35: SSP1ADD = rcv[0]<<1;
+   905  011D  0020               	movlb	0	; select bank0
+   906  011E  3522               	lslf	_rcv,w
+   907  011F  0024               	movlb	4	; select bank4
+   908  0120  0092               	movwf	18	;volatile
+   909                           
+   910                           ;main.c: 36: digitalWrite((0),1);
+   911  0121  01F3               	clrf	digitalWrite@value
+   912  0122  0AF3               	incf	digitalWrite@value,f
+   913  0123  3000               	movlw	0
+   914  0124  21AA               	fcall	_digitalWrite
+   915                           
+   916                           ;main.c: 37: Mode=1;
+   917  0125  3001               	movlw	1
+   918  0126  0020               	movlb	0	; select bank0
+   919  0127  00BB               	movwf	main@Mode
+   920  0128  3000               	movlw	0
+   921  0129  00BC               	movwf	main@Mode+1
+   922                           
+   923                           ;main.c: 38: break;
+   924  012A  2961               	goto	l159
+   925  012B                     l1124:	
+   926                           ;main.c: 41: case 0:
+   927                           
+   928                           ;main.c: 40: switch(rcv[0]){
    929                           
-   930                           ;main.c: 40: switch(rcv[0]){
+   930                           ;main.c: 39: case 1:
    931                           
-   932                           ;main.c: 39: case 1:
-   933                           
-   934                           
-   935                           ;main.c: 42: if(digitalRead((4)))
-   936  012B  3004               	movlw	4
-   937  012C  21F2               	fcall	_digitalRead
-   938  012D  3A00               	xorlw	0
-   939  012E  1903               	skipnz
-   940  012F  2934               	goto	l1132
-   941                           
-   942                           ;main.c: 43: snd[0]=1;
-   943  0130  0020               	movlb	0	; select bank0
-   944  0131  01AC               	clrf	_snd
-   945  0132  0AAC               	incf	_snd,f
-   946  0133  2961               	goto	l163
-   947  0134                     l1132:	
-   948                           
-   949                           ;main.c: 44: else
-   950                           ;main.c: 45: snd[0]=0;
-   951  0134  0020               	movlb	0	; select bank0
-   952  0135  01AC               	clrf	_snd
-   953                           
-   954                           ;main.c: 46: break;
-   955  0136  2961               	goto	l163
-   956  0137                     l1134:	
-   957                           ;main.c: 47: case 1:
-   958                           
-   959                           
-   960                           ;main.c: 48: snd[0]=analogRead()/4;
-   961  0137  2187               	fcall	_analogRead
-   962  0138  0873               	movf	?_analogRead,w
-   963  0139  0020               	movlb	0	; select bank0
-   964  013A  00BA               	movwf	??_main
-   965  013B  0874               	movf	?_analogRead+1,w
-   966  013C  00BB               	movwf	??_main+1
-   967  013D  36BB               	lsrf	??_main+1,f
-   968  013E  0CBA               	rrf	??_main,f
-   969  013F  36BB               	lsrf	??_main+1,f
-   970  0140  0CBA               	rrf	??_main,f
-   971  0141  083A               	movf	??_main,w
-   972  0142  00BC               	movwf	??_main+2
-   973  0143  083C               	movf	??_main+2,w
-   974  0144  2948               	goto	L1
-   975  0145                     l1136:	
-   976                           ;main.c: 50: default:
+   932                           
+   933                           ;main.c: 42: if(digitalRead((5)))
+   934  012B  3005               	movlw	5
+   935  012C  21F2               	fcall	_digitalRead
+   936  012D  3A00               	xorlw	0
+   937  012E  1903               	skipnz
+   938  012F  2934               	goto	l1128
+   939                           
+   940                           ;main.c: 43: snd[0]=1;
+   941  0130  0020               	movlb	0	; select bank0
+   942  0131  01AA               	clrf	_snd
+   943  0132  0AAA               	incf	_snd,f
+   944  0133  2961               	goto	l159
+   945  0134                     l1128:	
+   946                           
+   947                           ;main.c: 44: else
+   948                           ;main.c: 45: snd[0]=0;
+   949  0134  0020               	movlb	0	; select bank0
+   950  0135  01AA               	clrf	_snd
+   951                           
+   952                           ;main.c: 46: break;
+   953  0136  2961               	goto	l159
+   954  0137                     l1130:	
+   955                           ;main.c: 47: case 1:
+   956                           
+   957                           
+   958                           ;main.c: 48: snd[0]=analogRead()/4;
+   959  0137  2187               	fcall	_analogRead
+   960  0138  0873               	movf	?_analogRead,w
+   961  0139  0020               	movlb	0	; select bank0
+   962  013A  00B8               	movwf	??_main
+   963  013B  0874               	movf	?_analogRead+1,w
+   964  013C  00B9               	movwf	??_main+1
+   965  013D  36B9               	lsrf	??_main+1,f
+   966  013E  0CB8               	rrf	??_main,f
+   967  013F  36B9               	lsrf	??_main+1,f
+   968  0140  0CB8               	rrf	??_main,f
+   969  0141  0838               	movf	??_main,w
+   970  0142  00BA               	movwf	??_main+2
+   971  0143  083A               	movf	??_main+2,w
+   972  0144  2948               	goto	L1
+   973  0145                     l1132:	
+   974                           ;main.c: 50: default:
+   975                           
+   976                           ;main.c: 49: break;
    977                           
-   978                           ;main.c: 49: break;
-   979                           
-   980                           
-   981                           ;main.c: 51: snd[0]=-1;
-   982  0145  30FF               	movlw	255
-   983  0146  00BA               	movwf	??_main
-   984  0147  083A               	movf	??_main,w
-   985  0148                     L1:	
-   986  0148  00AC               	movwf	_snd
+   978                           
+   979                           ;main.c: 51: snd[0]=-1;
+   980  0145  30FF               	movlw	255
+   981  0146  00B8               	movwf	??_main
+   982  0147  0838               	movf	??_main,w
+   983  0148                     L1:	
+   984  0148  00AA               	movwf	_snd
+   985                           
+   986                           ;main.c: 53: }
    987                           
-   988                           ;main.c: 53: }
-   989                           
-   990                           ;main.c: 52: break;
-   991  0149  2961               	goto	l163
-   992  014A                     l1140:	
-   993  014A  0824               	movf	_rcv,w
-   994                           
-   995                           ; Switch size 1, requested type "space"
-   996                           ; Number of cases is 2, Range of values is 0 to 1
-   997                           ; switch strategies available:
-   998                           ; Name         Instructions Cycles
-   999                           ; simple_byte            7     4 (average)
-  1000                           ; direct_byte           10     6 (fixed)
-  1001                           ; jumptable            260     6 (fixed)
-  1002                           ;	Chosen strategy is simple_byte
-  1003  014B  3A00               	xorlw	0	; case 0
-  1004  014C  1903               	skipnz
-  1005  014D  292B               	goto	l1128
-  1006  014E  3A01               	xorlw	1	; case 1
-  1007  014F  1903               	skipnz
-  1008  0150  2937               	goto	l1134
-  1009  0151  2945               	goto	l1136
+   988                           ;main.c: 52: break;
+   989  0149  2961               	goto	l159
+   990  014A                     l1136:	
+   991  014A  0822               	movf	_rcv,w
+   992                           
+   993                           ; Switch size 1, requested type "space"
+   994                           ; Number of cases is 2, Range of values is 0 to 1
+   995                           ; switch strategies available:
+   996                           ; Name         Instructions Cycles
+   997                           ; simple_byte            7     4 (average)
+   998                           ; direct_byte           10     6 (fixed)
+   999                           ; jumptable            260     6 (fixed)
+  1000                           ;	Chosen strategy is simple_byte
+  1001  014B  3A00               	xorlw	0	; case 0
+  1002  014C  1903               	skipnz
+  1003  014D  292B               	goto	l1124
+  1004  014E  3A01               	xorlw	1	; case 1
+  1005  014F  1903               	skipnz
+  1006  0150  2937               	goto	l1130
+  1007  0151  2945               	goto	l1132
+  1008                           
+  1009                           ;main.c: 55: }
   1010                           
-  1011                           ;main.c: 55: }
-  1012                           
-  1013                           ;main.c: 54: break;
-  1014  0152  2961               	goto	l163
-  1015  0153                     l1144:	
-  1016                           
-  1017                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
+  1011                           ;main.c: 54: break;
+  1012  0152  2961               	goto	l159
+  1013  0153                     l1140:	
+  1014                           
+  1015                           ; Switch on 2 bytes has been partitioned into a top level switch of size 1, and 1 sub-sw
       +                          itches
-  1018                           ; Switch size 1, requested type "space"
-  1019                           ; Number of cases is 1, Range of values is 0 to 0
-  1020                           ; switch strategies available:
-  1021                           ; Name         Instructions Cycles
-  1022                           ; simple_byte            4     3 (average)
-  1023                           ; direct_byte            8     6 (fixed)
-  1024                           ; jumptable            260     6 (fixed)
-  1025                           ;	Chosen strategy is simple_byte
-  1026  0153  0020               	movlb	0	; select bank0
-  1027  0154  083E               	movf	main@Mode+1,w
-  1028  0155  3A00               	xorlw	0	; case 0
-  1029  0156  1903               	skipnz
-  1030  0157  2959               	goto	l1182
-  1031  0158  2961               	goto	l163
-  1032  0159                     l1182:	
-  1033                           
-  1034                           ; Switch size 1, requested type "space"
-  1035                           ; Number of cases is 2, Range of values is 0 to 1
-  1036                           ; switch strategies available:
-  1037                           ; Name         Instructions Cycles
-  1038                           ; simple_byte            7     4 (average)
-  1039                           ; direct_byte           10     6 (fixed)
-  1040                           ; jumptable            260     6 (fixed)
-  1041                           ;	Chosen strategy is simple_byte
-  1042  0159  083D               	movf	main@Mode,w
-  1043  015A  3A00               	xorlw	0	; case 0
-  1044  015B  1903               	skipnz
-  1045  015C  291D               	goto	l1122
-  1046  015D  3A01               	xorlw	1	; case 1
-  1047  015E  1903               	skipnz
-  1048  015F  294A               	goto	l1140
-  1049  0160  2961               	goto	l163
-  1050  0161                     l163:	
-  1051                           
-  1052                           ;main.c: 56: GIE = 1;
-  1053  0161  178B               	bsf	11,7	;volatile
-  1054  0162  2916               	goto	l1118
-  1055  0163                     __end_of_main:	
-  1056                           
-  1057                           	psect	text1
-  1058  006E                     __ptext1:	
-  1059 ;; *************** function _pinMode *****************
-  1060 ;; Defined at:
-  1061 ;;		line 4 in file "io.c"
-  1062 ;; Parameters:    Size  Location     Type
-  1063 ;;  pin             1    wreg     unsigned char 
-  1064 ;;  mode            1    8[COMMON] unsigned char 
-  1065 ;; Auto vars:     Size  Location     Type
-  1066 ;;  pin             1    1[BANK0 ] unsigned char 
-  1067 ;; Return value:  Size  Location     Type
-  1068 ;;                  1    wreg      void 
-  1069 ;; Registers used:
-  1070 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
-  1071 ;; Tracked objects:
-  1072 ;;		On entry : 0/0
-  1073 ;;		On exit  : 0/0
-  1074 ;;		Unchanged: 0/0
-  1075 ;; Data sizes:     COMMON   BANK0   BANK1
-  1076 ;;      Params:         1       0       0
-  1077 ;;      Locals:         0       1       0
-  1078 ;;      Temps:          0       1       0
-  1079 ;;      Totals:         1       2       0
-  1080 ;;Total ram usage:        3 bytes
-  1081 ;; Hardware stack levels used:    1
-  1082 ;; Hardware stack levels required when called:    2
-  1083 ;; This function calls:
-  1084 ;;		_delay_us
-  1085 ;; This function is called by:
-  1086 ;;		_main
-  1087 ;; This function uses a non-reentrant model
-  1088 ;;
-  1089                           
-  1090                           
-  1091                           ;psect for function _pinMode
-  1092  006E                     _pinMode:	
-  1093                           
-  1094                           ;incstack = 0
-  1095                           ; Regs used in _pinMode: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-  1096                           ;pinMode@pin stored from wreg
-  1097  006E  0020               	movlb	0	; select bank0
-  1098  006F  00B5               	movwf	pinMode@pin
-  1099                           
-  1100                           ;io.c: 5: LATA = LATA & ~(1 << pin);
-  1101  0070  3001               	movlw	1
-  1102  0071  00B4               	movwf	??_pinMode
-  1103  0072  0A35               	incf	pinMode@pin,w
-  1104  0073  2875               	goto	u604
-  1105  0074                     u605:	
-  1106  0074  35B4               	lslf	??_pinMode,f
-  1107  0075                     u604:	
-  1108  0075  0B89               	decfsz	9,f
-  1109  0076  2874               	goto	u605
-  1110  0077  0834               	movf	??_pinMode,w
-  1111  0078  3AFF               	xorlw	255
-  1112  0079  0022               	movlb	2	; select bank2
-  1113  007A  050C               	andwf	12,w	;volatile
-  1114  007B  008C               	movwf	12	;volatile
-  1115                           
-  1116                           ;io.c: 6: switch (mode) {
-  1117  007C  28EB               	goto	l1096
-  1118  007D                     l1080:	
-  1119                           ;io.c: 7: case 0x01:
-  1120                           
-  1121                           
-  1122                           ;io.c: 8: TRISA = TRISA | (1 << pin);
-  1123  007D  3001               	movlw	1
-  1124  007E  0020               	movlb	0	; select bank0
-  1125  007F  00B4               	movwf	??_pinMode
-  1126  0080  0A35               	incf	pinMode@pin,w
-  1127  0081  2883               	goto	u614
-  1128  0082                     u615:	
-  1129  0082  35B4               	lslf	??_pinMode,f
-  1130  0083                     u614:	
-  1131  0083  0B89               	decfsz	9,f
-  1132  0084  2882               	goto	u615
-  1133  0085  0834               	movf	??_pinMode,w
-  1134  0086  0021               	movlb	1	; select bank1
-  1135  0087  040C               	iorwf	12,w	;volatile
-  1136  0088  008C               	movwf	12	;volatile
-  1137                           
-  1138                           ;io.c: 9: ANSELA = ANSELA & (~(1 << pin));
-  1139  0089  3001               	movlw	1
-  1140  008A  0020               	movlb	0	; select bank0
-  1141  008B  00B4               	movwf	??_pinMode
-  1142  008C  0A35               	incf	pinMode@pin,w
-  1143  008D  288F               	goto	u624
-  1144  008E                     u625:	
-  1145  008E  35B4               	lslf	??_pinMode,f
-  1146  008F                     u624:	
-  1147  008F  0B89               	decfsz	9,f
-  1148  0090  288E               	goto	u625
-  1149  0091  0834               	movf	??_pinMode,w
-  1150  0092  3AFF               	xorlw	255
-  1151  0093  0023               	movlb	3	; select bank3
-  1152  0094  050C               	andwf	12,w	;volatile
-  1153  0095  008C               	movwf	12	;volatile
-  1154                           
-  1155                           ;io.c: 10: break;
-  1156  0096  0008               	return
-  1157  0097                     l1082:	
-  1158                           ;io.c: 11: case 0x04:
-  1159                           
-  1160                           
-  1161                           ;io.c: 12: TRISA = TRISA & (~(1 << pin));
-  1162  0097  3001               	movlw	1
-  1163  0098  0020               	movlb	0	; select bank0
-  1164  0099  00B4               	movwf	??_pinMode
-  1165  009A  0A35               	incf	pinMode@pin,w
-  1166  009B  289D               	goto	u634
-  1167  009C                     u635:	
-  1168  009C  35B4               	lslf	??_pinMode,f
-  1169  009D                     u634:	
-  1170  009D  0B89               	decfsz	9,f
-  1171  009E  289C               	goto	u635
-  1172  009F  0834               	movf	??_pinMode,w
-  1173  00A0  3AFF               	xorlw	255
-  1174  00A1  0021               	movlb	1	; select bank1
-  1175  00A2  050C               	andwf	12,w	;volatile
-  1176  00A3  008C               	movwf	12	;volatile
-  1177                           
-  1178                           ;io.c: 13: ANSELA = ANSELA & (~(1 << pin));
-  1179  00A4  3001               	movlw	1
-  1180  00A5  0020               	movlb	0	; select bank0
-  1181  00A6  00B4               	movwf	??_pinMode
-  1182  00A7  0A35               	incf	pinMode@pin,w
-  1183  00A8  28AA               	goto	u644
-  1184  00A9                     u645:	
-  1185  00A9  35B4               	lslf	??_pinMode,f
-  1186  00AA                     u644:	
-  1187  00AA  0B89               	decfsz	9,f
-  1188  00AB  28A9               	goto	u645
-  1189  00AC  0834               	movf	??_pinMode,w
-  1190  00AD  3AFF               	xorlw	255
-  1191  00AE  0023               	movlb	3	; select bank3
-  1192  00AF  050C               	andwf	12,w	;volatile
-  1193  00B0  008C               	movwf	12	;volatile
-  1194                           
-  1195                           ;io.c: 14: break;
-  1196  00B1  0008               	return
-  1197  00B2                     l1084:	
-  1198                           ;io.c: 15: case 0x03:
-  1199                           
-  1200                           
-  1201                           ;io.c: 16: TRISA = TRISA | (1 << pin);
-  1202  00B2  3001               	movlw	1
-  1203  00B3  0020               	movlb	0	; select bank0
-  1204  00B4  00B4               	movwf	??_pinMode
-  1205  00B5  0A35               	incf	pinMode@pin,w
-  1206  00B6  28B8               	goto	u654
-  1207  00B7                     u655:	
-  1208  00B7  35B4               	lslf	??_pinMode,f
-  1209  00B8                     u654:	
-  1210  00B8  0B89               	decfsz	9,f
-  1211  00B9  28B7               	goto	u655
-  1212  00BA  0834               	movf	??_pinMode,w
-  1213  00BB  0021               	movlb	1	; select bank1
-  1214  00BC  040C               	iorwf	12,w	;volatile
-  1215  00BD  008C               	movwf	12	;volatile
-  1216                           
-  1217                           ;io.c: 17: ANSELA = ANSELA | ((1 << pin));
-  1218  00BE  3001               	movlw	1
-  1219  00BF  0020               	movlb	0	; select bank0
-  1220  00C0  00B4               	movwf	??_pinMode
-  1221  00C1  0A35               	incf	pinMode@pin,w
-  1222  00C2  28C4               	goto	u664
-  1223  00C3                     u665:	
-  1224  00C3  35B4               	lslf	??_pinMode,f
-  1225  00C4                     u664:	
-  1226  00C4  0B89               	decfsz	9,f
-  1227  00C5  28C3               	goto	u665
-  1228  00C6  0834               	movf	??_pinMode,w
-  1229  00C7  0023               	movlb	3	; select bank3
-  1230  00C8  040C               	iorwf	12,w	;volatile
-  1231  00C9  008C               	movwf	12	;volatile
-  1232                           
-  1233                           ;io.c: 18: ADCON1 = 0b10010000 ;
-  1234  00CA  3090               	movlw	144
-  1235  00CB  0021               	movlb	1	; select bank1
-  1236  00CC  009E               	movwf	30	;volatile
-  1237                           
-  1238                           ;io.c: 19: ADCON0 = 0x01 | ((pin<<2));
-  1239  00CD  0020               	movlb	0	; select bank0
-  1240  00CE  0835               	movf	pinMode@pin,w
-  1241  00CF  00B4               	movwf	??_pinMode
-  1242  00D0  3001               	movlw	1
-  1243  00D1                     u675:	
-  1244  00D1  35B4               	lslf	??_pinMode,f
-  1245  00D2  3EFF               	addlw	-1
-  1246  00D3  1D03               	skipz
-  1247  00D4  28D1               	goto	u675
-  1248  00D5  3534               	lslf	??_pinMode,w
-  1249  00D6  3801               	iorlw	1
-  1250  00D7  0021               	movlb	1	; select bank1
-  1251  00D8  009D               	movwf	29	;volatile
-  1252                           
-  1253                           ;io.c: 20: PORTA = PORTA & (~(1 << pin));
-  1254  00D9  3001               	movlw	1
-  1255  00DA  0020               	movlb	0	; select bank0
-  1256  00DB  00B4               	movwf	??_pinMode
-  1257  00DC  0A35               	incf	pinMode@pin,w
-  1258  00DD  28DF               	goto	u684
-  1259  00DE                     u685:	
-  1260  00DE  35B4               	lslf	??_pinMode,f
-  1261  00DF                     u684:	
-  1262  00DF  0B89               	decfsz	9,f
-  1263  00E0  28DE               	goto	u685
-  1264  00E1  0834               	movf	??_pinMode,w
-  1265  00E2  3AFF               	xorlw	255
-  1266  00E3  050C               	andwf	12,w	;volatile
-  1267  00E4  008C               	movwf	12	;volatile
-  1268                           
-  1269                           ;io.c: 21: delay_us(5);
-  1270  00E5  3005               	movlw	5
-  1271  00E6  00F3               	movwf	delay_us@time
-  1272  00E7  3000               	movlw	0
-  1273  00E8  00F4               	movwf	delay_us@time+1
-  1274  00E9  21DE               	fcall	_delay_us
+  1016                           ; Switch size 1, requested type "space"
+  1017                           ; Number of cases is 1, Range of values is 0 to 0
+  1018                           ; switch strategies available:
+  1019                           ; Name         Instructions Cycles
+  1020                           ; simple_byte            4     3 (average)
+  1021                           ; direct_byte            8     6 (fixed)
+  1022                           ; jumptable            260     6 (fixed)
+  1023                           ;	Chosen strategy is simple_byte
+  1024  0153  0020               	movlb	0	; select bank0
+  1025  0154  083C               	movf	main@Mode+1,w
+  1026  0155  3A00               	xorlw	0	; case 0
+  1027  0156  1903               	skipnz
+  1028  0157  2959               	goto	l1178
+  1029  0158  2961               	goto	l159
+  1030  0159                     l1178:	
+  1031                           
+  1032                           ; Switch size 1, requested type "space"
+  1033                           ; Number of cases is 2, Range of values is 0 to 1
+  1034                           ; switch strategies available:
+  1035                           ; Name         Instructions Cycles
+  1036                           ; simple_byte            7     4 (average)
+  1037                           ; direct_byte           10     6 (fixed)
+  1038                           ; jumptable            260     6 (fixed)
+  1039                           ;	Chosen strategy is simple_byte
+  1040  0159  083B               	movf	main@Mode,w
+  1041  015A  3A00               	xorlw	0	; case 0
+  1042  015B  1903               	skipnz
+  1043  015C  291D               	goto	l1118
+  1044  015D  3A01               	xorlw	1	; case 1
+  1045  015E  1903               	skipnz
+  1046  015F  294A               	goto	l1136
+  1047  0160  2961               	goto	l159
+  1048  0161                     l159:	
+  1049                           
+  1050                           ;main.c: 56: GIE = 1;
+  1051  0161  178B               	bsf	11,7	;volatile
+  1052  0162  2916               	goto	l1114
+  1053  0163                     __end_of_main:	
+  1054                           
+  1055                           	psect	text1
+  1056  006E                     __ptext1:	
+  1057 ;; *************** function _pinMode *****************
+  1058 ;; Defined at:
+  1059 ;;		line 4 in file "io.c"
+  1060 ;; Parameters:    Size  Location     Type
+  1061 ;;  pin             1    wreg     unsigned char 
+  1062 ;;  mode            1    8[COMMON] unsigned char 
+  1063 ;; Auto vars:     Size  Location     Type
+  1064 ;;  pin             1    1[BANK0 ] unsigned char 
+  1065 ;; Return value:  Size  Location     Type
+  1066 ;;		None               void
+  1067 ;; Registers used:
+  1068 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1069 ;; Tracked objects:
+  1070 ;;		On entry : 0/0
+  1071 ;;		On exit  : 0/0
+  1072 ;;		Unchanged: 0/0
+  1073 ;; Data sizes:     COMMON   BANK0   BANK1
+  1074 ;;      Params:         1       0       0
+  1075 ;;      Locals:         0       1       0
+  1076 ;;      Temps:          0       1       0
+  1077 ;;      Totals:         1       2       0
+  1078 ;;Total ram usage:        3 bytes
+  1079 ;; Hardware stack levels used:    1
+  1080 ;; Hardware stack levels required when called:    2
+  1081 ;; This function calls:
+  1082 ;;		_delay_us
+  1083 ;; This function is called by:
+  1084 ;;		_main
+  1085 ;; This function uses a non-reentrant model
+  1086 ;;
+  1087                           
+  1088                           
+  1089                           ;psect for function _pinMode
+  1090  006E                     _pinMode:	
+  1091                           
+  1092                           ;incstack = 0
+  1093                           ; Regs used in _pinMode: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1094                           ;pinMode@pin stored from wreg
+  1095  006E  0020               	movlb	0	; select bank0
+  1096  006F  00B3               	movwf	pinMode@pin
+  1097                           
+  1098                           ;io.c: 5: LATA = LATA & ~(1 << pin);
+  1099  0070  3001               	movlw	1
+  1100  0071  00B2               	movwf	??_pinMode
+  1101  0072  0A33               	incf	pinMode@pin,w
+  1102  0073  2875               	goto	u604
+  1103  0074                     u605:	
+  1104  0074  35B2               	lslf	??_pinMode,f
+  1105  0075                     u604:	
+  1106  0075  0B89               	decfsz	9,f
+  1107  0076  2874               	goto	u605
+  1108  0077  0832               	movf	??_pinMode,w
+  1109  0078  3AFF               	xorlw	255
+  1110  0079  0022               	movlb	2	; select bank2
+  1111  007A  050C               	andwf	12,w	;volatile
+  1112  007B  008C               	movwf	12	;volatile
+  1113                           
+  1114                           ;io.c: 6: switch (mode) {
+  1115  007C  28EB               	goto	l1092
+  1116  007D                     l1076:	
+  1117                           ;io.c: 7: case 0x01:
+  1118                           
+  1119                           
+  1120                           ;io.c: 8: TRISA = TRISA | (1 << pin);
+  1121  007D  3001               	movlw	1
+  1122  007E  0020               	movlb	0	; select bank0
+  1123  007F  00B2               	movwf	??_pinMode
+  1124  0080  0A33               	incf	pinMode@pin,w
+  1125  0081  2883               	goto	u614
+  1126  0082                     u615:	
+  1127  0082  35B2               	lslf	??_pinMode,f
+  1128  0083                     u614:	
+  1129  0083  0B89               	decfsz	9,f
+  1130  0084  2882               	goto	u615
+  1131  0085  0832               	movf	??_pinMode,w
+  1132  0086  0021               	movlb	1	; select bank1
+  1133  0087  040C               	iorwf	12,w	;volatile
+  1134  0088  008C               	movwf	12	;volatile
+  1135                           
+  1136                           ;io.c: 9: ANSELA = ANSELA & (~(1 << pin));
+  1137  0089  3001               	movlw	1
+  1138  008A  0020               	movlb	0	; select bank0
+  1139  008B  00B2               	movwf	??_pinMode
+  1140  008C  0A33               	incf	pinMode@pin,w
+  1141  008D  288F               	goto	u624
+  1142  008E                     u625:	
+  1143  008E  35B2               	lslf	??_pinMode,f
+  1144  008F                     u624:	
+  1145  008F  0B89               	decfsz	9,f
+  1146  0090  288E               	goto	u625
+  1147  0091  0832               	movf	??_pinMode,w
+  1148  0092  3AFF               	xorlw	255
+  1149  0093  0023               	movlb	3	; select bank3
+  1150  0094  050C               	andwf	12,w	;volatile
+  1151  0095  008C               	movwf	12	;volatile
+  1152                           
+  1153                           ;io.c: 10: break;
+  1154  0096  0008               	return
+  1155  0097                     l1078:	
+  1156                           ;io.c: 11: case 0x04:
+  1157                           
+  1158                           
+  1159                           ;io.c: 12: TRISA = TRISA & (~(1 << pin));
+  1160  0097  3001               	movlw	1
+  1161  0098  0020               	movlb	0	; select bank0
+  1162  0099  00B2               	movwf	??_pinMode
+  1163  009A  0A33               	incf	pinMode@pin,w
+  1164  009B  289D               	goto	u634
+  1165  009C                     u635:	
+  1166  009C  35B2               	lslf	??_pinMode,f
+  1167  009D                     u634:	
+  1168  009D  0B89               	decfsz	9,f
+  1169  009E  289C               	goto	u635
+  1170  009F  0832               	movf	??_pinMode,w
+  1171  00A0  3AFF               	xorlw	255
+  1172  00A1  0021               	movlb	1	; select bank1
+  1173  00A2  050C               	andwf	12,w	;volatile
+  1174  00A3  008C               	movwf	12	;volatile
+  1175                           
+  1176                           ;io.c: 13: ANSELA = ANSELA & (~(1 << pin));
+  1177  00A4  3001               	movlw	1
+  1178  00A5  0020               	movlb	0	; select bank0
+  1179  00A6  00B2               	movwf	??_pinMode
+  1180  00A7  0A33               	incf	pinMode@pin,w
+  1181  00A8  28AA               	goto	u644
+  1182  00A9                     u645:	
+  1183  00A9  35B2               	lslf	??_pinMode,f
+  1184  00AA                     u644:	
+  1185  00AA  0B89               	decfsz	9,f
+  1186  00AB  28A9               	goto	u645
+  1187  00AC  0832               	movf	??_pinMode,w
+  1188  00AD  3AFF               	xorlw	255
+  1189  00AE  0023               	movlb	3	; select bank3
+  1190  00AF  050C               	andwf	12,w	;volatile
+  1191  00B0  008C               	movwf	12	;volatile
+  1192                           
+  1193                           ;io.c: 14: break;
+  1194  00B1  0008               	return
+  1195  00B2                     l1080:	
+  1196                           ;io.c: 15: case 0x03:
+  1197                           
+  1198                           
+  1199                           ;io.c: 16: TRISA = TRISA | (1 << pin);
+  1200  00B2  3001               	movlw	1
+  1201  00B3  0020               	movlb	0	; select bank0
+  1202  00B4  00B2               	movwf	??_pinMode
+  1203  00B5  0A33               	incf	pinMode@pin,w
+  1204  00B6  28B8               	goto	u654
+  1205  00B7                     u655:	
+  1206  00B7  35B2               	lslf	??_pinMode,f
+  1207  00B8                     u654:	
+  1208  00B8  0B89               	decfsz	9,f
+  1209  00B9  28B7               	goto	u655
+  1210  00BA  0832               	movf	??_pinMode,w
+  1211  00BB  0021               	movlb	1	; select bank1
+  1212  00BC  040C               	iorwf	12,w	;volatile
+  1213  00BD  008C               	movwf	12	;volatile
+  1214                           
+  1215                           ;io.c: 17: ANSELA = ANSELA | ((1 << pin));
+  1216  00BE  3001               	movlw	1
+  1217  00BF  0020               	movlb	0	; select bank0
+  1218  00C0  00B2               	movwf	??_pinMode
+  1219  00C1  0A33               	incf	pinMode@pin,w
+  1220  00C2  28C4               	goto	u664
+  1221  00C3                     u665:	
+  1222  00C3  35B2               	lslf	??_pinMode,f
+  1223  00C4                     u664:	
+  1224  00C4  0B89               	decfsz	9,f
+  1225  00C5  28C3               	goto	u665
+  1226  00C6  0832               	movf	??_pinMode,w
+  1227  00C7  0023               	movlb	3	; select bank3
+  1228  00C8  040C               	iorwf	12,w	;volatile
+  1229  00C9  008C               	movwf	12	;volatile
+  1230                           
+  1231                           ;io.c: 18: ADCON1 = 0b10010000 ;
+  1232  00CA  3090               	movlw	144
+  1233  00CB  0021               	movlb	1	; select bank1
+  1234  00CC  009E               	movwf	30	;volatile
+  1235                           
+  1236                           ;io.c: 19: ADCON0 = 0x01 | ((pin<<2));
+  1237  00CD  0020               	movlb	0	; select bank0
+  1238  00CE  0833               	movf	pinMode@pin,w
+  1239  00CF  00B2               	movwf	??_pinMode
+  1240  00D0  3001               	movlw	1
+  1241  00D1                     u675:	
+  1242  00D1  35B2               	lslf	??_pinMode,f
+  1243  00D2  3EFF               	addlw	-1
+  1244  00D3  1D03               	skipz
+  1245  00D4  28D1               	goto	u675
+  1246  00D5  3532               	lslf	??_pinMode,w
+  1247  00D6  3801               	iorlw	1
+  1248  00D7  0021               	movlb	1	; select bank1
+  1249  00D8  009D               	movwf	29	;volatile
+  1250                           
+  1251                           ;io.c: 20: PORTA = PORTA & (~(1 << pin));
+  1252  00D9  3001               	movlw	1
+  1253  00DA  0020               	movlb	0	; select bank0
+  1254  00DB  00B2               	movwf	??_pinMode
+  1255  00DC  0A33               	incf	pinMode@pin,w
+  1256  00DD  28DF               	goto	u684
+  1257  00DE                     u685:	
+  1258  00DE  35B2               	lslf	??_pinMode,f
+  1259  00DF                     u684:	
+  1260  00DF  0B89               	decfsz	9,f
+  1261  00E0  28DE               	goto	u685
+  1262  00E1  0832               	movf	??_pinMode,w
+  1263  00E2  3AFF               	xorlw	255
+  1264  00E3  050C               	andwf	12,w	;volatile
+  1265  00E4  008C               	movwf	12	;volatile
+  1266                           
+  1267                           ;io.c: 21: delay_us(5);
+  1268  00E5  3005               	movlw	5
+  1269  00E6  00F3               	movwf	delay_us@time
+  1270  00E7  3000               	movlw	0
+  1271  00E8  00F4               	movwf	delay_us@time+1
+  1272  00E9  21DE               	fcall	_delay_us
+  1273                           
+  1274                           ;io.c: 23: }
   1275                           
-  1276                           ;io.c: 23: }
-  1277                           
-  1278                           ;io.c: 22: break;
-  1279  00EA  0008               	return
-  1280  00EB                     l1096:	
-  1281  00EB  0878               	movf	pinMode@mode,w
-  1282                           
-  1283                           ; Switch size 1, requested type "space"
-  1284                           ; Number of cases is 3, Range of values is 1 to 4
-  1285                           ; switch strategies available:
-  1286                           ; Name         Instructions Cycles
-  1287                           ; simple_byte           10     6 (average)
-  1288                           ; direct_byte           17     9 (fixed)
-  1289                           ; jumptable            263     9 (fixed)
-  1290                           ;	Chosen strategy is simple_byte
-  1291  00EC  3A01               	xorlw	1	; case 1
-  1292  00ED  1903               	skipnz
-  1293  00EE  287D               	goto	l1080
-  1294  00EF  3A02               	xorlw	2	; case 3
-  1295  00F0  1903               	skipnz
-  1296  00F1  28B2               	goto	l1084
-  1297  00F2  3A07               	xorlw	7	; case 4
-  1298  00F3  1903               	skipnz
-  1299  00F4  2897               	goto	l1082
-  1300  00F5  28F6               	goto	l115
-  1301  00F6                     l115:	
-  1302  00F6  0008               	return
-  1303  00F7                     __end_of_pinMode:	
-  1304                           
-  1305                           	psect	text2
-  1306  01DE                     __ptext2:	
-  1307 ;; *************** function _delay_us *****************
-  1308 ;; Defined at:
-  1309 ;;		line 10 in file "delay.c"
-  1310 ;; Parameters:    Size  Location     Type
-  1311 ;;  time            2    3[COMMON] int 
-  1312 ;; Auto vars:     Size  Location     Type
-  1313 ;;  i               2    6[COMMON] int 
-  1314 ;; Return value:  Size  Location     Type
-  1315 ;;                  1    wreg      void 
-  1316 ;; Registers used:
-  1317 ;;		wreg, status,2
-  1318 ;; Tracked objects:
-  1319 ;;		On entry : 0/0
-  1320 ;;		On exit  : 0/0
-  1321 ;;		Unchanged: 0/0
-  1322 ;; Data sizes:     COMMON   BANK0   BANK1
-  1323 ;;      Params:         2       0       0
-  1324 ;;      Locals:         2       0       0
-  1325 ;;      Temps:          1       0       0
-  1326 ;;      Totals:         5       0       0
-  1327 ;;Total ram usage:        5 bytes
-  1328 ;; Hardware stack levels used:    1
-  1329 ;; Hardware stack levels required when called:    1
-  1330 ;; This function calls:
-  1331 ;;		Nothing
-  1332 ;; This function is called by:
-  1333 ;;		_pinMode
-  1334 ;; This function uses a non-reentrant model
-  1335 ;;
-  1336                           
-  1337                           
-  1338                           ;psect for function _delay_us
-  1339  01DE                     _delay_us:	
-  1340                           
-  1341                           ;delay.c: 11: int i;
-  1342                           ;delay.c: 12: for(i=0;i<time;i++){
-  1343                           
-  1344                           ;incstack = 0
-  1345                           ; Regs used in _delay_us: [wreg+status,2]
-  1346  01DE  01F6               	clrf	delay_us@i
-  1347  01DF  01F7               	clrf	delay_us@i+1
-  1348  01E0                     l11:	
-  1349  01E0  0877               	movf	delay_us@i+1,w
-  1350  01E1  3A80               	xorlw	128
-  1351  01E2  00F5               	movwf	??_delay_us
-  1352  01E3  0874               	movf	delay_us@time+1,w
-  1353  01E4  3A80               	xorlw	128
-  1354  01E5  0275               	subwf	??_delay_us,w
-  1355  01E6  1D03               	skipz
-  1356  01E7  29EA               	goto	u595
-  1357  01E8  0873               	movf	delay_us@time,w
-  1358  01E9  0276               	subwf	delay_us@i,w
-  1359  01EA                     u595:	
-  1360  01EA  1803               	btfsc	3,0
-  1361  01EB  0008               	return
-  1362                           
-  1363                           ;delay.c: 13: _delay((unsigned long)((1)*(8000000/4000000.0)));
-  1364  01EC  3200               	nop2	;2 cycle nop
-  1365  01ED  3001               	movlw	1
-  1366  01EE  07F6               	addwf	delay_us@i,f
-  1367  01EF  3000               	movlw	0
-  1368  01F0  3DF7               	addwfc	delay_us@i+1,f
-  1369  01F1  29E0               	goto	l11
-  1370  01F2                     __end_of_delay_us:	
-  1371                           
-  1372                           	psect	text3
-  1373  0204                     __ptext3:	
-  1374 ;; *************** function _initOSCCON *****************
-  1375 ;; Defined at:
-  1376 ;;		line 5 in file "osccon.c"
-  1377 ;; Parameters:    Size  Location     Type
+  1276                           ;io.c: 22: break;
+  1277  00EA  0008               	return
+  1278  00EB                     l1092:	
+  1279  00EB  0878               	movf	pinMode@mode,w
+  1280                           
+  1281                           ; Switch size 1, requested type "space"
+  1282                           ; Number of cases is 3, Range of values is 1 to 4
+  1283                           ; switch strategies available:
+  1284                           ; Name         Instructions Cycles
+  1285                           ; simple_byte           10     6 (average)
+  1286                           ; direct_byte           17     9 (fixed)
+  1287                           ; jumptable            263     9 (fixed)
+  1288                           ;	Chosen strategy is simple_byte
+  1289  00EC  3A01               	xorlw	1	; case 1
+  1290  00ED  1903               	skipnz
+  1291  00EE  287D               	goto	l1076
+  1292  00EF  3A02               	xorlw	2	; case 3
+  1293  00F0  1903               	skipnz
+  1294  00F1  28B2               	goto	l1080
+  1295  00F2  3A07               	xorlw	7	; case 4
+  1296  00F3  1903               	skipnz
+  1297  00F4  2897               	goto	l1078
+  1298  00F5  28F6               	goto	l113
+  1299  00F6                     l113:	
+  1300  00F6  0008               	return
+  1301  00F7                     __end_of_pinMode:	
+  1302                           
+  1303                           	psect	text2
+  1304  01DE                     __ptext2:	
+  1305 ;; *************** function _delay_us *****************
+  1306 ;; Defined at:
+  1307 ;;		line 10 in file "delay.c"
+  1308 ;; Parameters:    Size  Location     Type
+  1309 ;;  time            2    3[COMMON] int 
+  1310 ;; Auto vars:     Size  Location     Type
+  1311 ;;  i               2    6[COMMON] int 
+  1312 ;; Return value:  Size  Location     Type
+  1313 ;;		None               void
+  1314 ;; Registers used:
+  1315 ;;		wreg, status,2
+  1316 ;; Tracked objects:
+  1317 ;;		On entry : 0/0
+  1318 ;;		On exit  : 0/0
+  1319 ;;		Unchanged: 0/0
+  1320 ;; Data sizes:     COMMON   BANK0   BANK1
+  1321 ;;      Params:         2       0       0
+  1322 ;;      Locals:         2       0       0
+  1323 ;;      Temps:          1       0       0
+  1324 ;;      Totals:         5       0       0
+  1325 ;;Total ram usage:        5 bytes
+  1326 ;; Hardware stack levels used:    1
+  1327 ;; Hardware stack levels required when called:    1
+  1328 ;; This function calls:
+  1329 ;;		Nothing
+  1330 ;; This function is called by:
+  1331 ;;		_pinMode
+  1332 ;; This function uses a non-reentrant model
+  1333 ;;
+  1334                           
+  1335                           
+  1336                           ;psect for function _delay_us
+  1337  01DE                     _delay_us:	
+  1338                           
+  1339                           ;delay.c: 11: int i;
+  1340                           ;delay.c: 12: for(i=0;i<time;i++){
+  1341                           
+  1342                           ;incstack = 0
+  1343                           ; Regs used in _delay_us: [wreg+status,2]
+  1344  01DE  01F6               	clrf	delay_us@i
+  1345  01DF  01F7               	clrf	delay_us@i+1
+  1346  01E0                     l11:	
+  1347  01E0  0877               	movf	delay_us@i+1,w
+  1348  01E1  3A80               	xorlw	128
+  1349  01E2  00F5               	movwf	??_delay_us
+  1350  01E3  0874               	movf	delay_us@time+1,w
+  1351  01E4  3A80               	xorlw	128
+  1352  01E5  0275               	subwf	??_delay_us,w
+  1353  01E6  1D03               	skipz
+  1354  01E7  29EA               	goto	u595
+  1355  01E8  0873               	movf	delay_us@time,w
+  1356  01E9  0276               	subwf	delay_us@i,w
+  1357  01EA                     u595:	
+  1358  01EA  1803               	btfsc	3,0
+  1359  01EB  0008               	return
+  1360                           
+  1361                           ;delay.c: 13: _delay((unsigned long)((1)*(8000000/4000000.0)));
+  1362  01EC  3200               	nop2	;2 cycle nop
+  1363  01ED  3001               	movlw	1
+  1364  01EE  07F6               	addwf	delay_us@i,f
+  1365  01EF  3000               	movlw	0
+  1366  01F0  3DF7               	addwfc	delay_us@i+1,f
+  1367  01F1  29E0               	goto	l11
+  1368  01F2                     __end_of_delay_us:	
+  1369                           
+  1370                           	psect	text3
+  1371  0204                     __ptext3:	
+  1372 ;; *************** function _initOSCCON *****************
+  1373 ;; Defined at:
+  1374 ;;		line 5 in file "osccon.c"
+  1375 ;; Parameters:    Size  Location     Type
+  1376 ;;		None
+  1377 ;; Auto vars:     Size  Location     Type
   1378 ;;		None
-  1379 ;; Auto vars:     Size  Location     Type
-  1380 ;;		None
-  1381 ;; Return value:  Size  Location     Type
-  1382 ;;                  1    wreg      void 
-  1383 ;; Registers used:
-  1384 ;;		wreg, status,2, status,0
-  1385 ;; Tracked objects:
-  1386 ;;		On entry : 0/0
-  1387 ;;		On exit  : 0/0
-  1388 ;;		Unchanged: 0/0
-  1389 ;; Data sizes:     COMMON   BANK0   BANK1
-  1390 ;;      Params:         0       0       0
-  1391 ;;      Locals:         0       0       0
-  1392 ;;      Temps:          1       0       0
-  1393 ;;      Totals:         1       0       0
-  1394 ;;Total ram usage:        1 bytes
-  1395 ;; Hardware stack levels used:    1
-  1396 ;; Hardware stack levels required when called:    1
-  1397 ;; This function calls:
-  1398 ;;		Nothing
-  1399 ;; This function is called by:
-  1400 ;;		_main
-  1401 ;; This function uses a non-reentrant model
-  1402 ;;
-  1403                           
-  1404                           
-  1405                           ;psect for function _initOSCCON
-  1406  0204                     _initOSCCON:	
+  1379 ;; Return value:  Size  Location     Type
+  1380 ;;		None               void
+  1381 ;; Registers used:
+  1382 ;;		wreg, status,2, status,0
+  1383 ;; Tracked objects:
+  1384 ;;		On entry : 0/0
+  1385 ;;		On exit  : 0/0
+  1386 ;;		Unchanged: 0/0
+  1387 ;; Data sizes:     COMMON   BANK0   BANK1
+  1388 ;;      Params:         0       0       0
+  1389 ;;      Locals:         0       0       0
+  1390 ;;      Temps:          1       0       0
+  1391 ;;      Totals:         1       0       0
+  1392 ;;Total ram usage:        1 bytes
+  1393 ;; Hardware stack levels used:    1
+  1394 ;; Hardware stack levels required when called:    1
+  1395 ;; This function calls:
+  1396 ;;		Nothing
+  1397 ;; This function is called by:
+  1398 ;;		_main
+  1399 ;; This function uses a non-reentrant model
+  1400 ;;
+  1401                           
+  1402                           
+  1403                           ;psect for function _initOSCCON
+  1404  0204                     _initOSCCON:	
+  1405                           
+  1406                           ;osccon.c: 11: OSCCON|=0b01110010;
   1407                           
-  1408                           ;osccon.c: 11: OSCCON|=0b01110010;
-  1409                           
-  1410                           ;incstack = 0
-  1411                           ; Regs used in _initOSCCON: [wreg+status,2+status,0]
-  1412  0204  3072               	movlw	114
-  1413  0205  00F3               	movwf	??_initOSCCON
-  1414  0206  0873               	movf	??_initOSCCON,w
-  1415  0207  0021               	movlb	1	; select bank1
-  1416  0208  0499               	iorwf	25,f	;volatile
-  1417  0209  0008               	return
-  1418  020A                     __end_of_initOSCCON:	
-  1419                           
-  1420                           	psect	text4
-  1421  01C7                     __ptext4:	
-  1422 ;; *************** function _i2cReceiveCheck *****************
-  1423 ;; Defined at:
-  1424 ;;		line 185 in file "i2c.c"
-  1425 ;; Parameters:    Size  Location     Type
-  1426 ;;		None
-  1427 ;; Auto vars:     Size  Location     Type
-  1428 ;;  ans             2    5[COMMON] int 
-  1429 ;; Return value:  Size  Location     Type
-  1430 ;;                  2    3[COMMON] int 
-  1431 ;; Registers used:
-  1432 ;;		wreg, status,2, status,0
-  1433 ;; Tracked objects:
-  1434 ;;		On entry : 0/0
-  1435 ;;		On exit  : 0/0
-  1436 ;;		Unchanged: 0/0
-  1437 ;; Data sizes:     COMMON   BANK0   BANK1
-  1438 ;;      Params:         2       0       0
-  1439 ;;      Locals:         2       0       0
-  1440 ;;      Temps:          0       0       0
-  1441 ;;      Totals:         4       0       0
-  1442 ;;Total ram usage:        4 bytes
-  1443 ;; Hardware stack levels used:    1
-  1444 ;; Hardware stack levels required when called:    1
-  1445 ;; This function calls:
-  1446 ;;		Nothing
-  1447 ;; This function is called by:
-  1448 ;;		_main
-  1449 ;; This function uses a non-reentrant model
-  1450 ;;
-  1451                           
-  1452                           
-  1453                           ;psect for function _i2cReceiveCheck
-  1454  01C7                     _i2cReceiveCheck:	
-  1455                           
-  1456                           ;i2c.c: 186: int ans;
-  1457                           ;i2c.c: 188: ans = 0;
-  1458                           
-  1459                           ;incstack = 0
-  1460                           ; Regs used in _i2cReceiveCheck: [wreg+status,2+status,0]
-  1461  01C7  01F5               	clrf	i2cReceiveCheck@ans
-  1462  01C8  01F6               	clrf	i2cReceiveCheck@ans+1
-  1463                           
-  1464                           ;i2c.c: 189: if (rcv_flg != 0) {
-  1465  01C9  0020               	movlb	0	; select bank0
-  1466  01CA  0822               	movf	_rcv_flg,w
-  1467  01CB  0423               	iorwf	_rcv_flg+1,w
-  1468  01CC  1903               	btfsc	3,2
-  1469  01CD  29D9               	goto	l908
-  1470                           
-  1471                           ;i2c.c: 190: if ((SSP1STATbits.S == 0) && (SSP1STATbits.P == 1)) {
-  1472  01CE  0024               	movlb	4	; select bank4
-  1473  01CF  1D94               	btfss	20,3	;volatile
-  1474  01D0  1E14               	btfss	20,4	;volatile
-  1475  01D1  29D9               	goto	l908
-  1476                           
-  1477                           ;i2c.c: 191: ans = rcv_flg;
-  1478  01D2  0020               	movlb	0	; select bank0
-  1479  01D3  0823               	movf	_rcv_flg+1,w
-  1480  01D4  00F6               	movwf	i2cReceiveCheck@ans+1
-  1481  01D5  0822               	movf	_rcv_flg,w
-  1482  01D6  00F5               	movwf	i2cReceiveCheck@ans
-  1483                           
-  1484                           ;i2c.c: 192: rcv_flg = 0;
-  1485  01D7  01A2               	clrf	_rcv_flg
-  1486  01D8  01A3               	clrf	_rcv_flg+1
-  1487  01D9                     l908:	
-  1488                           
-  1489                           ;i2c.c: 193: }
-  1490                           ;i2c.c: 194: }
-  1491                           ;i2c.c: 195: return (ans);
-  1492  01D9  0876               	movf	i2cReceiveCheck@ans+1,w
-  1493  01DA  00F4               	movwf	?_i2cReceiveCheck+1
-  1494  01DB  0875               	movf	i2cReceiveCheck@ans,w
-  1495  01DC  00F3               	movwf	?_i2cReceiveCheck
-  1496  01DD  0008               	return
-  1497  01DE                     __end_of_i2cReceiveCheck:	
-  1498                           
-  1499                           	psect	text5
-  1500  0163                     __ptext5:	
-  1501 ;; *************** function _i2cInit *****************
-  1502 ;; Defined at:
-  1503 ;;		line 166 in file "i2c.c"
-  1504 ;; Parameters:    Size  Location     Type
-  1505 ;;  address         2    3[COMMON] int 
-  1506 ;; Auto vars:     Size  Location     Type
-  1507 ;;		None
-  1508 ;; Return value:  Size  Location     Type
-  1509 ;;                  1    wreg      void 
-  1510 ;; Registers used:
-  1511 ;;		wreg, status,2, status,0
-  1512 ;; Tracked objects:
-  1513 ;;		On entry : 0/0
-  1514 ;;		On exit  : 0/0
-  1515 ;;		Unchanged: 0/0
-  1516 ;; Data sizes:     COMMON   BANK0   BANK1
-  1517 ;;      Params:         2       0       0
-  1518 ;;      Locals:         0       0       0
-  1519 ;;      Temps:          1       0       0
-  1520 ;;      Totals:         3       0       0
-  1521 ;;Total ram usage:        3 bytes
-  1522 ;; Hardware stack levels used:    1
-  1523 ;; Hardware stack levels required when called:    1
-  1524 ;; This function calls:
-  1525 ;;		Nothing
-  1526 ;; This function is called by:
-  1527 ;;		_main
-  1528 ;; This function uses a non-reentrant model
-  1529 ;;
-  1530                           
-  1531                           
-  1532                           ;psect for function _i2cInit
-  1533  0163                     _i2cInit:	
+  1408                           ;incstack = 0
+  1409                           ; Regs used in _initOSCCON: [wreg+status,2+status,0]
+  1410  0204  3072               	movlw	114
+  1411  0205  00F3               	movwf	??_initOSCCON
+  1412  0206  0873               	movf	??_initOSCCON,w
+  1413  0207  0021               	movlb	1	; select bank1
+  1414  0208  0499               	iorwf	25,f	;volatile
+  1415  0209  0008               	return
+  1416  020A                     __end_of_initOSCCON:	
+  1417                           
+  1418                           	psect	text4
+  1419  01C7                     __ptext4:	
+  1420 ;; *************** function _i2cReceiveCheck *****************
+  1421 ;; Defined at:
+  1422 ;;		line 185 in file "i2c.c"
+  1423 ;; Parameters:    Size  Location     Type
+  1424 ;;		None
+  1425 ;; Auto vars:     Size  Location     Type
+  1426 ;;  ans             2    5[COMMON] int 
+  1427 ;; Return value:  Size  Location     Type
+  1428 ;;                  2    3[COMMON] int 
+  1429 ;; Registers used:
+  1430 ;;		wreg, status,2, status,0
+  1431 ;; Tracked objects:
+  1432 ;;		On entry : 0/0
+  1433 ;;		On exit  : 0/0
+  1434 ;;		Unchanged: 0/0
+  1435 ;; Data sizes:     COMMON   BANK0   BANK1
+  1436 ;;      Params:         2       0       0
+  1437 ;;      Locals:         2       0       0
+  1438 ;;      Temps:          0       0       0
+  1439 ;;      Totals:         4       0       0
+  1440 ;;Total ram usage:        4 bytes
+  1441 ;; Hardware stack levels used:    1
+  1442 ;; Hardware stack levels required when called:    1
+  1443 ;; This function calls:
+  1444 ;;		Nothing
+  1445 ;; This function is called by:
+  1446 ;;		_main
+  1447 ;; This function uses a non-reentrant model
+  1448 ;;
+  1449                           
+  1450                           
+  1451                           ;psect for function _i2cReceiveCheck
+  1452  01C7                     _i2cReceiveCheck:	
+  1453                           
+  1454                           ;i2c.c: 186: int ans;
+  1455                           ;i2c.c: 188: ans = 0;
+  1456                           
+  1457                           ;incstack = 0
+  1458                           ; Regs used in _i2cReceiveCheck: [wreg+status,2+status,0]
+  1459  01C7  01F5               	clrf	i2cReceiveCheck@ans
+  1460  01C8  01F6               	clrf	i2cReceiveCheck@ans+1
+  1461                           
+  1462                           ;i2c.c: 189: if (rcv_flg != 0) {
+  1463  01C9  0020               	movlb	0	; select bank0
+  1464  01CA  0820               	movf	_rcv_flg,w
+  1465  01CB  0421               	iorwf	_rcv_flg+1,w
+  1466  01CC  1903               	btfsc	3,2
+  1467  01CD  29D9               	goto	l904
+  1468                           
+  1469                           ;i2c.c: 190: if ((SSP1STATbits.S == 0) && (SSP1STATbits.P == 1)) {
+  1470  01CE  0024               	movlb	4	; select bank4
+  1471  01CF  1D94               	btfss	20,3	;volatile
+  1472  01D0  1E14               	btfss	20,4	;volatile
+  1473  01D1  29D9               	goto	l904
+  1474                           
+  1475                           ;i2c.c: 191: ans = rcv_flg;
+  1476  01D2  0020               	movlb	0	; select bank0
+  1477  01D3  0821               	movf	_rcv_flg+1,w
+  1478  01D4  00F6               	movwf	i2cReceiveCheck@ans+1
+  1479  01D5  0820               	movf	_rcv_flg,w
+  1480  01D6  00F5               	movwf	i2cReceiveCheck@ans
+  1481                           
+  1482                           ;i2c.c: 192: rcv_flg = 0;
+  1483  01D7  01A0               	clrf	_rcv_flg
+  1484  01D8  01A1               	clrf	_rcv_flg+1
+  1485  01D9                     l904:	
+  1486                           
+  1487                           ;i2c.c: 193: }
+  1488                           ;i2c.c: 194: }
+  1489                           ;i2c.c: 195: return (ans);
+  1490  01D9  0876               	movf	i2cReceiveCheck@ans+1,w
+  1491  01DA  00F4               	movwf	?_i2cReceiveCheck+1
+  1492  01DB  0875               	movf	i2cReceiveCheck@ans,w
+  1493  01DC  00F3               	movwf	?_i2cReceiveCheck
+  1494  01DD  0008               	return
+  1495  01DE                     __end_of_i2cReceiveCheck:	
+  1496                           
+  1497                           	psect	text5
+  1498  0163                     __ptext5:	
+  1499 ;; *************** function _i2cInit *****************
+  1500 ;; Defined at:
+  1501 ;;		line 166 in file "i2c.c"
+  1502 ;; Parameters:    Size  Location     Type
+  1503 ;;  address         2    3[COMMON] int 
+  1504 ;; Auto vars:     Size  Location     Type
+  1505 ;;		None
+  1506 ;; Return value:  Size  Location     Type
+  1507 ;;		None               void
+  1508 ;; Registers used:
+  1509 ;;		wreg, status,2, status,0
+  1510 ;; Tracked objects:
+  1511 ;;		On entry : 0/0
+  1512 ;;		On exit  : 0/0
+  1513 ;;		Unchanged: 0/0
+  1514 ;; Data sizes:     COMMON   BANK0   BANK1
+  1515 ;;      Params:         2       0       0
+  1516 ;;      Locals:         0       0       0
+  1517 ;;      Temps:          1       0       0
+  1518 ;;      Totals:         3       0       0
+  1519 ;;Total ram usage:        3 bytes
+  1520 ;; Hardware stack levels used:    1
+  1521 ;; Hardware stack levels required when called:    1
+  1522 ;; This function calls:
+  1523 ;;		Nothing
+  1524 ;; This function is called by:
+  1525 ;;		_main
+  1526 ;; This function uses a non-reentrant model
+  1527 ;;
+  1528                           
+  1529                           
+  1530                           ;psect for function _i2cInit
+  1531  0163                     _i2cInit:	
+  1532                           
+  1533                           ;i2c.c: 167: SSP1STAT = 0b10000000;
   1534                           
-  1535                           ;i2c.c: 167: SSP1STAT = 0b10000000;
-  1536                           
-  1537                           ;incstack = 0
-  1538                           ; Regs used in _i2cInit: [wreg+status,2+status,0]
-  1539  0163  3080               	movlw	128
-  1540  0164  0024               	movlb	4	; select bank4
-  1541  0165  0094               	movwf	20	;volatile
-  1542                           
-  1543                           ;i2c.c: 168: SSP1CON1 = 0b00100110;
-  1544  0166  3026               	movlw	38
-  1545  0167  0095               	movwf	21	;volatile
-  1546                           
-  1547                           ;i2c.c: 169: SSP1CON2bits.SEN = 1;
-  1548  0168  1416               	bsf	22,0	;volatile
-  1549                           
-  1550                           ;i2c.c: 171: SSP1ADD = address << 1;
-  1551  0169  3573               	lslf	i2cInit@address,w
-  1552  016A  0092               	movwf	18	;volatile
-  1553                           
-  1554                           ;i2c.c: 172: SSP1MSK = 0b11111110;
-  1555  016B  30FE               	movlw	254
-  1556  016C  0093               	movwf	19	;volatile
-  1557                           
-  1558                           ;i2c.c: 173: SSP1IE = 1;
-  1559  016D  0021               	movlb	1	; select bank1
-  1560  016E  1591               	bsf	17,3	;volatile
-  1561                           
-  1562                           ;i2c.c: 174: BCL1IE = 1;
-  1563  016F  1592               	bsf	18,3	;volatile
-  1564                           
-  1565                           ;i2c.c: 175: PEIE = 1;
-  1566  0170  170B               	bsf	11,6	;volatile
-  1567                           
-  1568                           ;i2c.c: 176: GIE = 1;
-  1569  0171  178B               	bsf	11,7	;volatile
-  1570                           
-  1571                           ;i2c.c: 177: SSP1IF = 0;
-  1572  0172  0020               	movlb	0	; select bank0
-  1573  0173  1191               	bcf	17,3	;volatile
-  1574                           
-  1575                           ;i2c.c: 178: BCL1IF = 0;
-  1576  0174  1192               	bcf	18,3	;volatile
-  1577                           
-  1578                           ;i2c.c: 179: rcv_flg = 0;
-  1579  0175  01A2               	clrf	_rcv_flg
-  1580  0176  01A3               	clrf	_rcv_flg+1
-  1581                           
-  1582                           ;i2c.c: 180: ANSELA &= 0b11111001;
-  1583  0177  30F9               	movlw	249
-  1584  0178  00F5               	movwf	??_i2cInit
-  1585  0179  0875               	movf	??_i2cInit,w
-  1586  017A  0023               	movlb	3	; select bank3
-  1587  017B  058C               	andwf	12,f	;volatile
-  1588                           
-  1589                           ;i2c.c: 181: TRISA |= 0b00000110;
-  1590  017C  3006               	movlw	6
-  1591  017D  00F5               	movwf	??_i2cInit
-  1592  017E  0875               	movf	??_i2cInit,w
-  1593  017F  0021               	movlb	1	; select bank1
-  1594  0180  048C               	iorwf	12,f	;volatile
-  1595                           
-  1596                           ;i2c.c: 182: PORTA &= 0b11111001;
-  1597  0181  30F9               	movlw	249
-  1598  0182  00F5               	movwf	??_i2cInit
-  1599  0183  0875               	movf	??_i2cInit,w
-  1600  0184  0020               	movlb	0	; select bank0
-  1601  0185  058C               	andwf	12,f	;volatile
-  1602  0186  0008               	return
-  1603  0187                     __end_of_i2cInit:	
-  1604                           
-  1605                           	psect	text6
-  1606  01AA                     __ptext6:	
-  1607 ;; *************** function _digitalWrite *****************
-  1608 ;; Defined at:
-  1609 ;;		line 26 in file "io.c"
-  1610 ;; Parameters:    Size  Location     Type
-  1611 ;;  pin             1    wreg     unsigned char 
-  1612 ;;  value           1    3[COMMON] unsigned char 
-  1613 ;; Auto vars:     Size  Location     Type
-  1614 ;;  pin             1    5[COMMON] unsigned char 
-  1615 ;; Return value:  Size  Location     Type
-  1616 ;;                  1    wreg      void 
-  1617 ;; Registers used:
-  1618 ;;		wreg, status,2, status,0
-  1619 ;; Tracked objects:
-  1620 ;;		On entry : 0/0
-  1621 ;;		On exit  : 0/0
-  1622 ;;		Unchanged: 0/0
-  1623 ;; Data sizes:     COMMON   BANK0   BANK1
-  1624 ;;      Params:         1       0       0
-  1625 ;;      Locals:         1       0       0
-  1626 ;;      Temps:          1       0       0
-  1627 ;;      Totals:         3       0       0
-  1628 ;;Total ram usage:        3 bytes
-  1629 ;; Hardware stack levels used:    1
-  1630 ;; Hardware stack levels required when called:    1
-  1631 ;; This function calls:
-  1632 ;;		Nothing
-  1633 ;; This function is called by:
-  1634 ;;		_main
-  1635 ;; This function uses a non-reentrant model
-  1636 ;;
-  1637                           
-  1638                           
-  1639                           ;psect for function _digitalWrite
-  1640  01AA                     _digitalWrite:	
-  1641                           
-  1642                           ;incstack = 0
-  1643                           ; Regs used in _digitalWrite: [wreg+status,2+status,0]
-  1644                           ;digitalWrite@pin stored from wreg
-  1645  01AA  00F5               	movwf	digitalWrite@pin
-  1646                           
-  1647                           ;io.c: 27: if (value) {
-  1648  01AB  0873               	movf	digitalWrite@value,w
-  1649  01AC  1903               	btfsc	3,2
-  1650  01AD  29BA               	goto	l936
-  1651                           
-  1652                           ;io.c: 28: LATA = LATA | (1 << pin);
-  1653  01AE  3001               	movlw	1
-  1654  01AF  00F4               	movwf	??_digitalWrite
-  1655  01B0  0A75               	incf	digitalWrite@pin,w
-  1656  01B1  29B3               	goto	u454
-  1657  01B2                     u455:	
-  1658  01B2  35F4               	lslf	??_digitalWrite,f
-  1659  01B3                     u454:	
-  1660  01B3  0B89               	decfsz	9,f
-  1661  01B4  29B2               	goto	u455
-  1662  01B5  0874               	movf	??_digitalWrite,w
-  1663  01B6  0022               	movlb	2	; select bank2
-  1664  01B7  040C               	iorwf	12,w	;volatile
-  1665  01B8  008C               	movwf	12	;volatile
-  1666                           
-  1667                           ;io.c: 29: } else {
-  1668  01B9  0008               	return
-  1669  01BA                     l936:	
-  1670                           
-  1671                           ;io.c: 30: LATA = LATA & ~(1 << pin);
-  1672  01BA  3001               	movlw	1
-  1673  01BB  00F4               	movwf	??_digitalWrite
-  1674  01BC  0A75               	incf	digitalWrite@pin,w
-  1675  01BD  29BF               	goto	u464
-  1676  01BE                     u465:	
-  1677  01BE  35F4               	lslf	??_digitalWrite,f
-  1678  01BF                     u464:	
-  1679  01BF  0B89               	decfsz	9,f
-  1680  01C0  29BE               	goto	u465
-  1681  01C1  0874               	movf	??_digitalWrite,w
-  1682  01C2  3AFF               	xorlw	255
-  1683  01C3  0022               	movlb	2	; select bank2
-  1684  01C4  050C               	andwf	12,w	;volatile
-  1685  01C5  008C               	movwf	12	;volatile
-  1686  01C6  0008               	return
-  1687  01C7                     __end_of_digitalWrite:	
-  1688                           
-  1689                           	psect	text7
-  1690  01F2                     __ptext7:	
-  1691 ;; *************** function _digitalRead *****************
-  1692 ;; Defined at:
-  1693 ;;		line 34 in file "io.c"
-  1694 ;; Parameters:    Size  Location     Type
-  1695 ;;  pin             1    wreg     unsigned char 
-  1696 ;; Auto vars:     Size  Location     Type
-  1697 ;;  pin             1    4[COMMON] unsigned char 
-  1698 ;; Return value:  Size  Location     Type
-  1699 ;;                  1    wreg      unsigned char 
-  1700 ;; Registers used:
-  1701 ;;		wreg, status,2, status,0
-  1702 ;; Tracked objects:
-  1703 ;;		On entry : 0/0
-  1704 ;;		On exit  : 0/0
-  1705 ;;		Unchanged: 0/0
-  1706 ;; Data sizes:     COMMON   BANK0   BANK1
-  1707 ;;      Params:         0       0       0
-  1708 ;;      Locals:         1       0       0
-  1709 ;;      Temps:          1       0       0
-  1710 ;;      Totals:         2       0       0
-  1711 ;;Total ram usage:        2 bytes
-  1712 ;; Hardware stack levels used:    1
-  1713 ;; Hardware stack levels required when called:    1
-  1714 ;; This function calls:
-  1715 ;;		Nothing
-  1716 ;; This function is called by:
-  1717 ;;		_main
-  1718 ;; This function uses a non-reentrant model
-  1719 ;;
-  1720                           
-  1721                           
-  1722                           ;psect for function _digitalRead
-  1723  01F2                     _digitalRead:	
-  1724                           
-  1725                           ;incstack = 0
-  1726                           ; Regs used in _digitalRead: [wreg+status,2+status,0]
-  1727                           ;digitalRead@pin stored from wreg
-  1728  01F2  00F4               	movwf	digitalRead@pin
-  1729                           
-  1730                           ;io.c: 35: return ( PORTA & (1 << pin));
-  1731  01F3  3001               	movlw	1
-  1732  01F4  00F3               	movwf	??_digitalRead
-  1733  01F5  0A74               	incf	digitalRead@pin,w
-  1734  01F6  29F8               	goto	u474
-  1735  01F7                     u475:	
-  1736  01F7  35F3               	lslf	??_digitalRead,f
-  1737  01F8                     u474:	
-  1738  01F8  0B89               	decfsz	9,f
-  1739  01F9  29F7               	goto	u475
-  1740  01FA  0873               	movf	??_digitalRead,w
-  1741  01FB  0020               	movlb	0	; select bank0
-  1742  01FC  050C               	andwf	12,w	;volatile
-  1743  01FD  0008               	return
-  1744  01FE                     __end_of_digitalRead:	
-  1745                           
-  1746                           	psect	text8
-  1747  0187                     __ptext8:	
-  1748 ;; *************** function _analogRead *****************
-  1749 ;; Defined at:
-  1750 ;;		line 40 in file "io.c"
-  1751 ;; Parameters:    Size  Location     Type
-  1752 ;;		None
-  1753 ;; Auto vars:     Size  Location     Type
-  1754 ;;  temp            2    5[COMMON] unsigned short 
-  1755 ;; Return value:  Size  Location     Type
-  1756 ;;                  2    3[COMMON] unsigned short 
-  1757 ;; Registers used:
-  1758 ;;		wreg
-  1759 ;; Tracked objects:
-  1760 ;;		On entry : 0/0
-  1761 ;;		On exit  : 0/0
-  1762 ;;		Unchanged: 0/0
-  1763 ;; Data sizes:     COMMON   BANK0   BANK1
-  1764 ;;      Params:         2       0       0
-  1765 ;;      Locals:         2       0       0
-  1766 ;;      Temps:          0       6       0
-  1767 ;;      Totals:         4       6       0
-  1768 ;;Total ram usage:       10 bytes
-  1769 ;; Hardware stack levels used:    1
-  1770 ;; Hardware stack levels required when called:    1
-  1771 ;; This function calls:
-  1772 ;;		Nothing
-  1773 ;; This function is called by:
-  1774 ;;		_main
-  1775 ;; This function uses a non-reentrant model
-  1776 ;;
-  1777                           
-  1778                           
-  1779                           ;psect for function _analogRead
-  1780  0187                     _analogRead:	
-  1781                           
-  1782                           ;io.c: 41: unsigned short temp;
-  1783                           ;io.c: 43: GO_nDONE = 1;
-  1784                           
-  1785                           ;incstack = 0
-  1786                           ; Regs used in _analogRead: [wreg]
-  1787  0187  0021               	movlb	1	; select bank1
-  1788  0188  149D               	bsf	29,1	;volatile
-  1789  0189                     l129:	
-  1790                           ;io.c: 44: while(GO_nDONE);
-  1791                           
-  1792  0189  189D               	btfsc	29,1	;volatile
-  1793  018A  2989               	goto	l129
-  1794                           
-  1795                           ;io.c: 45: temp = ADRESH;
-  1796  018B  081C               	movf	28,w	;volatile
-  1797  018C  0020               	movlb	0	; select bank0
-  1798  018D  00B4               	movwf	??_analogRead
-  1799  018E  01B5               	clrf	??_analogRead+1
-  1800  018F  0834               	movf	??_analogRead,w
-  1801  0190  00F5               	movwf	analogRead@temp
-  1802  0191  0835               	movf	??_analogRead+1,w
-  1803  0192  00F6               	movwf	analogRead@temp+1
-  1804                           
-  1805                           ;io.c: 46: temp = ( temp << 8 ) | ADRESL;
-  1806  0193  0021               	movlb	1	; select bank1
-  1807  0194  081B               	movf	27,w	;volatile
-  1808  0195  0020               	movlb	0	; select bank0
-  1809  0196  00B4               	movwf	??_analogRead
-  1810  0197  01B5               	clrf	??_analogRead+1
-  1811  0198  0875               	movf	analogRead@temp,w
-  1812  0199  00B7               	movwf	??_analogRead+3
-  1813  019A  01B6               	clrf	??_analogRead+2
-  1814  019B  0834               	movf	??_analogRead,w
-  1815  019C  0436               	iorwf	??_analogRead+2,w
-  1816  019D  00B8               	movwf	??_analogRead+4
-  1817  019E  0835               	movf	??_analogRead+1,w
-  1818  019F  0437               	iorwf	??_analogRead+3,w
-  1819  01A0  00B9               	movwf	??_analogRead+5
-  1820  01A1  0838               	movf	??_analogRead+4,w
-  1821  01A2  00F5               	movwf	analogRead@temp
-  1822  01A3  0839               	movf	??_analogRead+5,w
-  1823  01A4  00F6               	movwf	analogRead@temp+1
-  1824                           
-  1825                           ;io.c: 48: return temp ;
-  1826  01A5  0876               	movf	analogRead@temp+1,w
-  1827  01A6  00F4               	movwf	?_analogRead+1
-  1828  01A7  0875               	movf	analogRead@temp,w
-  1829  01A8  00F3               	movwf	?_analogRead
-  1830  01A9  0008               	return
-  1831  01AA                     __end_of_analogRead:	
-  1832                           
-  1833                           	psect	intentry
-  1834  0004                     __pintentry:	
-  1835 ;; *************** function _i2cInterrupt *****************
-  1836 ;; Defined at:
-  1837 ;;		line 109 in file "i2c.c"
-  1838 ;; Parameters:    Size  Location     Type
-  1839 ;;		None
-  1840 ;; Auto vars:     Size  Location     Type
-  1841 ;;  x               1    2[COMMON] unsigned char 
-  1842 ;; Return value:  Size  Location     Type
-  1843 ;;                  1    wreg      void 
-  1844 ;; Registers used:
-  1845 ;;		wreg, fsr1l, fsr1h, status,2, status,0
-  1846 ;; Tracked objects:
-  1847 ;;		On entry : 0/0
-  1848 ;;		On exit  : 0/0
-  1849 ;;		Unchanged: 0/0
-  1850 ;; Data sizes:     COMMON   BANK0   BANK1
-  1851 ;;      Params:         0       0       0
-  1852 ;;      Locals:         1       0       0
-  1853 ;;      Temps:          2       0       0
-  1854 ;;      Totals:         3       0       0
-  1855 ;;Total ram usage:        3 bytes
-  1856 ;; Hardware stack levels used:    1
-  1857 ;; This function calls:
-  1858 ;;		Nothing
-  1859 ;; This function is called by:
-  1860 ;;		Interrupt level 1
-  1861 ;; This function uses a non-reentrant model
-  1862 ;;
+  1535                           ;incstack = 0
+  1536                           ; Regs used in _i2cInit: [wreg+status,2+status,0]
+  1537  0163  3080               	movlw	128
+  1538  0164  0024               	movlb	4	; select bank4
+  1539  0165  0094               	movwf	20	;volatile
+  1540                           
+  1541                           ;i2c.c: 168: SSP1CON1 = 0b00100110;
+  1542  0166  3026               	movlw	38
+  1543  0167  0095               	movwf	21	;volatile
+  1544                           
+  1545                           ;i2c.c: 169: SSP1CON2bits.SEN = 1;
+  1546  0168  1416               	bsf	22,0	;volatile
+  1547                           
+  1548                           ;i2c.c: 171: SSP1ADD = address << 1;
+  1549  0169  3573               	lslf	i2cInit@address,w
+  1550  016A  0092               	movwf	18	;volatile
+  1551                           
+  1552                           ;i2c.c: 172: SSP1MSK = 0b11111110;
+  1553  016B  30FE               	movlw	254
+  1554  016C  0093               	movwf	19	;volatile
+  1555                           
+  1556                           ;i2c.c: 173: SSP1IE = 1;
+  1557  016D  0021               	movlb	1	; select bank1
+  1558  016E  1591               	bsf	17,3	;volatile
+  1559                           
+  1560                           ;i2c.c: 174: BCL1IE = 1;
+  1561  016F  1592               	bsf	18,3	;volatile
+  1562                           
+  1563                           ;i2c.c: 175: PEIE = 1;
+  1564  0170  170B               	bsf	11,6	;volatile
+  1565                           
+  1566                           ;i2c.c: 176: GIE = 1;
+  1567  0171  178B               	bsf	11,7	;volatile
+  1568                           
+  1569                           ;i2c.c: 177: SSP1IF = 0;
+  1570  0172  0020               	movlb	0	; select bank0
+  1571  0173  1191               	bcf	17,3	;volatile
+  1572                           
+  1573                           ;i2c.c: 178: BCL1IF = 0;
+  1574  0174  1192               	bcf	18,3	;volatile
+  1575                           
+  1576                           ;i2c.c: 179: rcv_flg = 0;
+  1577  0175  01A0               	clrf	_rcv_flg
+  1578  0176  01A1               	clrf	_rcv_flg+1
+  1579                           
+  1580                           ;i2c.c: 180: ANSELA &= 0b11111001;
+  1581  0177  30F9               	movlw	249
+  1582  0178  00F5               	movwf	??_i2cInit
+  1583  0179  0875               	movf	??_i2cInit,w
+  1584  017A  0023               	movlb	3	; select bank3
+  1585  017B  058C               	andwf	12,f	;volatile
+  1586                           
+  1587                           ;i2c.c: 181: TRISA |= 0b00000110;
+  1588  017C  3006               	movlw	6
+  1589  017D  00F5               	movwf	??_i2cInit
+  1590  017E  0875               	movf	??_i2cInit,w
+  1591  017F  0021               	movlb	1	; select bank1
+  1592  0180  048C               	iorwf	12,f	;volatile
+  1593                           
+  1594                           ;i2c.c: 182: PORTA &= 0b11111001;
+  1595  0181  30F9               	movlw	249
+  1596  0182  00F5               	movwf	??_i2cInit
+  1597  0183  0875               	movf	??_i2cInit,w
+  1598  0184  0020               	movlb	0	; select bank0
+  1599  0185  058C               	andwf	12,f	;volatile
+  1600  0186  0008               	return
+  1601  0187                     __end_of_i2cInit:	
+  1602                           
+  1603                           	psect	text6
+  1604  01AA                     __ptext6:	
+  1605 ;; *************** function _digitalWrite *****************
+  1606 ;; Defined at:
+  1607 ;;		line 26 in file "io.c"
+  1608 ;; Parameters:    Size  Location     Type
+  1609 ;;  pin             1    wreg     unsigned char 
+  1610 ;;  value           1    3[COMMON] unsigned char 
+  1611 ;; Auto vars:     Size  Location     Type
+  1612 ;;  pin             1    5[COMMON] unsigned char 
+  1613 ;; Return value:  Size  Location     Type
+  1614 ;;		None               void
+  1615 ;; Registers used:
+  1616 ;;		wreg, status,2, status,0
+  1617 ;; Tracked objects:
+  1618 ;;		On entry : 0/0
+  1619 ;;		On exit  : 0/0
+  1620 ;;		Unchanged: 0/0
+  1621 ;; Data sizes:     COMMON   BANK0   BANK1
+  1622 ;;      Params:         1       0       0
+  1623 ;;      Locals:         1       0       0
+  1624 ;;      Temps:          1       0       0
+  1625 ;;      Totals:         3       0       0
+  1626 ;;Total ram usage:        3 bytes
+  1627 ;; Hardware stack levels used:    1
+  1628 ;; Hardware stack levels required when called:    1
+  1629 ;; This function calls:
+  1630 ;;		Nothing
+  1631 ;; This function is called by:
+  1632 ;;		_main
+  1633 ;; This function uses a non-reentrant model
+  1634 ;;
+  1635                           
+  1636                           
+  1637                           ;psect for function _digitalWrite
+  1638  01AA                     _digitalWrite:	
+  1639                           
+  1640                           ;incstack = 0
+  1641                           ; Regs used in _digitalWrite: [wreg+status,2+status,0]
+  1642                           ;digitalWrite@pin stored from wreg
+  1643  01AA  00F5               	movwf	digitalWrite@pin
+  1644                           
+  1645                           ;io.c: 27: if (value) {
+  1646  01AB  0873               	movf	digitalWrite@value,w
+  1647  01AC  1903               	btfsc	3,2
+  1648  01AD  29BA               	goto	l932
+  1649                           
+  1650                           ;io.c: 28: LATA = LATA | (1 << pin);
+  1651  01AE  3001               	movlw	1
+  1652  01AF  00F4               	movwf	??_digitalWrite
+  1653  01B0  0A75               	incf	digitalWrite@pin,w
+  1654  01B1  29B3               	goto	u454
+  1655  01B2                     u455:	
+  1656  01B2  35F4               	lslf	??_digitalWrite,f
+  1657  01B3                     u454:	
+  1658  01B3  0B89               	decfsz	9,f
+  1659  01B4  29B2               	goto	u455
+  1660  01B5  0874               	movf	??_digitalWrite,w
+  1661  01B6  0022               	movlb	2	; select bank2
+  1662  01B7  040C               	iorwf	12,w	;volatile
+  1663  01B8  008C               	movwf	12	;volatile
+  1664                           
+  1665                           ;io.c: 29: } else {
+  1666  01B9  0008               	return
+  1667  01BA                     l932:	
+  1668                           
+  1669                           ;io.c: 30: LATA = LATA & ~(1 << pin);
+  1670  01BA  3001               	movlw	1
+  1671  01BB  00F4               	movwf	??_digitalWrite
+  1672  01BC  0A75               	incf	digitalWrite@pin,w
+  1673  01BD  29BF               	goto	u464
+  1674  01BE                     u465:	
+  1675  01BE  35F4               	lslf	??_digitalWrite,f
+  1676  01BF                     u464:	
+  1677  01BF  0B89               	decfsz	9,f
+  1678  01C0  29BE               	goto	u465
+  1679  01C1  0874               	movf	??_digitalWrite,w
+  1680  01C2  3AFF               	xorlw	255
+  1681  01C3  0022               	movlb	2	; select bank2
+  1682  01C4  050C               	andwf	12,w	;volatile
+  1683  01C5  008C               	movwf	12	;volatile
+  1684  01C6  0008               	return
+  1685  01C7                     __end_of_digitalWrite:	
+  1686                           
+  1687                           	psect	text7
+  1688  01F2                     __ptext7:	
+  1689 ;; *************** function _digitalRead *****************
+  1690 ;; Defined at:
+  1691 ;;		line 34 in file "io.c"
+  1692 ;; Parameters:    Size  Location     Type
+  1693 ;;  pin             1    wreg     unsigned char 
+  1694 ;; Auto vars:     Size  Location     Type
+  1695 ;;  pin             1    4[COMMON] unsigned char 
+  1696 ;; Return value:  Size  Location     Type
+  1697 ;;                  1    wreg      unsigned char 
+  1698 ;; Registers used:
+  1699 ;;		wreg, status,2, status,0
+  1700 ;; Tracked objects:
+  1701 ;;		On entry : 0/0
+  1702 ;;		On exit  : 0/0
+  1703 ;;		Unchanged: 0/0
+  1704 ;; Data sizes:     COMMON   BANK0   BANK1
+  1705 ;;      Params:         0       0       0
+  1706 ;;      Locals:         1       0       0
+  1707 ;;      Temps:          1       0       0
+  1708 ;;      Totals:         2       0       0
+  1709 ;;Total ram usage:        2 bytes
+  1710 ;; Hardware stack levels used:    1
+  1711 ;; Hardware stack levels required when called:    1
+  1712 ;; This function calls:
+  1713 ;;		Nothing
+  1714 ;; This function is called by:
+  1715 ;;		_main
+  1716 ;; This function uses a non-reentrant model
+  1717 ;;
+  1718                           
+  1719                           
+  1720                           ;psect for function _digitalRead
+  1721  01F2                     _digitalRead:	
+  1722                           
+  1723                           ;incstack = 0
+  1724                           ; Regs used in _digitalRead: [wreg+status,2+status,0]
+  1725                           ;digitalRead@pin stored from wreg
+  1726  01F2  00F4               	movwf	digitalRead@pin
+  1727                           
+  1728                           ;io.c: 35: return ( PORTA & (1 << pin));
+  1729  01F3  3001               	movlw	1
+  1730  01F4  00F3               	movwf	??_digitalRead
+  1731  01F5  0A74               	incf	digitalRead@pin,w
+  1732  01F6  29F8               	goto	u474
+  1733  01F7                     u475:	
+  1734  01F7  35F3               	lslf	??_digitalRead,f
+  1735  01F8                     u474:	
+  1736  01F8  0B89               	decfsz	9,f
+  1737  01F9  29F7               	goto	u475
+  1738  01FA  0873               	movf	??_digitalRead,w
+  1739  01FB  0020               	movlb	0	; select bank0
+  1740  01FC  050C               	andwf	12,w	;volatile
+  1741  01FD  0008               	return
+  1742  01FE                     __end_of_digitalRead:	
+  1743                           
+  1744                           	psect	text8
+  1745  0187                     __ptext8:	
+  1746 ;; *************** function _analogRead *****************
+  1747 ;; Defined at:
+  1748 ;;		line 40 in file "io.c"
+  1749 ;; Parameters:    Size  Location     Type
+  1750 ;;		None
+  1751 ;; Auto vars:     Size  Location     Type
+  1752 ;;  temp            2    5[COMMON] unsigned short 
+  1753 ;; Return value:  Size  Location     Type
+  1754 ;;                  2    3[COMMON] unsigned short 
+  1755 ;; Registers used:
+  1756 ;;		wreg
+  1757 ;; Tracked objects:
+  1758 ;;		On entry : 0/0
+  1759 ;;		On exit  : 0/0
+  1760 ;;		Unchanged: 0/0
+  1761 ;; Data sizes:     COMMON   BANK0   BANK1
+  1762 ;;      Params:         2       0       0
+  1763 ;;      Locals:         2       0       0
+  1764 ;;      Temps:          0       6       0
+  1765 ;;      Totals:         4       6       0
+  1766 ;;Total ram usage:       10 bytes
+  1767 ;; Hardware stack levels used:    1
+  1768 ;; Hardware stack levels required when called:    1
+  1769 ;; This function calls:
+  1770 ;;		Nothing
+  1771 ;; This function is called by:
+  1772 ;;		_main
+  1773 ;; This function uses a non-reentrant model
+  1774 ;;
+  1775                           
+  1776                           
+  1777                           ;psect for function _analogRead
+  1778  0187                     _analogRead:	
+  1779                           
+  1780                           ;io.c: 41: unsigned short temp;
+  1781                           ;io.c: 43: GO_nDONE = 1;
+  1782                           
+  1783                           ;incstack = 0
+  1784                           ; Regs used in _analogRead: [wreg]
+  1785  0187  0021               	movlb	1	; select bank1
+  1786  0188  149D               	bsf	29,1	;volatile
+  1787  0189                     l127:	
+  1788                           ;io.c: 44: while(GO_nDONE);
+  1789                           
+  1790  0189  189D               	btfsc	29,1	;volatile
+  1791  018A  2989               	goto	l127
+  1792                           
+  1793                           ;io.c: 45: temp = ADRESH;
+  1794  018B  081C               	movf	28,w	;volatile
+  1795  018C  0020               	movlb	0	; select bank0
+  1796  018D  00B2               	movwf	??_analogRead
+  1797  018E  01B3               	clrf	??_analogRead+1
+  1798  018F  0832               	movf	??_analogRead,w
+  1799  0190  00F5               	movwf	analogRead@temp
+  1800  0191  0833               	movf	??_analogRead+1,w
+  1801  0192  00F6               	movwf	analogRead@temp+1
+  1802                           
+  1803                           ;io.c: 46: temp = ( temp << 8 ) | ADRESL;
+  1804  0193  0021               	movlb	1	; select bank1
+  1805  0194  081B               	movf	27,w	;volatile
+  1806  0195  0020               	movlb	0	; select bank0
+  1807  0196  00B2               	movwf	??_analogRead
+  1808  0197  01B3               	clrf	??_analogRead+1
+  1809  0198  0875               	movf	analogRead@temp,w
+  1810  0199  00B5               	movwf	??_analogRead+3
+  1811  019A  01B4               	clrf	??_analogRead+2
+  1812  019B  0832               	movf	??_analogRead,w
+  1813  019C  0434               	iorwf	??_analogRead+2,w
+  1814  019D  00B6               	movwf	??_analogRead+4
+  1815  019E  0833               	movf	??_analogRead+1,w
+  1816  019F  0435               	iorwf	??_analogRead+3,w
+  1817  01A0  00B7               	movwf	??_analogRead+5
+  1818  01A1  0836               	movf	??_analogRead+4,w
+  1819  01A2  00F5               	movwf	analogRead@temp
+  1820  01A3  0837               	movf	??_analogRead+5,w
+  1821  01A4  00F6               	movwf	analogRead@temp+1
+  1822                           
+  1823                           ;io.c: 48: return temp ;
+  1824  01A5  0876               	movf	analogRead@temp+1,w
+  1825  01A6  00F4               	movwf	?_analogRead+1
+  1826  01A7  0875               	movf	analogRead@temp,w
+  1827  01A8  00F3               	movwf	?_analogRead
+  1828  01A9  0008               	return
+  1829  01AA                     __end_of_analogRead:	
+  1830                           
+  1831                           	psect	intentry
+  1832  0004                     __pintentry:	
+  1833 ;; *************** function _i2cInterrupt *****************
+  1834 ;; Defined at:
+  1835 ;;		line 109 in file "i2c.c"
+  1836 ;; Parameters:    Size  Location     Type
+  1837 ;;		None
+  1838 ;; Auto vars:     Size  Location     Type
+  1839 ;;  x               1    2[COMMON] unsigned char 
+  1840 ;; Return value:  Size  Location     Type
+  1841 ;;		None               void
+  1842 ;; Registers used:
+  1843 ;;		wreg, fsr1l, fsr1h, status,2, status,0
+  1844 ;; Tracked objects:
+  1845 ;;		On entry : 0/0
+  1846 ;;		On exit  : 0/0
+  1847 ;;		Unchanged: 0/0
+  1848 ;; Data sizes:     COMMON   BANK0   BANK1
+  1849 ;;      Params:         0       0       0
+  1850 ;;      Locals:         1       0       0
+  1851 ;;      Temps:          2       0       0
+  1852 ;;      Totals:         3       0       0
+  1853 ;;Total ram usage:        3 bytes
+  1854 ;; Hardware stack levels used:    1
+  1855 ;; This function calls:
+  1856 ;;		Nothing
+  1857 ;; This function is called by:
+  1858 ;;		Interrupt level 1
+  1859 ;; This function uses a non-reentrant model
+  1860 ;;
+  1861                           
+  1862  0004                     _i2cInterrupt:	
   1863                           
-  1864  0004                     _i2cInterrupt:	
-  1865                           
-  1866                           ;incstack = 0
-  1867                           ; Regs used in _i2cInterrupt: [wreg+fsr1l+fsr1h+status,2+status,0]
-  1868  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
-  1869  0005  3180               	pagesel	$
-  1870  0006  0020               	movlb	0	; select bank0
-  1871  0007  087F               	movf	127,w
-  1872  0008  00F1               	movwf	??_i2cInterrupt+1
-  1873                           
-  1874                           ;i2c.c: 110: char x;
-  1875                           ;i2c.c: 115: if (SSP1IF == 1) {
-  1876  0009  1D91               	btfss	17,3	;volatile
-  1877  000A  285B               	goto	i1l61
-  1878                           
-  1879                           ;i2c.c: 116: if (SSP1STATbits.R_nW == 0) {
-  1880  000B  0024               	movlb	4	; select bank4
-  1881  000C  1914               	btfsc	20,2	;volatile
-  1882  000D  282E               	goto	i1l62
-  1883                           
-  1884                           ;i2c.c: 118: if (SSP1STATbits.D_nA == 0) {
-  1885  000E  1A94               	btfsc	20,5	;volatile
-  1886  000F  281C               	goto	i1l960
-  1887                           
-  1888                           ;i2c.c: 120: Rdtp = (char *) rcv;
-  1889  0010  3024               	movlw	(low (_rcv| 0))& (0+255)
-  1890  0011  00F0               	movwf	??_i2cInterrupt
-  1891  0012  0870               	movf	??_i2cInterrupt,w
-  1892  0013  00F9               	movwf	_Rdtp
-  1893                           
-  1894                           ;i2c.c: 121: x = SSP1BUF;
-  1895  0014  0811               	movf	17,w	;volatile
-  1896  0015  00F0               	movwf	??_i2cInterrupt
-  1897  0016  0870               	movf	??_i2cInterrupt,w
-  1898  0017  00F2               	movwf	i2cInterrupt@x
-  1899                           
-  1900                           ;i2c.c: 122: rcv_flg = 0;
-  1901  0018  0020               	movlb	0	; select bank0
-  1902  0019  01A2               	clrf	_rcv_flg
-  1903  001A  01A3               	clrf	_rcv_flg+1
-  1904                           
-  1905                           ;i2c.c: 123: } else {
-  1906  001B  2855               	goto	L2
-  1907  001C                     i1l960:	
-  1908                           
-  1909                           ;i2c.c: 125: *Rdtp = SSP1BUF;
-  1910  001C  0024               	movlb	4	; select bank4
-  1911  001D  0811               	movf	17,w	;volatile
-  1912  001E  00F0               	movwf	??_i2cInterrupt
-  1913  001F  0879               	movf	_Rdtp,w
-  1914  0020  0086               	movwf	6
-  1915  0021  0187               	clrf	7
-  1916  0022  0870               	movf	??_i2cInterrupt,w
-  1917  0023  0081               	movwf	1
-  1918                           
-  1919                           ;i2c.c: 126: Rdtp++;
-  1920  0024  3001               	movlw	1
-  1921  0025  00F0               	movwf	??_i2cInterrupt
-  1922  0026  0870               	movf	??_i2cInterrupt,w
-  1923  0027  07F9               	addwf	_Rdtp,f
-  1924                           
-  1925                           ;i2c.c: 127: rcv_flg++;
-  1926  0028  3001               	movlw	1
-  1927  0029  0020               	movlb	0	; select bank0
-  1928  002A  07A2               	addwf	_rcv_flg,f
-  1929  002B  3000               	movlw	0
-  1930  002C  3DA3               	addwfc	_rcv_flg+1,f
-  1931  002D  2855               	goto	L2
-  1932  002E                     i1l62:	
-  1933                           ;i2c.c: 131: } else {
+  1864                           ;incstack = 0
+  1865                           ; Regs used in _i2cInterrupt: [wreg+fsr1l+fsr1h+status,2+status,0]
+  1866  0004  147E               	bsf	126,0	;set compiler interrupt flag (level 1)
+  1867  0005  3180               	pagesel	$
+  1868  0006  0020               	movlb	0	; select bank0
+  1869  0007  087F               	movf	127,w
+  1870  0008  00F1               	movwf	??_i2cInterrupt+1
+  1871                           
+  1872                           ;i2c.c: 110: char x;
+  1873                           ;i2c.c: 115: if (SSP1IF == 1) {
+  1874  0009  1D91               	btfss	17,3	;volatile
+  1875  000A  285B               	goto	i1l61
+  1876                           
+  1877                           ;i2c.c: 116: if (SSP1STATbits.R_nW == 0) {
+  1878  000B  0024               	movlb	4	; select bank4
+  1879  000C  1914               	btfsc	20,2	;volatile
+  1880  000D  282E               	goto	i1l62
+  1881                           
+  1882                           ;i2c.c: 118: if (SSP1STATbits.D_nA == 0) {
+  1883  000E  1A94               	btfsc	20,5	;volatile
+  1884  000F  281C               	goto	i1l956
+  1885                           
+  1886                           ;i2c.c: 120: Rdtp = (char *) rcv;
+  1887  0010  3022               	movlw	(low (_rcv| 0))& (0+255)
+  1888  0011  00F0               	movwf	??_i2cInterrupt
+  1889  0012  0870               	movf	??_i2cInterrupt,w
+  1890  0013  00F9               	movwf	_Rdtp
+  1891                           
+  1892                           ;i2c.c: 121: x = SSP1BUF;
+  1893  0014  0811               	movf	17,w	;volatile
+  1894  0015  00F0               	movwf	??_i2cInterrupt
+  1895  0016  0870               	movf	??_i2cInterrupt,w
+  1896  0017  00F2               	movwf	i2cInterrupt@x
+  1897                           
+  1898                           ;i2c.c: 122: rcv_flg = 0;
+  1899  0018  0020               	movlb	0	; select bank0
+  1900  0019  01A0               	clrf	_rcv_flg
+  1901  001A  01A1               	clrf	_rcv_flg+1
+  1902                           
+  1903                           ;i2c.c: 123: } else {
+  1904  001B  2855               	goto	L2
+  1905  001C                     i1l956:	
+  1906                           
+  1907                           ;i2c.c: 125: *Rdtp = SSP1BUF;
+  1908  001C  0024               	movlb	4	; select bank4
+  1909  001D  0811               	movf	17,w	;volatile
+  1910  001E  00F0               	movwf	??_i2cInterrupt
+  1911  001F  0879               	movf	_Rdtp,w
+  1912  0020  0086               	movwf	6
+  1913  0021  0187               	clrf	7
+  1914  0022  0870               	movf	??_i2cInterrupt,w
+  1915  0023  0081               	movwf	1
+  1916                           
+  1917                           ;i2c.c: 126: Rdtp++;
+  1918  0024  3001               	movlw	1
+  1919  0025  00F0               	movwf	??_i2cInterrupt
+  1920  0026  0870               	movf	??_i2cInterrupt,w
+  1921  0027  07F9               	addwf	_Rdtp,f
+  1922                           
+  1923                           ;i2c.c: 127: rcv_flg++;
+  1924  0028  3001               	movlw	1
+  1925  0029  0020               	movlb	0	; select bank0
+  1926  002A  07A0               	addwf	_rcv_flg,f
+  1927  002B  3000               	movlw	0
+  1928  002C  3DA1               	addwfc	_rcv_flg+1,f
+  1929  002D  2855               	goto	L2
+  1930  002E                     i1l62:	
+  1931                           ;i2c.c: 131: } else {
+  1932                           
+  1933                           ;i2c.c: 130: SSP1CON1bits.CKP = 1;
   1934                           
-  1935                           ;i2c.c: 130: SSP1CON1bits.CKP = 1;
-  1936                           
-  1937                           ;i2c.c: 128: }
-  1938                           ;i2c.c: 129: SSP1IF = 0;
-  1939                           
-  1940                           
-  1941                           ;i2c.c: 133: if (SSP1STATbits.BF == 1) {
-  1942  002E  1C14               	btfss	20,0	;volatile
-  1943  002F  2841               	goto	i1l66
-  1944                           
-  1945                           ;i2c.c: 135: Sdtp = (char *) snd;
-  1946  0030  302C               	movlw	(low (_snd| 0))& (0+255)
-  1947  0031  00F0               	movwf	??_i2cInterrupt
-  1948  0032  0870               	movf	??_i2cInterrupt,w
-  1949  0033  00FA               	movwf	_Sdtp
-  1950                           
-  1951                           ;i2c.c: 136: x = SSP1BUF;
-  1952  0034  0811               	movf	17,w	;volatile
-  1953  0035  00F0               	movwf	??_i2cInterrupt
-  1954  0036  0870               	movf	??_i2cInterrupt,w
-  1955  0037  00F2               	movwf	i2cInterrupt@x
-  1956  0038                     i1l972:	
-  1957                           ;i2c.c: 137: while ((SSP1CON1bits.CKP) | (SSP1STATbits.BF));
-  1958                           
-  1959  0038  0814               	movf	20,w	;volatile
-  1960  0039  3901               	andlw	1
-  1961  003A  00F0               	movwf	??_i2cInterrupt
-  1962  003B  0E15               	swapf	21,w	;volatile
-  1963  003C  3901               	andlw	1
-  1964  003D  0470               	iorwf	??_i2cInterrupt,w
-  1965  003E  1D03               	btfss	3,2
-  1966  003F  2838               	goto	i1l972
-  1967  0040  284B               	goto	i1l986
-  1968  0041                     i1l66:	
-  1969                           ;i2c.c: 142: } else {
+  1935                           ;i2c.c: 128: }
+  1936                           ;i2c.c: 129: SSP1IF = 0;
+  1937                           
+  1938                           
+  1939                           ;i2c.c: 133: if (SSP1STATbits.BF == 1) {
+  1940  002E  1C14               	btfss	20,0	;volatile
+  1941  002F  2841               	goto	i1l66
+  1942                           
+  1943                           ;i2c.c: 135: Sdtp = (char *) snd;
+  1944  0030  302A               	movlw	(low (_snd| 0))& (0+255)
+  1945  0031  00F0               	movwf	??_i2cInterrupt
+  1946  0032  0870               	movf	??_i2cInterrupt,w
+  1947  0033  00FA               	movwf	_Sdtp
+  1948                           
+  1949                           ;i2c.c: 136: x = SSP1BUF;
+  1950  0034  0811               	movf	17,w	;volatile
+  1951  0035  00F0               	movwf	??_i2cInterrupt
+  1952  0036  0870               	movf	??_i2cInterrupt,w
+  1953  0037  00F2               	movwf	i2cInterrupt@x
+  1954  0038                     i1l968:	
+  1955                           ;i2c.c: 137: while ((SSP1CON1bits.CKP) | (SSP1STATbits.BF));
+  1956                           
+  1957  0038  0814               	movf	20,w	;volatile
+  1958  0039  3901               	andlw	1
+  1959  003A  00F0               	movwf	??_i2cInterrupt
+  1960  003B  0E15               	swapf	21,w	;volatile
+  1961  003C  3901               	andlw	1
+  1962  003D  0470               	iorwf	??_i2cInterrupt,w
+  1963  003E  1D03               	btfss	3,2
+  1964  003F  2838               	goto	i1l968
+  1965  0040  284B               	goto	i1l982
+  1966  0041                     i1l66:	
+  1967                           ;i2c.c: 142: } else {
+  1968                           
+  1969                           ;i2c.c: 141: SSP1CON1bits.CKP = 1;
   1970                           
-  1971                           ;i2c.c: 141: SSP1CON1bits.CKP = 1;
+  1971                           ;i2c.c: 140: SSP1IF = 0;
   1972                           
-  1973                           ;i2c.c: 140: SSP1IF = 0;
+  1973                           ;i2c.c: 139: Sdtp++;
   1974                           
-  1975                           ;i2c.c: 139: Sdtp++;
+  1975                           ;i2c.c: 138: SSP1BUF = *Sdtp;
   1976                           
-  1977                           ;i2c.c: 138: SSP1BUF = *Sdtp;
-  1978                           
-  1979                           
-  1980                           ;i2c.c: 144: if (SSP1CON2bits.ACKSTAT == 0) {
-  1981  0041  1B16               	btfsc	22,6	;volatile
-  1982  0042  2859               	goto	i1l71
-  1983  0043                     i1l984:	
-  1984                           ;i2c.c: 146: while ((SSP1CON1bits.CKP) | (SSP1STATbits.BF));
-  1985                           
-  1986  0043  0814               	movf	20,w	;volatile
-  1987  0044  3901               	andlw	1
-  1988  0045  00F0               	movwf	??_i2cInterrupt
-  1989  0046  0E15               	swapf	21,w	;volatile
-  1990  0047  3901               	andlw	1
-  1991  0048  0470               	iorwf	??_i2cInterrupt,w
-  1992  0049  1D03               	btfss	3,2
-  1993  004A  2843               	goto	i1l984
-  1994  004B                     i1l986:	
-  1995                           
-  1996                           ;i2c.c: 147: SSP1BUF = *Sdtp;
-  1997  004B  087A               	movf	_Sdtp,w
-  1998  004C  0086               	movwf	6
-  1999  004D  0187               	clrf	7
-  2000  004E  0801               	movf	1,w
-  2001  004F  0091               	movwf	17	;volatile
-  2002                           
-  2003                           ;i2c.c: 148: Sdtp++;
-  2004  0050  3001               	movlw	1
-  2005  0051  00F0               	movwf	??_i2cInterrupt
-  2006  0052  0870               	movf	??_i2cInterrupt,w
-  2007  0053  07FA               	addwf	_Sdtp,f
-  2008                           
-  2009                           ;i2c.c: 149: SSP1IF = 0;
-  2010  0054  0020               	movlb	0	; select bank0
-  2011  0055                     L2:	
-  2012  0055  1191               	bcf	17,3	;volatile
-  2013                           
-  2014                           ;i2c.c: 150: SSP1CON1bits.CKP = 1;
-  2015  0056  0024               	movlb	4	; select bank4
-  2016  0057  1615               	bsf	21,4	;volatile
-  2017                           
-  2018                           ;i2c.c: 151: } else {
-  2019  0058  285B               	goto	i1l61
-  2020  0059                     i1l71:	
-  2021                           
-  2022                           ;i2c.c: 153: SSP1IF = 0;
-  2023  0059  0020               	movlb	0	; select bank0
-  2024  005A  1191               	bcf	17,3	;volatile
-  2025  005B                     i1l61:	
-  2026                           
-  2027                           ;i2c.c: 154: }
-  2028                           ;i2c.c: 155: }
-  2029                           ;i2c.c: 156: }
-  2030                           ;i2c.c: 157: }
-  2031                           ;i2c.c: 161: if (BCL1IF == 1) {
-  2032  005B  0020               	movlb	0	; select bank0
-  2033  005C  1992               	btfsc	18,3	;volatile
-  2034                           
-  2035                           ;i2c.c: 162: BCL1IF = 0;
-  2036  005D  1192               	bcf	18,3	;volatile
-  2037  005E  0871               	movf	??_i2cInterrupt+1,w
-  2038  005F  00FF               	movwf	127
-  2039  0060  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
-  2040  0061  0009               	retfie
-  2041  0062                     __end_of_i2cInterrupt:	
-  2042  007E                     btemp	set	126	;btemp
-  2043  007E                     int$flags	set	126
-  2044  007E                     wtemp	set	126
-  2045  007E                     wtemp0	set	126
-  2046  0080                     wtemp1	set	128
-  2047  0082                     wtemp2	set	130
-  2048  0084                     wtemp3	set	132
-  2049  0086                     wtemp4	set	134
-  2050  0088                     wtemp5	set	136
-  2051  007F                     wtemp6	set	127
-  2052  007E                     ttemp	set	126
-  2053  007E                     ttemp0	set	126
-  2054  0081                     ttemp1	set	129
-  2055  0084                     ttemp2	set	132
-  2056  0087                     ttemp3	set	135
-  2057  007F                     ttemp4	set	127
-  2058  007E                     ltemp	set	126
-  2059  007E                     ltemp0	set	126
-  2060  0082                     ltemp1	set	130
-  2061  0086                     ltemp2	set	134
-  2062  0080                     ltemp3	set	128
+  1977                           
+  1978                           ;i2c.c: 144: if (SSP1CON2bits.ACKSTAT == 0) {
+  1979  0041  1B16               	btfsc	22,6	;volatile
+  1980  0042  2859               	goto	i1l71
+  1981  0043                     i1l980:	
+  1982                           ;i2c.c: 146: while ((SSP1CON1bits.CKP) | (SSP1STATbits.BF));
+  1983                           
+  1984  0043  0814               	movf	20,w	;volatile
+  1985  0044  3901               	andlw	1
+  1986  0045  00F0               	movwf	??_i2cInterrupt
+  1987  0046  0E15               	swapf	21,w	;volatile
+  1988  0047  3901               	andlw	1
+  1989  0048  0470               	iorwf	??_i2cInterrupt,w
+  1990  0049  1D03               	btfss	3,2
+  1991  004A  2843               	goto	i1l980
+  1992  004B                     i1l982:	
+  1993                           
+  1994                           ;i2c.c: 147: SSP1BUF = *Sdtp;
+  1995  004B  087A               	movf	_Sdtp,w
+  1996  004C  0086               	movwf	6
+  1997  004D  0187               	clrf	7
+  1998  004E  0801               	movf	1,w
+  1999  004F  0091               	movwf	17	;volatile
+  2000                           
+  2001                           ;i2c.c: 148: Sdtp++;
+  2002  0050  3001               	movlw	1
+  2003  0051  00F0               	movwf	??_i2cInterrupt
+  2004  0052  0870               	movf	??_i2cInterrupt,w
+  2005  0053  07FA               	addwf	_Sdtp,f
+  2006                           
+  2007                           ;i2c.c: 149: SSP1IF = 0;
+  2008  0054  0020               	movlb	0	; select bank0
+  2009  0055                     L2:	
+  2010  0055  1191               	bcf	17,3	;volatile
+  2011                           
+  2012                           ;i2c.c: 150: SSP1CON1bits.CKP = 1;
+  2013  0056  0024               	movlb	4	; select bank4
+  2014  0057  1615               	bsf	21,4	;volatile
+  2015                           
+  2016                           ;i2c.c: 151: } else {
+  2017  0058  285B               	goto	i1l61
+  2018  0059                     i1l71:	
+  2019                           
+  2020                           ;i2c.c: 153: SSP1IF = 0;
+  2021  0059  0020               	movlb	0	; select bank0
+  2022  005A  1191               	bcf	17,3	;volatile
+  2023  005B                     i1l61:	
+  2024                           
+  2025                           ;i2c.c: 154: }
+  2026                           ;i2c.c: 155: }
+  2027                           ;i2c.c: 156: }
+  2028                           ;i2c.c: 157: }
+  2029                           ;i2c.c: 161: if (BCL1IF == 1) {
+  2030  005B  0020               	movlb	0	; select bank0
+  2031  005C  1992               	btfsc	18,3	;volatile
+  2032                           
+  2033                           ;i2c.c: 162: BCL1IF = 0;
+  2034  005D  1192               	bcf	18,3	;volatile
+  2035  005E  0871               	movf	??_i2cInterrupt+1,w
+  2036  005F  00FF               	movwf	127
+  2037  0060  107E               	bcf	126,0	;clear compiler interrupt flag (level 1)
+  2038  0061  0009               	retfie
+  2039  0062                     __end_of_i2cInterrupt:	
+  2040  007E                     btemp	set	126	;btemp
+  2041  007E                     int$flags	set	126
+  2042  007E                     wtemp	set	126
+  2043  007E                     wtemp0	set	126
+  2044  0080                     wtemp1	set	128
+  2045  0082                     wtemp2	set	130
+  2046  0084                     wtemp3	set	132
+  2047  0086                     wtemp4	set	134
+  2048  0088                     wtemp5	set	136
+  2049  007F                     wtemp6	set	127
+  2050  007E                     ttemp	set	126
+  2051  007E                     ttemp0	set	126
+  2052  0081                     ttemp1	set	129
+  2053  0084                     ttemp2	set	132
+  2054  0087                     ttemp3	set	135
+  2055  007F                     ttemp4	set	127
+  2056  007E                     ltemp	set	126
+  2057  007E                     ltemp0	set	126
+  2058  0082                     ltemp1	set	130
+  2059  0086                     ltemp2	set	134
+  2060  0080                     ltemp3	set	128
 
 
 Data Sizes:
     Strings     0
     Constant    0
     Data        0
-    BSS         22
+    BSS         20
     Persistent  0
     Stack       0
 
 Auto Spaces:
     Space          Size  Autos    Used
     COMMON           14      9      11
-    BANK0            80     11      31
+    BANK0            80     11      29
     BANK1            32      0       0
 
 Pointer List with Targets:
@@ -2200,11 +2198,11 @@ SFR2                 0      0       0       3        0.0%
 STACK                0      0       0       3        0.0%
 BITSFR3              0      0       0       4        0.0%
 SFR3                 0      0       0       4        0.0%
-ABS                  0      0      2A       4        0.0%
+ABS                  0      0      28       4        0.0%
 BITBANK0            50      0       0       5        0.0%
 BITSFR4              0      0       0       5        0.0%
 SFR4                 0      0       0       5        0.0%
-BANK0               50      B      1F       6       38.8%
+BANK0               50      B      1D       6       36.2%
 BITSFR5              0      0       0       6        0.0%
 SFR5                 0      0       0       6        0.0%
 BITBANK1            20      0       0       7        0.0%
@@ -2215,7 +2213,7 @@ BITSFR7              0      0       0       8        0.0%
 SFR7                 0      0       0       8        0.0%
 BITSFR8              0      0       0       9        0.0%
 SFR8                 0      0       0       9        0.0%
-DATA                 0      0      2A       9        0.0%
+DATA                 0      0      28       9        0.0%
 BITSFR9              0      0       0      10        0.0%
 SFR9                 0      0       0      10        0.0%
 BITSFR10             0      0       0      11        0.0%
@@ -2264,76 +2262,76 @@ BITSFR31             0      0       0      32        0.0%
 SFR31                0      0       0      32        0.0%
 
 
-Microchip Technology PIC Macro Assembler V1.37 build -260352376 
-Symbol Table                                                                                   Mon Oct 10 23:00:50 2016
+Microchip Technology PIC Macro Assembler V1.35 build -356382666 
+Symbol Table                                                                                   Wed Oct 19 13:16:38 2016
 
-             __CFG_CP$OFF 0000                        l11 01E0                        _HL 0020  
-                     l115 00F6                       l129 0189                       l163 0161  
-                     l908 01D9                       l936 01BA                       _GIE 005F  
-            __CFG_CPD$OFF 0000                       u604 0075                       u605 0074  
-                     u454 01B3                       u614 0083                       u455 01B2  
-                     u615 0082                       u464 01BF                       u624 008F  
-                     u465 01BE                       u625 008E                       u474 01F8  
-                     u634 009D                       u475 01F7                       u635 009C  
-                     u644 00AA                       u645 00A9                       u654 00B8  
-                     u655 00B7                       u664 00C4                       u665 00C3  
-                     u595 01EA                       u675 00D1                       u684 00DF  
-                     u685 00DE                       _rcv 0024                       _snd 002C  
-            __CFG_BORV$HI 0000                       wreg 0009              __CFG_LVP$OFF 0000  
-                    l1122 011D                      l1132 0134                      l1140 014A  
-                    l1134 0137                      l1118 0116                      l1080 007D  
-                    l1136 0145                      l1128 012B                      l1144 0153  
-                    l1082 0097                      l1084 00B2                      l1182 0159  
-                    l1096 00EB            ??_i2cInterrupt 0070                      _LATA 010C  
-                    _PEIE 005E                      i1l61 005B                      i1l62 002E  
-                    i1l71 0059                      i1l66 0041              __CFG_WRT$OFF 0000  
-                    _Rdtp 0079                      _Sdtp 007A                      _main 00F7  
-                    fsr0h 0005                      fsr1h 0007                      fsr0l 0004  
-                    indf0 0000                      indf1 0001                      fsr1l 0006  
-                    btemp 007E             __CFG_BOREN$ON 0000                      ltemp 007E  
-                    start 0062                      ttemp 007E                      wtemp 007E  
-           __CFG_IESO$OFF 0000             i2cInterrupt@x 0072           __end_of_i2cInit 0187  
-                   ?_main 0070             __CFG_WDTE$OFF 0000                     i1l960 001C  
-                   i1l972 0038                     i1l984 0043                     i1l986 004B  
-                   _PORTA 000C                     _TRISA 008C             __CFG_PWRTE$ON 0000  
-          __CFG_FCMEN$OFF 0000           __end_of_pinMode 00F7                     ltemp0 007E  
-                   ltemp1 0082                     ltemp2 0086                     ltemp3 0080  
-                   ttemp0 007E                     ttemp1 0081                     ttemp2 0084  
-                   ttemp3 0087                     ttemp4 007F                     status 0003  
-                   wtemp0 007E                     wtemp1 0080                     wtemp2 0082  
-                   wtemp3 0084                     wtemp4 0086                     wtemp5 0088  
-                   wtemp6 007F            __CFG_MCLRE$OFF 0000      __end_of_digitalWrite 01C7  
-         __initialization 0063              __end_of_main 0163                    ??_main 003A  
-    __size_of_digitalRead 000C            __CFG_PLLEN$OFF 0000                    _BCL1IE 0493  
-                  _BCL1IF 0093                    _ADCON0 009D                    _ADCON1 009E  
-                  _ADRESH 009C                    _ADRESL 009B  __size_of_i2cReceiveCheck 0017  
-                  _ANSELA 018C                    _OSCCON 0099                    _SSP1IE 048B  
-                  _SSP1IF 008B                 ??_i2cInit 0075          __end_of_delay_us 01F2  
-          __CFG_STVREN$ON 0000      __end_of_i2cInterrupt 0062                 ??_pinMode 0034  
- __end_of__initialization 006B               pinMode@mode 0078            __pcstackCOMMON 0070  
-              __pbssBANK0 0020     __size_of_digitalWrite 001D                _analogRead 0187  
-       ??_i2cReceiveCheck 0075                __pmaintext 00F7                __pintentry 0004  
-               ?_delay_us 0073              _digitalWrite 01AA                   _SSP1ADD 0212  
-                 _SSP1BUF 0211                   _SSP1MSK 0213                   _i2cInit 0163  
-              _initOSCCON 0204     __size_of_i2cInterrupt 005E                   __ptext1 006E  
-                 __ptext2 01DE                   __ptext3 0204                   __ptext4 01C7  
-                 __ptext5 0163                   __ptext6 01AA                   __ptext7 01F2  
-                 __ptext8 0187                   _pinMode 006E                   _rcv_flg 0022  
-              ??_delay_us 0075                   clrloop0 01FF      end_of_initialization 006B  
-            _i2cInterrupt 0004            digitalRead@pin 0074               ?_analogRead 0073  
-           ??_digitalRead 0073          __CFG_FOSC$INTOSC 0000               ?_initOSCCON 0070  
-     __size_of_analogRead 0023       start_initialization 0063       __end_of_digitalRead 01FE  
-         _i2cReceiveCheck 01C7       __size_of_initOSCCON 0006               __pbssCOMMON 0079  
-               ___latbits 0000             __pcstackBANK0 0034                pinMode@pin 0035  
-       __size_of_delay_us 0014                  ?_i2cInit 0073               _digitalRead 01F2  
- __end_of_i2cReceiveCheck 01DE                  ?_pinMode 0078                 delay_us@i 0076  
-            ??_analogRead 0034                 clear_ram0 01FE                  _GO_nDONE 04E9  
-                _SSP1CON1 0215        i2cReceiveCheck@ans 0075                  _SSP1STAT 0214  
-      __end_of_analogRead 01AA              delay_us@time 0073              ??_initOSCCON 0073  
-        __size_of_i2cInit 0024          ?_i2cReceiveCheck 0073        __end_of_initOSCCON 020A  
-                _delay_us 01DE          __size_of_pinMode 0089              _SSP1CON1bits 0215  
-            _SSP1CON2bits 0216             __size_of_main 006C                  int$flags 007E  
-                main@Mode 003D              _SSP1STATbits 0214             ?_digitalWrite 0073  
-          analogRead@temp 0075                  intlevel1 0000         digitalWrite@value 0073  
-       __CFG_CLKOUTEN$OFF 0000              ?_digitalRead 0070            ??_digitalWrite 0074  
-          i2cInit@address 0073           digitalWrite@pin 0075             ?_i2cInterrupt 0070  
+             __CFG_CP$OFF 0000                        l11 01E0                       l113 00F6  
+                     l127 0189                       l159 0161                       l904 01D9  
+                     l932 01BA                       _GIE 005F              __CFG_CPD$OFF 0000  
+                     u604 0075                       u605 0074                       u454 01B3  
+                     u614 0083                       u455 01B2                       u615 0082  
+                     u464 01BF                       u624 008F                       u465 01BE  
+                     u625 008E                       u474 01F8                       u634 009D  
+                     u475 01F7                       u635 009C                       u644 00AA  
+                     u645 00A9                       u654 00B8                       u655 00B7  
+                     u664 00C4                       u665 00C3                       u595 01EA  
+                     u675 00D1                       u684 00DF                       u685 00DE  
+                     _rcv 0022                       _snd 002A              __CFG_BORV$HI 0000  
+                     wreg 0009              __CFG_LVP$OFF 0000                      l1130 0137  
+                    l1114 0116                      l1132 0145                      l1124 012B  
+                    l1140 0153                      l1118 011D                      l1080 00B2  
+                    l1128 0134                      l1136 014A                      l1076 007D  
+                    l1092 00EB                      l1078 0097                      l1178 0159  
+          ??_i2cInterrupt 0070                      _LATA 010C                      _PEIE 005E  
+                    i1l61 005B                      i1l62 002E                      i1l71 0059  
+                    i1l66 0041              __CFG_WRT$OFF 0000                      _Rdtp 0079  
+                    _Sdtp 007A                      _main 00F7                      fsr0h 0005  
+                    fsr1h 0007                      fsr0l 0004                      indf0 0000  
+                    indf1 0001                      fsr1l 0006                      btemp 007E  
+           __CFG_BOREN$ON 0000                      ltemp 007E                      start 0062  
+                    ttemp 007E                      wtemp 007E             __CFG_IESO$OFF 0000  
+           i2cInterrupt@x 0072           __end_of_i2cInit 0187                     ?_main 0070  
+           __CFG_WDTE$OFF 0000                     i1l980 0043                     i1l956 001C  
+                   i1l982 004B                     i1l968 0038                     _PORTA 000C  
+                   _TRISA 008C             __CFG_PWRTE$ON 0000            __CFG_FCMEN$OFF 0000  
+         __end_of_pinMode 00F7                     ltemp0 007E                     ltemp1 0082  
+                   ltemp2 0086                     ltemp3 0080                     ttemp0 007E  
+                   ttemp1 0081                     ttemp2 0084                     ttemp3 0087  
+                   ttemp4 007F                     status 0003                     wtemp0 007E  
+                   wtemp1 0080                     wtemp2 0082                     wtemp3 0084  
+                   wtemp4 0086                     wtemp5 0088                     wtemp6 007F  
+          __CFG_MCLRE$OFF 0000      __end_of_digitalWrite 01C7           __initialization 0063  
+            __end_of_main 0163                    ??_main 0038      __size_of_digitalRead 000C  
+          __CFG_PLLEN$OFF 0000                    _BCL1IE 0493                    _BCL1IF 0093  
+                  _ADCON0 009D                    _ADCON1 009E                    _ADRESH 009C  
+                  _ADRESL 009B  __size_of_i2cReceiveCheck 0017                    _ANSELA 018C  
+                  _OSCCON 0099                    _SSP1IE 048B                    _SSP1IF 008B  
+               ??_i2cInit 0075          __end_of_delay_us 01F2            __CFG_STVREN$ON 0000  
+    __end_of_i2cInterrupt 0062                 ??_pinMode 0032   __end_of__initialization 006B  
+             pinMode@mode 0078            __pcstackCOMMON 0070                __pbssBANK0 0020  
+   __size_of_digitalWrite 001D                _analogRead 0187         ??_i2cReceiveCheck 0075  
+              __pmaintext 00F7                __pintentry 0004                 ?_delay_us 0073  
+            _digitalWrite 01AA                   _SSP1ADD 0212                   _SSP1BUF 0211  
+                 _SSP1MSK 0213                   _i2cInit 0163                _initOSCCON 0204  
+   __size_of_i2cInterrupt 005E                   __ptext1 006E                   __ptext2 01DE  
+                 __ptext3 0204                   __ptext4 01C7                   __ptext5 0163  
+                 __ptext6 01AA                   __ptext7 01F2                   __ptext8 0187  
+                 _pinMode 006E                   _rcv_flg 0020                ??_delay_us 0075  
+                 clrloop0 01FF      end_of_initialization 006B              _i2cInterrupt 0004  
+          digitalRead@pin 0074               ?_analogRead 0073             ??_digitalRead 0073  
+        __CFG_FOSC$INTOSC 0000               ?_initOSCCON 0070       __size_of_analogRead 0023  
+     start_initialization 0063       __end_of_digitalRead 01FE           _i2cReceiveCheck 01C7  
+     __size_of_initOSCCON 0006               __pbssCOMMON 0079                 ___latbits 0000  
+           __pcstackBANK0 0032                pinMode@pin 0033         __size_of_delay_us 0014  
+                ?_i2cInit 0073               _digitalRead 01F2   __end_of_i2cReceiveCheck 01DE  
+                ?_pinMode 0078                 delay_us@i 0076              ??_analogRead 0032  
+               clear_ram0 01FE                  _GO_nDONE 04E9                  _SSP1CON1 0215  
+      i2cReceiveCheck@ans 0075                  _SSP1STAT 0214        __end_of_analogRead 01AA  
+            delay_us@time 0073              ??_initOSCCON 0073          __size_of_i2cInit 0024  
+        ?_i2cReceiveCheck 0073        __end_of_initOSCCON 020A                  _delay_us 01DE  
+        __size_of_pinMode 0089              _SSP1CON1bits 0215              _SSP1CON2bits 0216  
+           __size_of_main 006C                  int$flags 007E                  main@Mode 003B  
+            _SSP1STATbits 0214             ?_digitalWrite 0073            analogRead@temp 0075  
+                intlevel1 0000         digitalWrite@value 0073         __CFG_CLKOUTEN$OFF 0000  
+            ?_digitalRead 0070            ??_digitalWrite 0074            i2cInit@address 0073  
+         digitalWrite@pin 0075             ?_i2cInterrupt 0070  

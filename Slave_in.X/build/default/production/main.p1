@@ -1,25 +1,22 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"25 io.h
-[u S270 `us 1 `uc 1 `uc 1 ]
-[n S270 . HL H L ]
 [p mainexit ]
 "8 osccon.h
 [v _initOSCCON `(v ~T0 @X0 0 ef ]
-"30 io.h
+"25 io.h
 [v _pinMode `(v ~T0 @X0 0 ef2`uc`uc ]
 "21 i2c.h
 [v _i2cInit `(v ~T0 @X0 0 ef1`i ]
 "22
 [v _i2cReceiveCheck `(i ~T0 @X0 0 ef ]
-"5210 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
+"5210 /Applications/microchip/xc8/v1.35/include/pic12f1822.h
 [v _GIE `Vb ~T0 @X0 0 e@95 ]
 "3211
 [v _SSP1ADD `Vuc ~T0 @X0 0 e@530 ]
-"31 io.h
+"26 io.h
 [v _digitalWrite `(v ~T0 @X0 0 ef2`uc`uc ]
-"32
+"27
 [v _digitalRead `(uc ~T0 @X0 0 ef1`uc ]
-"34
+"29
 [v _analogRead `(us ~T0 @X0 0 ef ]
 [; ;delay.h: 3: void delay_ms(int time);
 [; ;delay.h: 4: void delay_us(int time);
@@ -27,7 +24,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic12f1822.h: 49: extern volatile unsigned char INDF0 @ 0x000;
-"51 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
+"51 /Applications/microchip/xc8/v1.35/include/pic12f1822.h
 [; ;pic12f1822.h: 51: asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
 [; ;pic12f1822.h: 54: typedef union {
@@ -2137,27 +2134,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic12f1822.h: 5730: extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 [; ;pic12f1822.h: 5732: extern volatile __bit nWPUEN @ (((unsigned) &OPTION_REG)*8) + 7;
 [; ;pic.h: 28: extern void __nop(void);
-[; ;pic.h: 77: extern unsigned int flash_read(unsigned short addr);
-[; ;eeprom_routines.h: 114: extern void eeprom_write(unsigned char addr, unsigned char value);
-[; ;eeprom_routines.h: 115: extern unsigned char eeprom_read(unsigned char addr);
-[; ;eeprom_routines.h: 116: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
-[; ;eeprom_routines.h: 117: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
-[; ;pic.h: 152: extern __nonreentrant void _delay(unsigned long);
-[; ;pic.h: 186: extern unsigned char __resetbits;
-[; ;pic.h: 187: extern __bit __powerdown;
-[; ;pic.h: 188: extern __bit __timeout;
-"29 io.h
-[v _HL `S270 ~T0 @X0 1 e ]
-[; ;io.h: 25: union{
-[; ;io.h: 26: unsigned short HL;
-[; ;io.h: 27: unsigned char H;
-[; ;io.h: 28: unsigned char L;
-[; ;io.h: 29: }HL;
-[; ;io.h: 30: void pinMode(unsigned char pin,unsigned char mode);
-[; ;io.h: 31: void digitalWrite(unsigned char pin,char value);
-[; ;io.h: 32: char digitalRead(unsigned char pin);
-[; ;io.h: 33: void analogWrite(unsigned char pin,unsigned char value);
-[; ;io.h: 34: unsigned short analogRead();
+[; ;pic.h: 76: extern unsigned int flash_read(unsigned short addr);
+[; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
+[; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
+[; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
+[; ;eeprom_routines.h: 44: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
+[; ;pic.h: 150: extern __nonreentrant void _delay(unsigned long);
+[; ;pic.h: 184: extern unsigned char __resetbits;
+[; ;pic.h: 185: extern __bit __powerdown;
+[; ;pic.h: 186: extern __bit __timeout;
+[; ;io.h: 25: void pinMode(unsigned char pin,unsigned char mode);
+[; ;io.h: 26: void digitalWrite(unsigned char pin,char value);
+[; ;io.h: 27: char digitalRead(unsigned char pin);
+[; ;io.h: 28: void analogWrite(unsigned char pin,unsigned char value);
+[; ;io.h: 29: unsigned short analogRead();
 "7 config.h
 [p x FOSC=INTOSC ]
 "8
@@ -2219,9 +2209,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 24: pinMode((0),0x04);
 "24
 [e ( _pinMode (2 , -> -> 0 `i `uc -> -> 4 `i `uc ]
-[; ;main.c: 25: pinMode((4),0x01);
+[; ;main.c: 25: pinMode((5),0x01);
 "25
-[e ( _pinMode (2 , -> -> 4 `i `uc -> -> 1 `i `uc ]
+[e ( _pinMode (2 , -> -> 5 `i `uc -> -> 1 `i `uc ]
 [; ;main.c: 26: pinMode((3),0x03);
 "26
 [e ( _pinMode (2 , -> -> 3 `i `uc -> -> 3 `i `uc ]
@@ -2233,22 +2223,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 2 `i `uc ]
 [; ;main.c: 30: while(1) {
 "30
-[e :U 273 ]
+[e :U 272 ]
 {
 [; ;main.c: 31: if (i2cReceiveCheck() != 0) {
 "31
-[e $ ! != ( _i2cReceiveCheck ..  -> 0 `i 275  ]
+[e $ ! != ( _i2cReceiveCheck ..  -> 0 `i 274  ]
 {
 [; ;main.c: 32: GIE = 0;
 "32
 [e = _GIE -> -> 0 `i `b ]
 [; ;main.c: 33: switch(Mode){
 "33
-[e $U 277  ]
+[e $U 276  ]
 {
 [; ;main.c: 34: case 0:
 "34
-[e :U 278 ]
+[e :U 277 ]
 [; ;main.c: 35: SSP1ADD = rcv[0]<<1;
 "35
 [e = _SSP1ADD -> << -> *U + &U _rcv * -> -> -> 0 `i `ui `ux -> -> # *U &U _rcv `ui `ux `i -> 1 `i `uc ]
@@ -2260,92 +2250,92 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _Mode -> 1 `i ]
 [; ;main.c: 38: break;
 "38
-[e $U 276  ]
+[e $U 275  ]
 [; ;main.c: 39: case 1:
 "39
-[e :U 279 ]
+[e :U 278 ]
 [; ;main.c: 40: switch(rcv[0]){
 "40
-[e $U 281  ]
+[e $U 280  ]
 {
 [; ;main.c: 41: case 0:
 "41
-[e :U 282 ]
-[; ;main.c: 42: if(digitalRead((4)))
+[e :U 281 ]
+[; ;main.c: 42: if(digitalRead((5)))
 "42
-[e $ ! != -> ( _digitalRead (1 -> -> 4 `i `uc `i -> -> -> 0 `i `uc `i 283  ]
+[e $ ! != -> ( _digitalRead (1 -> -> 5 `i `uc `i -> -> -> 0 `i `uc `i 282  ]
 [; ;main.c: 43: snd[0]=1;
 "43
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 1 `i `uc ]
-[e $U 284  ]
+[e $U 283  ]
 "44
-[e :U 283 ]
+[e :U 282 ]
 [; ;main.c: 44: else
 [; ;main.c: 45: snd[0]=0;
 "45
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 0 `i `uc ]
-[e :U 284 ]
+[e :U 283 ]
 [; ;main.c: 46: break;
 "46
-[e $U 280  ]
+[e $U 279  ]
 [; ;main.c: 47: case 1:
 "47
-[e :U 285 ]
+[e :U 284 ]
 [; ;main.c: 48: snd[0]=analogRead()/4;
 "48
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> / -> ( _analogRead ..  `ui -> -> 4 `i `ui `uc ]
 [; ;main.c: 49: break;
 "49
-[e $U 280  ]
+[e $U 279  ]
 [; ;main.c: 50: default:
 "50
-[e :U 286 ]
+[e :U 285 ]
 [; ;main.c: 51: snd[0]=-1;
 "51
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -U -> 1 `i `uc ]
 [; ;main.c: 52: break;
 "52
-[e $U 280  ]
+[e $U 279  ]
 "53
 }
 [; ;main.c: 53: }
-[e $U 280  ]
+[e $U 279  ]
 "40
-[e :U 281 ]
-[e [\ *U + &U _rcv * -> -> -> 0 `i `ui `ux -> -> # *U &U _rcv `ui `ux , $ -> -> 0 `i `uc 282
- , $ -> -> 1 `i `uc 285
- 286 ]
-"53
 [e :U 280 ]
+[e [\ *U + &U _rcv * -> -> -> 0 `i `ui `ux -> -> # *U &U _rcv `ui `ux , $ -> -> 0 `i `uc 281
+ , $ -> -> 1 `i `uc 284
+ 285 ]
+"53
+[e :U 279 ]
 [; ;main.c: 54: break;
 "54
-[e $U 276  ]
+[e $U 275  ]
 "55
 }
 [; ;main.c: 55: }
-[e $U 276  ]
+[e $U 275  ]
 "33
-[e :U 277 ]
-[e [\ _Mode , $ -> 0 `i 278
- , $ -> 1 `i 279
- 276 ]
-"55
 [e :U 276 ]
+[e [\ _Mode , $ -> 0 `i 277
+ , $ -> 1 `i 278
+ 275 ]
+"55
+[e :U 275 ]
 [; ;main.c: 56: GIE = 1;
 "56
 [e = _GIE -> -> 1 `i `b ]
 "57
 }
-[e :U 275 ]
+[e :U 274 ]
 "58
 }
-[e :U 272 ]
+[e :U 271 ]
 "30
-[e $U 273  ]
-[e :U 274 ]
+[e $U 272  ]
+[e :U 273 ]
 [; ;main.c: 57: }
 [; ;main.c: 58: }
 [; ;main.c: 59: }
 "59
-[e :UE 271 ]
+[e :UE 270 ]
 }

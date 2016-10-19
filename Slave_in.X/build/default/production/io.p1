@@ -1,8 +1,5 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"25 io.h
-[u S270 `us 1 `uc 1 `uc 1 ]
-[n S270 . HL H L ]
-"1938 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
+"1938 /Applications/microchip/xc8/v1.35/include/pic12f1822.h
 [v _LATA `Vuc ~T0 @X0 0 e@268 ]
 "1213
 [v _TRISA `Vuc ~T0 @X0 0 e@140 ]
@@ -16,7 +13,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _PORTA `Vuc ~T0 @X0 0 e@12 ]
 "4 delay.h
 [v _delay_us `(v ~T0 @X0 0 ef1`i ]
-"5214 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
+"5214 /Applications/microchip/xc8/v1.35/include/pic12f1822.h
 [v _GO_nDONE `Vb ~T0 @X0 0 e@1257 ]
 "1766
 [v _ADRESH `Vuc ~T0 @X0 0 e@156 ]
@@ -28,7 +25,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic12f1822.h: 49: extern volatile unsigned char INDF0 @ 0x000;
-"51 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h
+"51 /Applications/microchip/xc8/v1.35/include/pic12f1822.h
 [; ;pic12f1822.h: 51: asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
 [; ;pic12f1822.h: 54: typedef union {
@@ -2138,27 +2135,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic12f1822.h: 5730: extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 [; ;pic12f1822.h: 5732: extern volatile __bit nWPUEN @ (((unsigned) &OPTION_REG)*8) + 7;
 [; ;pic.h: 28: extern void __nop(void);
-[; ;pic.h: 77: extern unsigned int flash_read(unsigned short addr);
-[; ;eeprom_routines.h: 114: extern void eeprom_write(unsigned char addr, unsigned char value);
-[; ;eeprom_routines.h: 115: extern unsigned char eeprom_read(unsigned char addr);
-[; ;eeprom_routines.h: 116: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
-[; ;eeprom_routines.h: 117: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
-[; ;pic.h: 152: extern __nonreentrant void _delay(unsigned long);
-[; ;pic.h: 186: extern unsigned char __resetbits;
-[; ;pic.h: 187: extern __bit __powerdown;
-[; ;pic.h: 188: extern __bit __timeout;
-"29 io.h
-[v _HL `S270 ~T0 @X0 1 e ]
-[; ;io.h: 25: union{
-[; ;io.h: 26: unsigned short HL;
-[; ;io.h: 27: unsigned char H;
-[; ;io.h: 28: unsigned char L;
-[; ;io.h: 29: }HL;
-[; ;io.h: 30: void pinMode(unsigned char pin,unsigned char mode);
-[; ;io.h: 31: void digitalWrite(unsigned char pin,char value);
-[; ;io.h: 32: char digitalRead(unsigned char pin);
-[; ;io.h: 33: void analogWrite(unsigned char pin,unsigned char value);
-[; ;io.h: 34: unsigned short analogRead();
+[; ;pic.h: 76: extern unsigned int flash_read(unsigned short addr);
+[; ;eeprom_routines.h: 41: extern void eeprom_write(unsigned char addr, unsigned char value);
+[; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
+[; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
+[; ;eeprom_routines.h: 44: extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
+[; ;pic.h: 150: extern __nonreentrant void _delay(unsigned long);
+[; ;pic.h: 184: extern unsigned char __resetbits;
+[; ;pic.h: 185: extern __bit __powerdown;
+[; ;pic.h: 186: extern __bit __timeout;
+[; ;io.h: 25: void pinMode(unsigned char pin,unsigned char mode);
+[; ;io.h: 26: void digitalWrite(unsigned char pin,char value);
+[; ;io.h: 27: char digitalRead(unsigned char pin);
+[; ;io.h: 28: void analogWrite(unsigned char pin,unsigned char value);
+[; ;io.h: 29: unsigned short analogRead();
 "4 io.c
 [v _pinMode `(v ~T0 @X0 1 ef2`uc`uc ]
 {
@@ -2172,11 +2162,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _LATA -> & -> _LATA `i ~ << -> 1 `i _pin `uc ]
 [; ;io.c: 6: switch (mode) {
 "6
-[e $U 273  ]
+[e $U 272  ]
 {
 [; ;io.c: 7: case 0x01:
 "7
-[e :U 274 ]
+[e :U 273 ]
 [; ;io.c: 8: TRISA = TRISA | (1 << pin);
 "8
 [e = _TRISA -> | -> _TRISA `i << -> 1 `i _pin `uc ]
@@ -2185,10 +2175,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ANSELA -> & -> _ANSELA `i ~ << -> 1 `i _pin `uc ]
 [; ;io.c: 10: break;
 "10
-[e $U 272  ]
+[e $U 271  ]
 [; ;io.c: 11: case 0x04:
 "11
-[e :U 275 ]
+[e :U 274 ]
 [; ;io.c: 12: TRISA = TRISA & (~(1 << pin));
 "12
 [e = _TRISA -> & -> _TRISA `i ~ << -> 1 `i _pin `uc ]
@@ -2197,10 +2187,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ANSELA -> & -> _ANSELA `i ~ << -> 1 `i _pin `uc ]
 [; ;io.c: 14: break;
 "14
-[e $U 272  ]
+[e $U 271  ]
 [; ;io.c: 15: case 0x03:
 "15
-[e :U 276 ]
+[e :U 275 ]
 [; ;io.c: 16: TRISA = TRISA | (1 << pin);
 "16
 [e = _TRISA -> | -> _TRISA `i << -> 1 `i _pin `uc ]
@@ -2221,22 +2211,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _delay_us (1 -> 5 `i ]
 [; ;io.c: 22: break;
 "22
-[e $U 272  ]
+[e $U 271  ]
 "23
 }
 [; ;io.c: 23: }
-[e $U 272  ]
+[e $U 271  ]
 "6
-[e :U 273 ]
-[e [\ _mode , $ -> -> 1 `i `uc 274
- , $ -> -> 4 `i `uc 275
- , $ -> -> 3 `i `uc 276
- 272 ]
-"23
 [e :U 272 ]
+[e [\ _mode , $ -> -> 1 `i `uc 273
+ , $ -> -> 4 `i `uc 274
+ , $ -> -> 3 `i `uc 275
+ 271 ]
+"23
+[e :U 271 ]
 [; ;io.c: 24: }
 "24
-[e :UE 271 ]
+[e :UE 270 ]
 }
 "26
 [v _digitalWrite `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -2248,7 +2238,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;io.c: 27: if (value) {
 "27
-[e $ ! != -> _value `i -> -> -> 0 `i `uc `i 278  ]
+[e $ ! != -> _value `i -> -> -> 0 `i `uc `i 277  ]
 {
 [; ;io.c: 28: LATA = LATA | (1 << pin);
 "28
@@ -2256,19 +2246,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "29
 }
 [; ;io.c: 29: } else {
-[e $U 279  ]
-[e :U 278 ]
+[e $U 278  ]
+[e :U 277 ]
 {
 [; ;io.c: 30: LATA = LATA & ~(1 << pin);
 "30
 [e = _LATA -> & -> _LATA `i ~ << -> 1 `i _pin `uc ]
 "31
 }
-[e :U 279 ]
+[e :U 278 ]
 [; ;io.c: 31: }
 [; ;io.c: 32: }
 "32
-[e :UE 277 ]
+[e :UE 276 ]
 }
 "34
 [v _digitalRead `(uc ~T0 @X0 1 ef1`uc ]
@@ -2280,10 +2270,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;io.c: 35: return ( PORTA & (1 << pin));
 "35
 [e ) -> & -> _PORTA `i << -> 1 `i _pin `uc ]
-[e $UE 280  ]
+[e $UE 279  ]
 [; ;io.c: 36: }
 "36
-[e :UE 280 ]
+[e :UE 279 ]
 }
 "37
 [v _analogWrite `(v ~T0 @X0 1 ef2`uc`uc ]
@@ -2295,7 +2285,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [f ]
 [; ;io.c: 39: }
 "39
-[e :UE 281 ]
+[e :UE 280 ]
 }
 "40
 [v _analogRead `(us ~T0 @X0 1 ef ]
@@ -2311,11 +2301,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _GO_nDONE -> -> 1 `i `b ]
 [; ;io.c: 44: while(GO_nDONE);
 "44
-[e $U 283  ]
-[e :U 284 ]
+[e $U 282  ]
 [e :U 283 ]
-[e $ _GO_nDONE 284  ]
-[e :U 285 ]
+[e :U 282 ]
+[e $ _GO_nDONE 283  ]
+[e :U 284 ]
 [; ;io.c: 45: temp = ADRESH;
 "45
 [e = _temp -> _ADRESH `us ]
@@ -2325,8 +2315,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;io.c: 48: return temp ;
 "48
 [e ) _temp ]
-[e $UE 282  ]
+[e $UE 281  ]
 [; ;io.c: 49: }
 "49
-[e :UE 282 ]
+[e :UE 281 ]
 }

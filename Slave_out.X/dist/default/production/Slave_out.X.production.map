@@ -1,15 +1,14 @@
-Microchip MPLAB XC8 Compiler V1.37 ()
+Microchip MPLAB XC8 Compiler V1.35 ()
 
 Linker command line:
 
---edf=C:\Program Files (x86)\Microchip\xc8\v1.37\dat\en_msgs.txt -cs \
-  -h+dist/default/production\Slave_out.X.production.sym \
-  --cmf=dist/default/production\Slave_out.X.production.cmf -z -Q12F1822 \
-  -oD:\ライブラリ\Temp\scj0.2 \
-  -Mdist/default/production/Slave_out.X.production.map -E1 -ver=XC8 \
-  -ASTACK=02019h-0206fh -pstack=STACK -ACODE=00h-07FFh -ASTRCODE=00h-07FFh \
-  -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 -AENTRY=00h-0FFhx8 \
-  -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0BFh \
+--edf=/Applications/microchip/xc8/v1.35/dat/en_msgs.txt -cs \
+  -h+dist/default/production/Slave_out.X.production.sym \
+  --cmf=dist/default/production/Slave_out.X.production.cmf -z -Q12F1822 \
+  -o/tmp/xcPvAS5cV -Mdist/default/production/Slave_out.X.production.map -E1 \
+  -ver=XC8 -ASTACK=02017h-0206fh -pstack=STACK -ACODE=00h-07FFh \
+  -ASTRCODE=00h-07FFh -ASTRING=00h-0FFhx8 -ACONST=00h-0FFhx8 \
+  -AENTRY=00h-0FFhx8 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh -ABANK1=0A0h-0BFh \
   -ABIGRAM=02000h-0206Fh -ARAM=020h-06Fh,0A0h-0BFh \
   -AABS1=020h-07Fh,0A0h-0BFh -ASFR0=00h-01Fh -ASFR1=080h-09Fh \
   -ASFR2=0100h-016Fh -ASFR3=0180h-01EFh -ASFR4=0200h-026Fh \
@@ -26,8 +25,8 @@ Linker command line:
   -pfunctab=CODE -ACONFIG=08007h-08008h -pconfig=CONFIG -DCONFIG=2 \
   -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/0F000h \
   -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
-  -DENTRY=2 -k D:\ライブラリ\Temp\scj0.obj \
-  dist/default/production\Slave_out.X.production.obj 
+  -DENTRY=2 -k /tmp/xc2rVybln.obj \
+  dist/default/production/Slave_out.X.production.obj 
 
 Object code version is 3.11
 
@@ -36,11 +35,11 @@ Machine type is 12F1822
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-D:\ライブラリ\Temp\scj0.obj
+/tmp/xc2rVybln.obj
                 end_init                             62       62        1        8       0
                 reset_vec                             0        0        1        0       0
                 config                             8007     8007        2    1000E       0
-dist/default/production\Slave_out.X.production.obj
+dist/default/production/Slave_out.X.production.obj
                 cinit                                63       63        B        8       0
                 intentry                              4        4       5E        8       0
                 text6                               17D      17D       1D        8       0
@@ -50,10 +49,10 @@ dist/default/production\Slave_out.X.production.obj
                 text2                               1B1      1B1       14        8       0
                 text1                                6E       6E       8A        8       0
                 maintext                             F8       F8       61        8       0
-                cstackBANK0                          34       34        5       20       1
+                cstackBANK0                          32       32        5       20       1
                 cstackCOMMON                         70       70        9       70       1
                 clrtext                             1C5      1C5        6        8       0
-                bssBANK0                             20       20       14       20       1
+                bssBANK0                             20       20       12       20       1
                 bssCOMMON                            79       79        2       70       1
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -86,8 +85,8 @@ TOTAL           Name                               Link     Load   Length     Sp
                 bssCOMMON                            79       79        2         1
 
         CLASS   BANK0          
-                cstackBANK0                          34       34        5         1
-                bssBANK0                             20       20       14         1
+                cstackBANK0                          32       32        5         1
+                bssBANK0                             20       20       12         1
 
         CLASS   BANK1          
 
@@ -235,7 +234,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000001  000001         0       0  CODE        2
                 intentry                       000004  0001CD  0001D1         8       0  CODE        2
-                bssBANK0                       000020  000019  000039        20       1  BANK0       1
+                bssBANK0                       000020  000017  000037        20       1  BANK0       1
                 cstackCOMMON                   000070  00000B  00007B        70       1  COMMON      1
                 config                         008007  000002  008009     1000E       0  CONFIG      2
 
@@ -243,7 +242,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            00039-0006F              37           1
+        BANK0            00037-0006F              39           1
         BANK1            000A0-000BF              20           1
         BIGRAM           02000-0206F              70           1
         CODE             00001-00003               3           2
@@ -255,7 +254,7 @@ UNUSED ADDRESS RANGES
         ENTRY            00001-00003               3           2
                          001D1-007FF             100
         IDLOC            08000-08003               4           2
-        RAM              00039-0006F              37           1
+        RAM              00037-0006F              39           1
                          000A0-000BF              20
         SFR0             00000-0001F              20           1
         SFR1             00080-0009F              20           1
@@ -289,7 +288,7 @@ UNUSED ADDRESS RANGES
         SFR7             00380-003EF              70           1
         SFR8             00400-0046F              70           1
         SFR9             00480-004EF              70           1
-        STACK            02019-0206F              57           1
+        STACK            02017-0206F              59           1
         STRCODE          00001-00003               3           2
                          001D1-007FF             62F
         STRING           00001-00003               3           2
@@ -542,7 +541,7 @@ __end_of_pinMode          text1        000F8
 __initialization          cinit        00063
 __pbssBANK0               bssBANK0     00020
 __pbssCOMMON              bssCOMMON    00079
-__pcstackBANK0            cstackBANK0  00034
+__pcstackBANK0            cstackBANK0  00032
 __pcstackCOMMON           cstackCOMMON 00070
 __pintentry               intentry     00004
 __pmaintext               maintext     000F8
@@ -568,9 +567,9 @@ _i2cReceiveCheck          text4        0019A
 _initOSCCON               text3        001CB
 _main                     maintext     000F8
 _pinMode                  text1        0006E
-_rcv                      bssBANK0     00024
-_rcv_flg                  bssBANK0     00022
-_snd                      bssBANK0     0002C
+_rcv                      bssBANK0     00022
+_rcv_flg                  bssBANK0     00020
+_snd                      bssBANK0     0002A
 btemp                     (abs)        0007E
 clear_ram0                clrtext      001C5
 delay_us@i                cstackCOMMON 00076
@@ -593,12 +592,12 @@ ltemp0                    (abs)        0007E
 ltemp1                    (abs)        00082
 ltemp2                    (abs)        00086
 ltemp3                    (abs)        00080
-main@Mode                 cstackBANK0  00037
+main@Mode                 cstackBANK0  00035
 pinMode@mode              cstackCOMMON 00078
-pinMode@pin               cstackBANK0  00035
+pinMode@pin               cstackBANK0  00033
 reset_vec                 reset_vec    00000
 stackhi                   (abs)        0206F
-stacklo                   (abs)        02019
+stacklo                   (abs)        02017
 start                     init         00062
 start_initialization      cinit        00063
 ttemp                     (abs)        0007E
@@ -627,7 +626,7 @@ FUNCTION INFORMATION:
  Auto vars:     Size  Location     Type
   Mode            2    3[BANK0 ] int 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
  Tracked objects:
@@ -661,7 +660,7 @@ Total ram usage:        3 bytes
  Auto vars:     Size  Location     Type
   pin             1    1[BANK0 ] unsigned char 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
  Tracked objects:
@@ -691,7 +690,7 @@ Total ram usage:        3 bytes
  Auto vars:     Size  Location     Type
   i               2    6[COMMON] int 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, status,2
  Tracked objects:
@@ -721,7 +720,7 @@ Total ram usage:        5 bytes
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, status,2, status,0
  Tracked objects:
@@ -781,7 +780,7 @@ Total ram usage:        4 bytes
  Auto vars:     Size  Location     Type
 		None
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, status,2, status,0
  Tracked objects:
@@ -812,7 +811,7 @@ Total ram usage:        3 bytes
  Auto vars:     Size  Location     Type
   pin             1    5[COMMON] unsigned char 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, status,2, status,0
  Tracked objects:
@@ -842,7 +841,7 @@ Total ram usage:        3 bytes
  Auto vars:     Size  Location     Type
   x               1    2[COMMON] unsigned char 
  Return value:  Size  Location     Type
-                  1    wreg      void 
+		None               void
  Registers used:
 		wreg, fsr1l, fsr1h, status,2, status,0
  Tracked objects:

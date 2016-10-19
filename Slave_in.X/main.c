@@ -12,7 +12,7 @@
 
 //リクエスト用定数
 #define WALL_PIN (RA0)
-#define SWITCH_PIN (RA4)
+#define SWITCH_PIN (RA5)
 #define RESISTOR_PIN (AN3)
 
 void main()

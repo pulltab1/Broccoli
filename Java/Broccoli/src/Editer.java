@@ -7,7 +7,7 @@ public class Editer {
 	private static final Color BGColor=new Color(230,230,230);
 	private static final int MODULE_DISTANCE=100;
 	private RFrame frame;
-	private Broccoli blopic;
+	private Broccoli broccoli;
 	private Module[] module;
 
 	private int module_select_number;
@@ -15,64 +15,63 @@ public class Editer {
 	private Point old_camera_position;
 
 	public Editer(String port) throws Exception{
-		frame=new RFrame("Blopic",640,480,(byte) 60);
+		frame=new RFrame("broccoli",640,480,(byte) 60);
 		frame.setVisible(true);
-		blopic=new Broccoli(port);
-		blopic.load();
-		module=new Module[blopic.list.size()];
-		for(int i=0;i<blopic.list.size();i++){
-			module[i]=new Module(frame,i*MODULE_DISTANCE,0,blopic.list.get(i));
+		broccoli=new Broccoli(port);
+		broccoli.load();
+		module=new Module[broccoli.list.size()];
+		for(int i=0;i<broccoli.list.size();i++){
+			module[i]=new Module(frame,i*MODULE_DISTANCE,0,broccoli.list.get(i));
 		}
 
 		camera_position=new Point(10,frame.getHeight()/2);
 		old_camera_position=new Point();
 	}
 
-	private void setOutputState(byte count) throws Exception{
+	private void setOutputState(byte count,int output) throws Exception{
 		byte data[]={1,0};
-		byte key=1;
-		if(blopic.hash.containsKey(key)){
-			if(count<blopic.hash.get(key).size()){
-				data[0]=(byte)blopic.hash.get(key).get(count);
+		if(count<broccoli.list.size()){
+			if(output>128){
+				data[1]=1;
 			}
+			data[0]=(byte) (count+1);
+			broccoli.query(data);
 		}
 	}
 	private boolean getSwitchState(byte count) throws Exception{
 		byte data[]={2,0};
-		byte key=2;
 		boolean flag=false;
-		if(blopic.hash.containsKey(key)){
-			if(count<blopic.hash.get(key).size()){
-				data[0]=(byte)blopic.hash.get(key).get(count);
-				String[] res=blopic.query(data);
-				flag=Integer.parseInt(res[1])!=0;
-			}
+		if(count<broccoli.list.size()){
+			data[0]=(byte) (count+1);
+			String[] res=broccoli.query(data);
+			flag=Integer.parseInt(res[0])!=0;
+			
 		}
 		return flag;
 	}
-	private short getResistorValue(byte count) throws Exception{
-		byte data[]={3,0,1,2};
-		byte key=3;
-		short val=-1;
-		if(blopic.hash.containsKey(key)){
-			if(count<blopic.hash.get(key).size()){
-				data[0]=(byte)blopic.hash.get(key).get(count);
-				String[] res=blopic.query(data);
-				val=(short) (Short.parseShort(res[1])<<8|Short.parseShort(res[2]));
-			}
+	private boolean getRegisterState(byte count) throws Exception{
+		byte data[]={2,1};
+		boolean flag=false;
+		if(count<broccoli.list.size()){
+			data[0]=(byte) (count+1);
+			String[] res=broccoli.query(data);
+			flag=Integer.parseInt(res[0])>127;
+			
 		}
-		return val;
+		return flag;
 	}
-
+	
 	private void moveCamera(){
-		if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)>0){
-			if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)==1){
-				old_camera_position=frame.getMousePosition();
-			}
-			else{
-				camera_position.x+=frame.getMousePosition().x-old_camera_position.x;
-				camera_position.y+=frame.getMousePosition().y-old_camera_position.y;
-				old_camera_position=frame.getMousePosition();
+		if(frame.getMousePosition()!=null){
+			if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)>0){
+				if(frame.getClick(RFrame.MOUSE_INPUT_RIGHT)==1){
+					old_camera_position=frame.getMousePosition();
+				}
+				else{
+					camera_position.x+=frame.getMousePosition().x-old_camera_position.x;
+					camera_position.y+=frame.getMousePosition().y-old_camera_position.y;
+					old_camera_position=frame.getMousePosition();
+				}
 			}
 		}
 	}
@@ -117,11 +116,25 @@ public class Editer {
 			drawModule();
 			moveCamera();
 			moveModule();
+			int power=256;
+			for(int i=0;i<module.length;i++){
+				switch(broccoli.list.get(i)){
+				case (byte)0x01:
+					setOutputState((byte)i,power);
+					break;
+				case (byte)0x02:
+					if(!getSwitchState((byte)i)||getRegisterState((byte)i))
+						power=0;
+					break;
+				case (byte)0xff:
+					power=256;
+				}
+			}
 		}
 	}
 	public void close() throws Exception{
-		if(blopic!=null){
-			blopic.close();
+		if(broccoli!=null){
+			broccoli.close();
 		}
 		if(frame!=null){
 			frame.setVisible(false);
