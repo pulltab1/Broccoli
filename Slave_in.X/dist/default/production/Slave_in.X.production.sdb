@@ -25,9 +25,7 @@
 [v _digitalWrite digitalWrite `(v  1 e 0 0 ]
 "34
 [v _digitalRead digitalRead `(uc  1 e 1 0 ]
-"40
-[v _analogRead analogRead `(us  1 e 2 0 ]
-"18 /Users/ogura/Broccoli/Slave_in.X/main.c
+"17 /Users/ogura/Broccoli/Slave_in.X/main.c
 [v _main main `(v  1 e 0 0 ]
 "5 /Users/ogura/Broccoli/Slave_in.X/osccon.c
 [v _initOSCCON initOSCCON `(v  1 e 0 0 ]
@@ -121,12 +119,12 @@
 [v _rcv rcv `[8]uc  1 e 8 0 ]
 "18
 [v _snd snd `[8]uc  1 e 8 0 ]
-"18 /Users/ogura/Broccoli/Slave_in.X/main.c
+"17 /Users/ogura/Broccoli/Slave_in.X/main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"20
-[v main@Mode Mode `i  1 a 2 9 ]
-"59
+"19
+[v main@Mode Mode `i  1 a 2 3 ]
+"54
 } 0
 "4 /Users/ogura/Broccoli/Slave_in.X/io.c
 [v _pinMode pinMode `(v  1 e 0 0 ]
@@ -180,13 +178,6 @@
 [v digitalRead@pin pin `uc  1 a 1 wreg ]
 [v digitalRead@pin pin `uc  1 a 1 4 ]
 "36
-} 0
-"40
-[v _analogRead analogRead `(us  1 e 2 0 ]
-{
-"41
-[v analogRead@temp temp `us  1 a 2 5 ]
-"49
 } 0
 "109 /Users/ogura/Broccoli/Slave_in.X/i2c.c
 [v _i2cInterrupt i2cInterrupt `II(v  1 e 0 0 ]

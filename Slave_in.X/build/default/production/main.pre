@@ -2928,7 +2928,7 @@ int i2cReceiveCheck() ;
 void i2cSetSendData(char buf[]);
 void i2cSetRecvData(char buf[]);
 
-# 18 "main.c"
+# 17 "main.c"
 void main()
 {
 int Mode = 0;
@@ -2936,8 +2936,7 @@ int Mode = 0;
 initOSCCON();
 
 pinMode((0),0x04);
-pinMode((5),0x01);
-pinMode((3),0x03);
+pinMode((4),0x01);
 i2cInit((0x00));
 snd[0] = (0x02);
 
@@ -2953,13 +2952,10 @@ break;
 case 1:
 switch(rcv[0]){
 case 0:
-if(digitalRead((5)))
+if(digitalRead((4)))
 snd[0]=1;
 else
 snd[0]=0;
-break;
-case 1:
-snd[0]=analogRead()/4;
 break;
 default:
 snd[0]=-1;

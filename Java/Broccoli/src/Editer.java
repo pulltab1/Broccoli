@@ -49,16 +49,16 @@ public class Editer {
 		}
 		return flag;
 	}
-	private boolean getRegisterState(byte count) throws Exception{
-		byte data[]={2,1};
+	private int getRegisterState(byte count) throws Exception{
+		byte data[]={3,0};
 		boolean flag=false;
 		if(count<broccoli.list.size()){
 			data[0]=(byte) (count+1);
 			String[] res=broccoli.query(data);
-			flag=Integer.parseInt(res[0])>127;
+			return Integer.parseInt(res[0]);
 			
 		}
-		return flag;
+		return -1;
 	}
 	
 	private void moveCamera(){
@@ -117,19 +117,28 @@ public class Editer {
 			moveCamera();
 			moveModule();
 			int power=256;
+			System.out.print("E["+power+"]");
 			for(int i=0;i<module.length;i++){
+				System.out.print("->");
 				switch(broccoli.list.get(i)){
 				case (byte)0x01:
 					setOutputState((byte)i,power);
 					break;
 				case (byte)0x02:
-					if(!getSwitchState((byte)i)||getRegisterState((byte)i))
+					if(!getSwitchState((byte)i))
 						power=0;
+					break;
+				case (byte)0x03:
+					power=(getRegisterState((byte)i));
 					break;
 				case (byte)0xff:
 					power=256;
+					break;
 				}
+				System.out.print("B["+power+"]");
 			}
+			System.out.println();
+			
 		}
 	}
 	public void close() throws Exception{

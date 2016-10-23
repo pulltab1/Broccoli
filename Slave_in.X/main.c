@@ -12,8 +12,7 @@
 
 //リクエスト用定数
 #define WALL_PIN (RA0)
-#define SWITCH_PIN (RA5)
-#define RESISTOR_PIN (AN3)
+#define SWITCH_PIN (RA4)
 
 void main()
 {
@@ -23,7 +22,6 @@ void main()
 
      pinMode(WALL_PIN,OUTPUT);
      pinMode(SWITCH_PIN,INPUT);
-     pinMode(RESISTOR_PIN,INPUT_ANALOG);
      i2cInit(BROADCAST_ADDRESS);
      snd[0] = UNIQUE_ADDRESS;
 
@@ -44,9 +42,6 @@ void main()
                          else
                              snd[0]=0;
                          break;
-                      case 1:
-                          snd[0]=analogRead()/4;
-                          break;
                       default:
                           snd[0]=-1;
                           break;

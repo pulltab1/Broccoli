@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/Slave_AnalogIn/nbproject/private/
+/Slave_Analog_In.X/nbproject/private/
+/Slave_Analog_In.X/dist/default/
+/Slave_Analog_In.X/build/default/

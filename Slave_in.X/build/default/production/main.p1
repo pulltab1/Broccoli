@@ -16,8 +16,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _digitalWrite `(v ~T0 @X0 0 ef2`uc`uc ]
 "27
 [v _digitalRead `(uc ~T0 @X0 0 ef1`uc ]
-"29
-[v _analogRead `(us ~T0 @X0 0 ef ]
 [; ;delay.h: 3: void delay_ms(int time);
 [; ;delay.h: 4: void delay_us(int time);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -2191,151 +2189,138 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.h: 22: int i2cReceiveCheck() ;
 [; ;i2c.h: 23: void i2cSetSendData(char buf[]);
 [; ;i2c.h: 24: void i2cSetRecvData(char buf[]);
-"18 main.c
+"17 main.c
 [v _main `(v ~T0 @X0 1 ef ]
-"19
+"18
 {
-[; ;main.c: 18: void main()
-[; ;main.c: 19: {
+[; ;main.c: 17: void main()
+[; ;main.c: 18: {
 [e :U _main ]
 [f ]
-"20
+"19
 [v _Mode `i ~T0 @X0 1 a ]
-[; ;main.c: 20: int Mode = 0;
+[; ;main.c: 19: int Mode = 0;
 [e = _Mode -> 0 `i ]
-[; ;main.c: 22: initOSCCON();
-"22
+[; ;main.c: 21: initOSCCON();
+"21
 [e ( _initOSCCON ..  ]
-[; ;main.c: 24: pinMode((0),0x04);
-"24
+[; ;main.c: 23: pinMode((0),0x04);
+"23
 [e ( _pinMode (2 , -> -> 0 `i `uc -> -> 4 `i `uc ]
-[; ;main.c: 25: pinMode((5),0x01);
+[; ;main.c: 24: pinMode((4),0x01);
+"24
+[e ( _pinMode (2 , -> -> 4 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 25: i2cInit((0x00));
 "25
-[e ( _pinMode (2 , -> -> 5 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 26: pinMode((3),0x03);
-"26
-[e ( _pinMode (2 , -> -> 3 `i `uc -> -> 3 `i `uc ]
-[; ;main.c: 27: i2cInit((0x00));
-"27
 [e ( _i2cInit (1 -> 0 `i ]
-[; ;main.c: 28: snd[0] = (0x02);
-"28
+[; ;main.c: 26: snd[0] = (0x02);
+"26
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 2 `i `uc ]
-[; ;main.c: 30: while(1) {
-"30
+[; ;main.c: 28: while(1) {
+"28
 [e :U 272 ]
 {
-[; ;main.c: 31: if (i2cReceiveCheck() != 0) {
-"31
+[; ;main.c: 29: if (i2cReceiveCheck() != 0) {
+"29
 [e $ ! != ( _i2cReceiveCheck ..  -> 0 `i 274  ]
 {
-[; ;main.c: 32: GIE = 0;
-"32
+[; ;main.c: 30: GIE = 0;
+"30
 [e = _GIE -> -> 0 `i `b ]
-[; ;main.c: 33: switch(Mode){
-"33
+[; ;main.c: 31: switch(Mode){
+"31
 [e $U 276  ]
 {
-[; ;main.c: 34: case 0:
-"34
+[; ;main.c: 32: case 0:
+"32
 [e :U 277 ]
-[; ;main.c: 35: SSP1ADD = rcv[0]<<1;
-"35
+[; ;main.c: 33: SSP1ADD = rcv[0]<<1;
+"33
 [e = _SSP1ADD -> << -> *U + &U _rcv * -> -> -> 0 `i `ui `ux -> -> # *U &U _rcv `ui `ux `i -> 1 `i `uc ]
-[; ;main.c: 36: digitalWrite((0),1);
-"36
+[; ;main.c: 34: digitalWrite((0),1);
+"34
 [e ( _digitalWrite (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 37: Mode=1;
-"37
+[; ;main.c: 35: Mode=1;
+"35
 [e = _Mode -> 1 `i ]
-[; ;main.c: 38: break;
-"38
+[; ;main.c: 36: break;
+"36
 [e $U 275  ]
-[; ;main.c: 39: case 1:
-"39
+[; ;main.c: 37: case 1:
+"37
 [e :U 278 ]
-[; ;main.c: 40: switch(rcv[0]){
-"40
+[; ;main.c: 38: switch(rcv[0]){
+"38
 [e $U 280  ]
 {
-[; ;main.c: 41: case 0:
-"41
+[; ;main.c: 39: case 0:
+"39
 [e :U 281 ]
-[; ;main.c: 42: if(digitalRead((5)))
-"42
-[e $ ! != -> ( _digitalRead (1 -> -> 5 `i `uc `i -> -> -> 0 `i `uc `i 282  ]
-[; ;main.c: 43: snd[0]=1;
-"43
+[; ;main.c: 40: if(digitalRead((4)))
+"40
+[e $ ! != -> ( _digitalRead (1 -> -> 4 `i `uc `i -> -> -> 0 `i `uc `i 282  ]
+[; ;main.c: 41: snd[0]=1;
+"41
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 1 `i `uc ]
 [e $U 283  ]
-"44
+"42
 [e :U 282 ]
-[; ;main.c: 44: else
-[; ;main.c: 45: snd[0]=0;
-"45
+[; ;main.c: 42: else
+[; ;main.c: 43: snd[0]=0;
+"43
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -> 0 `i `uc ]
 [e :U 283 ]
-[; ;main.c: 46: break;
-"46
+[; ;main.c: 44: break;
+"44
 [e $U 279  ]
-[; ;main.c: 47: case 1:
-"47
+[; ;main.c: 45: default:
+"45
 [e :U 284 ]
-[; ;main.c: 48: snd[0]=analogRead()/4;
-"48
-[e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> / -> ( _analogRead ..  `ui -> -> 4 `i `ui `uc ]
-[; ;main.c: 49: break;
-"49
-[e $U 279  ]
-[; ;main.c: 50: default:
-"50
-[e :U 285 ]
-[; ;main.c: 51: snd[0]=-1;
-"51
+[; ;main.c: 46: snd[0]=-1;
+"46
 [e = *U + &U _snd * -> -> -> 0 `i `ui `ux -> -> # *U &U _snd `ui `ux -> -U -> 1 `i `uc ]
-[; ;main.c: 52: break;
-"52
+[; ;main.c: 47: break;
+"47
 [e $U 279  ]
-"53
+"48
 }
-[; ;main.c: 53: }
+[; ;main.c: 48: }
 [e $U 279  ]
-"40
+"38
 [e :U 280 ]
 [e [\ *U + &U _rcv * -> -> -> 0 `i `ui `ux -> -> # *U &U _rcv `ui `ux , $ -> -> 0 `i `uc 281
- , $ -> -> 1 `i `uc 284
- 285 ]
-"53
+ 284 ]
+"48
 [e :U 279 ]
-[; ;main.c: 54: break;
-"54
+[; ;main.c: 49: break;
+"49
 [e $U 275  ]
-"55
+"50
 }
-[; ;main.c: 55: }
+[; ;main.c: 50: }
 [e $U 275  ]
-"33
+"31
 [e :U 276 ]
 [e [\ _Mode , $ -> 0 `i 277
  , $ -> 1 `i 278
  275 ]
-"55
+"50
 [e :U 275 ]
-[; ;main.c: 56: GIE = 1;
-"56
+[; ;main.c: 51: GIE = 1;
+"51
 [e = _GIE -> -> 1 `i `b ]
-"57
+"52
 }
 [e :U 274 ]
-"58
+"53
 }
 [e :U 271 ]
-"30
+"28
 [e $U 272  ]
 [e :U 273 ]
-[; ;main.c: 57: }
-[; ;main.c: 58: }
-[; ;main.c: 59: }
-"59
+[; ;main.c: 52: }
+[; ;main.c: 53: }
+[; ;main.c: 54: }
+"54
 [e :UE 270 ]
 }

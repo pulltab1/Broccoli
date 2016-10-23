@@ -40,6 +40,7 @@ public class Module {
 		switch(type){
 		case (byte)0x01:color=new Color(255,0,0);break;
 		case (byte)0x02:color=new Color(0,0,255);break;
+		case (byte)0x03:color=new Color(0,255,0);break;
 		case (byte)0xff:color=new Color(255,255,0);break;
 		default:color=new Color(0,0,0);break;
 		}
