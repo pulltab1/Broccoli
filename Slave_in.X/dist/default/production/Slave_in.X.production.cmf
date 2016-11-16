@@ -11,26 +11,27 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcCxol1Rr.obj
-reset_vec CODE 0 0 0 1 2
-end_init CODE 0 62 62 1 2
-config CONFIG 0 8007 8007 2 2
-$dist/default/production/Slave_in.X.production.obj
+$dist/default/production\Slave_in.X.production.obj
 cinit CODE 0 63 63 B 2
 text1 CODE 0 6E 6E 89 2
-text2 CODE 0 1A3 1A3 14 2
-text3 CODE 0 1C9 1C9 6 2
-text4 CODE 0 18C 18C 17 2
-text5 CODE 0 14B 14B 24 2
-text6 CODE 0 16F 16F 1D 2
-text7 CODE 0 1B7 1B7 C 2
-maintext CODE 0 F7 F7 54 2
+text2 CODE 0 1C4 1C4 14 2
+text3 CODE 0 1EA 1EA 6 2
+text4 CODE 0 1AD 1AD 17 2
+text5 CODE 0 150 150 24 2
+text6 CODE 0 174 174 1D 2
+text7 CODE 0 1D8 1D8 C 2
+text8 CODE 0 191 191 1C 2
+maintext CODE 0 F7 F7 59 2
 cstackCOMMON COMMON 1 70 70 9 1
 cstackBANK0 BANK0 1 32 32 5 1
 intentry CODE 0 4 4 5E 2
 bssBANK0 BANK0 1 20 20 12 1
-clrtext CODE 0 1C3 1C3 6 2
+clrtext CODE 0 1E4 1E4 6 2
 bssCOMMON COMMON 1 79 79 2 1
+$D:\ライブラリ\Temp\s7ts.obj
+reset_vec CODE 0 0 0 1 2
+end_init CODE 0 62 62 1 2
+config CONFIG 0 8007 8007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -42,9 +43,9 @@ RAM A0-BF 1
 BANK0 37-6F 1
 BANK1 A0-BF 1
 CONST 1-3 2
-CONST 1CF-7FF 2
+CONST 1F0-7FF 2
 ENTRY 1-3 2
-ENTRY 1CF-7FF 2
+ENTRY 1F0-7FF 2
 IDLOC 8000-8003 2
 SFR10 500-56F 1
 SFR11 580-5EF 1
@@ -70,7 +71,7 @@ SFR30 F00-F6F 1
 SFR31 F80-FEF 1
 STACK 2017-206F 1
 CODE 1-3 2
-CODE 1CF-7FF 2
+CODE 1F0-7FF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-16F 1
@@ -85,9 +86,9 @@ BIGRAM 2000-206F 1
 COMMON 7B-7D 1
 EEDATA F000-F0FF 2
 STRCODE 1-3 2
-STRCODE 1CF-7FF 2
+STRCODE 1F0-7FF 2
 STRING 1-3 2
-STRING 1CF-7FF 2
+STRING 1F0-7FF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -101,142 +102,147 @@ STRING 1CF-7FF 2
 # are in ascending order of addresses.
 # All other numeric values are in decimal.
 %LINETAB
-$dist/default/production/Slave_in.X.production.obj
-63 cinit CODE >1313:/tmp/xcK51ljl4
-63 cinit CODE >1316:/tmp/xcK51ljl4
-63 cinit CODE >1355:/tmp/xcK51ljl4
-64 cinit CODE >1356:/tmp/xcK51ljl4
-65 cinit CODE >1360:/tmp/xcK51ljl4
-66 cinit CODE >1361:/tmp/xcK51ljl4
-67 cinit CODE >1362:/tmp/xcK51ljl4
-68 cinit CODE >1363:/tmp/xcK51ljl4
-69 cinit CODE >1364:/tmp/xcK51ljl4
-6A cinit CODE >1365:/tmp/xcK51ljl4
-6B cinit CODE >1371:/tmp/xcK51ljl4
-6B cinit CODE >1373:/tmp/xcK51ljl4
-6C cinit CODE >1374:/tmp/xcK51ljl4
-6D cinit CODE >1375:/tmp/xcK51ljl4
-4 intentry CODE >109:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-4 intentry CODE >36:/Users/ogura/Broccoli/Slave_in.X/io.c
-9 intentry CODE >115:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-B intentry CODE >116:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-E intentry CODE >118:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-10 intentry CODE >120:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-14 intentry CODE >121:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-18 intentry CODE >122:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-1B intentry CODE >123:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-1C intentry CODE >125:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-24 intentry CODE >126:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-28 intentry CODE >127:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-2D intentry CODE >129:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-2E intentry CODE >131:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-2E intentry CODE >133:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-30 intentry CODE >135:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-34 intentry CODE >136:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-38 intentry CODE >137:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-41 intentry CODE >142:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-41 intentry CODE >144:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-43 intentry CODE >146:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-4B intentry CODE >147:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-50 intentry CODE >148:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-54 intentry CODE >149:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-56 intentry CODE >150:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-58 intentry CODE >151:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-59 intentry CODE >153:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-5B intentry CODE >157:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-5B intentry CODE >161:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-5D intentry CODE >162:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-5E intentry CODE >164:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-1B7 text7 CODE >34:/Users/ogura/Broccoli/Slave_in.X/io.c
-1B8 text7 CODE >35:/Users/ogura/Broccoli/Slave_in.X/io.c
-16F text6 CODE >26:/Users/ogura/Broccoli/Slave_in.X/io.c
-170 text6 CODE >27:/Users/ogura/Broccoli/Slave_in.X/io.c
-173 text6 CODE >28:/Users/ogura/Broccoli/Slave_in.X/io.c
-17E text6 CODE >29:/Users/ogura/Broccoli/Slave_in.X/io.c
-17F text6 CODE >30:/Users/ogura/Broccoli/Slave_in.X/io.c
-14B text5 CODE >166:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-14B text5 CODE >167:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-14E text5 CODE >168:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-150 text5 CODE >169:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-151 text5 CODE >171:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-153 text5 CODE >172:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-155 text5 CODE >173:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-157 text5 CODE >174:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-158 text5 CODE >175:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-159 text5 CODE >176:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-15A text5 CODE >177:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-15C text5 CODE >178:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-15D text5 CODE >179:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-15F text5 CODE >180:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-164 text5 CODE >181:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-169 text5 CODE >182:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-16E text5 CODE >183:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-18C text4 CODE >185:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-18C text4 CODE >188:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-18E text4 CODE >189:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-193 text4 CODE >190:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-197 text4 CODE >191:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-19C text4 CODE >192:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-19E text4 CODE >195:/Users/ogura/Broccoli/Slave_in.X/i2c.c
-1C9 text3 CODE >5:/Users/ogura/Broccoli/Slave_in.X/osccon.c
-1C9 text3 CODE >11:/Users/ogura/Broccoli/Slave_in.X/osccon.c
-1CE text3 CODE >44:/Users/ogura/Broccoli/Slave_in.X/osccon.c
-1A3 text2 CODE >10:/Users/ogura/Broccoli/Slave_in.X/delay.c
-1A3 text2 CODE >12:/Users/ogura/Broccoli/Slave_in.X/delay.c
-1B1 text2 CODE >13:/Users/ogura/Broccoli/Slave_in.X/delay.c
-1B2 text2 CODE >12:/Users/ogura/Broccoli/Slave_in.X/delay.c
-6E text1 CODE >4:/Users/ogura/Broccoli/Slave_in.X/io.c
-70 text1 CODE >5:/Users/ogura/Broccoli/Slave_in.X/io.c
-7C text1 CODE >6:/Users/ogura/Broccoli/Slave_in.X/io.c
-7D text1 CODE >8:/Users/ogura/Broccoli/Slave_in.X/io.c
-89 text1 CODE >9:/Users/ogura/Broccoli/Slave_in.X/io.c
-96 text1 CODE >10:/Users/ogura/Broccoli/Slave_in.X/io.c
-97 text1 CODE >12:/Users/ogura/Broccoli/Slave_in.X/io.c
-A4 text1 CODE >13:/Users/ogura/Broccoli/Slave_in.X/io.c
-B1 text1 CODE >14:/Users/ogura/Broccoli/Slave_in.X/io.c
-B2 text1 CODE >16:/Users/ogura/Broccoli/Slave_in.X/io.c
-BE text1 CODE >17:/Users/ogura/Broccoli/Slave_in.X/io.c
-CA text1 CODE >18:/Users/ogura/Broccoli/Slave_in.X/io.c
-CD text1 CODE >19:/Users/ogura/Broccoli/Slave_in.X/io.c
-D9 text1 CODE >20:/Users/ogura/Broccoli/Slave_in.X/io.c
-E5 text1 CODE >21:/Users/ogura/Broccoli/Slave_in.X/io.c
-EA text1 CODE >23:/Users/ogura/Broccoli/Slave_in.X/io.c
-EB text1 CODE >6:/Users/ogura/Broccoli/Slave_in.X/io.c
-F6 text1 CODE >24:/Users/ogura/Broccoli/Slave_in.X/io.c
-F7 maintext CODE >17:/Users/ogura/Broccoli/Slave_in.X/main.c
-F7 maintext CODE >19:/Users/ogura/Broccoli/Slave_in.X/main.c
-FA maintext CODE >21:/Users/ogura/Broccoli/Slave_in.X/main.c
-FB maintext CODE >23:/Users/ogura/Broccoli/Slave_in.X/main.c
-102 maintext CODE >24:/Users/ogura/Broccoli/Slave_in.X/main.c
-106 maintext CODE >25:/Users/ogura/Broccoli/Slave_in.X/main.c
-10A maintext CODE >26:/Users/ogura/Broccoli/Slave_in.X/main.c
-10F maintext CODE >29:/Users/ogura/Broccoli/Slave_in.X/main.c
-114 maintext CODE >30:/Users/ogura/Broccoli/Slave_in.X/main.c
-115 maintext CODE >31:/Users/ogura/Broccoli/Slave_in.X/main.c
-116 maintext CODE >33:/Users/ogura/Broccoli/Slave_in.X/main.c
-11A maintext CODE >34:/Users/ogura/Broccoli/Slave_in.X/main.c
-11E maintext CODE >35:/Users/ogura/Broccoli/Slave_in.X/main.c
-123 maintext CODE >36:/Users/ogura/Broccoli/Slave_in.X/main.c
-124 maintext CODE >40:/Users/ogura/Broccoli/Slave_in.X/main.c
-129 maintext CODE >41:/Users/ogura/Broccoli/Slave_in.X/main.c
-12D maintext CODE >43:/Users/ogura/Broccoli/Slave_in.X/main.c
-12F maintext CODE >44:/Users/ogura/Broccoli/Slave_in.X/main.c
-130 maintext CODE >46:/Users/ogura/Broccoli/Slave_in.X/main.c
-134 maintext CODE >48:/Users/ogura/Broccoli/Slave_in.X/main.c
-135 maintext CODE >38:/Users/ogura/Broccoli/Slave_in.X/main.c
-13A maintext CODE >50:/Users/ogura/Broccoli/Slave_in.X/main.c
-13B maintext CODE >31:/Users/ogura/Broccoli/Slave_in.X/main.c
-149 maintext CODE >50:/Users/ogura/Broccoli/Slave_in.X/main.c
-149 maintext CODE >51:/Users/ogura/Broccoli/Slave_in.X/main.c
-14A maintext CODE >28:/Users/ogura/Broccoli/Slave_in.X/main.c
-1C3 clrtext CODE >1344:/tmp/xcK51ljl4
-1C3 clrtext CODE >1345:/tmp/xcK51ljl4
-1C4 clrtext CODE >1346:/tmp/xcK51ljl4
-1C4 clrtext CODE >1347:/tmp/xcK51ljl4
-1C5 clrtext CODE >1348:/tmp/xcK51ljl4
-1C6 clrtext CODE >1349:/tmp/xcK51ljl4
-1C7 clrtext CODE >1350:/tmp/xcK51ljl4
-1C8 clrtext CODE >1351:/tmp/xcK51ljl4
+$dist/default/production\Slave_in.X.production.obj
+63 cinit CODE >1314:D:\ライブラリ\Temp\s7ts.
+63 cinit CODE >1317:D:\ライブラリ\Temp\s7ts.
+63 cinit CODE >1356:D:\ライブラリ\Temp\s7ts.
+64 cinit CODE >1357:D:\ライブラリ\Temp\s7ts.
+65 cinit CODE >1361:D:\ライブラリ\Temp\s7ts.
+66 cinit CODE >1362:D:\ライブラリ\Temp\s7ts.
+67 cinit CODE >1363:D:\ライブラリ\Temp\s7ts.
+68 cinit CODE >1364:D:\ライブラリ\Temp\s7ts.
+69 cinit CODE >1365:D:\ライブラリ\Temp\s7ts.
+6A cinit CODE >1366:D:\ライブラリ\Temp\s7ts.
+6B cinit CODE >1372:D:\ライブラリ\Temp\s7ts.
+6B cinit CODE >1374:D:\ライブラリ\Temp\s7ts.
+6C cinit CODE >1375:D:\ライブラリ\Temp\s7ts.
+6D cinit CODE >1376:D:\ライブラリ\Temp\s7ts.
+4 intentry CODE >9:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+4 intentry CODE >109:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+9 intentry CODE >115:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+B intentry CODE >116:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+E intentry CODE >118:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+10 intentry CODE >120:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+14 intentry CODE >121:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+18 intentry CODE >122:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1B intentry CODE >123:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1C intentry CODE >125:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+24 intentry CODE >126:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+28 intentry CODE >127:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+2D intentry CODE >129:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+2E intentry CODE >131:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+2E intentry CODE >133:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+30 intentry CODE >135:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+34 intentry CODE >136:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+38 intentry CODE >137:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+41 intentry CODE >142:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+41 intentry CODE >144:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+43 intentry CODE >146:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+4B intentry CODE >147:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+50 intentry CODE >148:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+54 intentry CODE >149:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+56 intentry CODE >150:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+58 intentry CODE >151:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+59 intentry CODE >153:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+5B intentry CODE >157:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+5B intentry CODE >161:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+5D intentry CODE >162:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+5E intentry CODE >164:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+191 text8 CODE >4:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+191 text8 CODE >6:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+19F text8 CODE >7:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+1A8 text8 CODE >6:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+1D8 text7 CODE >34:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+1D9 text7 CODE >35:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+174 text6 CODE >26:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+175 text6 CODE >27:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+178 text6 CODE >28:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+183 text6 CODE >29:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+184 text6 CODE >30:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+150 text5 CODE >166:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+150 text5 CODE >167:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+153 text5 CODE >168:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+155 text5 CODE >169:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+156 text5 CODE >171:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+158 text5 CODE >172:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+15A text5 CODE >173:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+15C text5 CODE >174:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+15D text5 CODE >175:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+15E text5 CODE >176:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+15F text5 CODE >177:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+161 text5 CODE >178:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+162 text5 CODE >179:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+164 text5 CODE >180:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+169 text5 CODE >181:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+16E text5 CODE >182:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+173 text5 CODE >183:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1AD text4 CODE >185:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1AD text4 CODE >188:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1AF text4 CODE >189:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1B4 text4 CODE >190:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1B8 text4 CODE >191:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1BD text4 CODE >192:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1BF text4 CODE >195:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\i2c.c
+1EA text3 CODE >5:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\osccon.c
+1EA text3 CODE >11:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\osccon.c
+1EF text3 CODE >44:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\osccon.c
+1C4 text2 CODE >10:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+1C4 text2 CODE >12:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+1D2 text2 CODE >13:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+1D3 text2 CODE >12:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\delay.c
+6E text1 CODE >4:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+70 text1 CODE >5:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+7C text1 CODE >6:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+7D text1 CODE >8:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+89 text1 CODE >9:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+96 text1 CODE >10:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+97 text1 CODE >12:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+A4 text1 CODE >13:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+B1 text1 CODE >14:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+B2 text1 CODE >16:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+BE text1 CODE >17:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+CA text1 CODE >18:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+CD text1 CODE >19:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+D9 text1 CODE >20:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+E5 text1 CODE >21:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+EA text1 CODE >23:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+EB text1 CODE >6:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+F6 text1 CODE >24:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\io.c
+F7 maintext CODE >17:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+F7 maintext CODE >19:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+FA maintext CODE >21:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+FB maintext CODE >23:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+100 maintext CODE >25:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+107 maintext CODE >26:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+10B maintext CODE >27:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+10F maintext CODE >28:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+114 maintext CODE >31:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+119 maintext CODE >32:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+11A maintext CODE >33:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+11B maintext CODE >35:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+11F maintext CODE >36:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+123 maintext CODE >37:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+128 maintext CODE >38:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+129 maintext CODE >42:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+12E maintext CODE >43:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+132 maintext CODE >45:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+134 maintext CODE >46:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+135 maintext CODE >48:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+139 maintext CODE >50:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+13A maintext CODE >40:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+13F maintext CODE >52:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+140 maintext CODE >33:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+14E maintext CODE >52:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+14E maintext CODE >53:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+14F maintext CODE >30:D:\ライブラリ\Documents\GitHub\Broccoli\Slave_in.X\main.c
+1E4 clrtext CODE >1345:D:\ライブラリ\Temp\s7ts.
+1E4 clrtext CODE >1346:D:\ライブラリ\Temp\s7ts.
+1E5 clrtext CODE >1347:D:\ライブラリ\Temp\s7ts.
+1E5 clrtext CODE >1348:D:\ライブラリ\Temp\s7ts.
+1E6 clrtext CODE >1349:D:\ライブラリ\Temp\s7ts.
+1E7 clrtext CODE >1350:D:\ライブラリ\Temp\s7ts.
+1E8 clrtext CODE >1351:D:\ライブラリ\Temp\s7ts.
+1E9 clrtext CODE >1352:D:\ライブラリ\Temp\s7ts.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -249,82 +255,83 @@ FB maintext CODE >23:/Users/ogura/Broccoli/Slave_in.X/main.c
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-___latbits 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+___latbits 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hspace_0 8009 0 ABS 0 - -
 __Hspace_1 7B 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
-__CFG_IESO$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1STATbits 214 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1STATbits 214 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
-ltemp0 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ltemp1 82 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ltemp2 86 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ltemp3 80 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+ltemp0 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ltemp1 82 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ltemp2 86 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ltemp3 80 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hstrings 0 0 ABS 0 strings -
-_LATA 10C 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_PEIE 5E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_Rdtp 79 0 COMMON 1 bssCOMMON dist/default/production/Slave_in.X.production.obj
-_Sdtp 7A 0 COMMON 1 bssCOMMON dist/default/production/Slave_in.X.production.obj
-___sp 0 0 STACK 2 stack /tmp/xcCxol1Rr.obj
-_main 1EE 0 CODE 0 maintext dist/default/production/Slave_in.X.production.obj
-btemp 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ltemp 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-start C4 0 CODE 0 init /tmp/xcCxol1Rr.obj
-ttemp 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__size_of_main 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_LATA 10C 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_PEIE 5E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_Rdtp 79 0 COMMON 1 bssCOMMON dist/default/production\Slave_in.X.production.obj
+_Sdtp 7A 0 COMMON 1 bssCOMMON dist/default/production\Slave_in.X.production.obj
+___sp 0 0 STACK 2 stack D:\ライブラリ\Temp\s7ts.obj
+_main 1EE 0 CODE 0 maintext dist/default/production\Slave_in.X.production.obj
+btemp 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ltemp 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+start C4 0 CODE 0 init D:\ライブラリ\Temp\s7ts.obj
+ttemp 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
-__size_of_initOSCCON 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__size_of_initOSCCON 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hpowerup 0 0 CODE 0 powerup -
-ttemp0 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ttemp1 81 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ttemp2 84 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ttemp3 87 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-ttemp4 7F 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-intlevel0 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-intlevel1 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-intlevel2 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-intlevel3 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-intlevel4 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-intlevel5 0 0 CODE 0 functab /tmp/xcCxol1Rr.obj
-_i2cInterrupt 8 0 CODE 0 intentry dist/default/production/Slave_in.X.production.obj
+delay_ms@time 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+ttemp0 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ttemp1 81 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ttemp2 84 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ttemp3 87 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+ttemp4 7F 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+intlevel0 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+intlevel1 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+intlevel2 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+intlevel3 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+intlevel4 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+intlevel5 0 0 CODE 0 functab D:\ライブラリ\Temp\s7ts.obj
+_i2cInterrupt 8 0 CODE 0 intentry dist/default/production\Slave_in.X.production.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
-wtemp0 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp1 80 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp2 82 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp3 84 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp4 86 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp5 88 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-wtemp6 7F 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+wtemp0 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp1 80 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp2 82 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp3 84 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp4 86 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp5 88 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+wtemp6 7F 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hfunctab 0 0 CODE 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
-_ADCON0 9D 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_ADCON1 9E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_ADRESH 9C 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_ADRESL 9B 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_ANSELA 18C 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_BCL1IE 493 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_BCL1IF 93 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_i2cInit 296 0 CODE 0 text5 dist/default/production/Slave_in.X.production.obj
-__end_of_digitalRead 386 0 CODE 0 text7 dist/default/production/Slave_in.X.production.obj
-__size_of_i2cInterrupt 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_ADCON0 9D 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_ADCON1 9E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_ADRESH 9C 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_ADRESL 9B 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_ANSELA 18C 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_BCL1IE 493 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_BCL1IF 93 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_i2cInit 2A0 0 CODE 0 text5 dist/default/production\Slave_in.X.production.obj
+__end_of_digitalRead 3C8 0 CODE 0 text7 dist/default/production\Slave_in.X.production.obj
+__size_of_i2cInterrupt 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lmaintext 0 0 ABS 0 maintext -
-__size_of_pinMode 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__end_of_i2cInterrupt C4 0 CODE 0 intentry dist/default/production/Slave_in.X.production.obj
-__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-start_initialization C6 0 CODE 0 cinit dist/default/production/Slave_in.X.production.obj
-_OSCCON 99 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_digitalWrite 2DE 0 CODE 0 text6 dist/default/production/Slave_in.X.production.obj
-_GO_nDONE 4E9 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-pinMode@pin 33 0 BANK0 1 cstackBANK0 dist/default/production/Slave_in.X.production.obj
-clear_ram0 386 0 CODE 0 clrtext dist/default/production/Slave_in.X.production.obj
-__pcstackBANK0 32 0 BANK0 1 cstackBANK0 dist/default/production/Slave_in.X.production.obj
-_SSP1IE 48B 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1IF 8B 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_rcv_flg 20 0 BANK0 1 bssBANK0 dist/default/production/Slave_in.X.production.obj
-___int_sp 0 0 STACK 2 stack /tmp/xcCxol1Rr.obj
+__size_of_pinMode 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__end_of_i2cInterrupt C4 0 CODE 0 intentry dist/default/production\Slave_in.X.production.obj
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+start_initialization C6 0 CODE 0 cinit dist/default/production\Slave_in.X.production.obj
+_OSCCON 99 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_digitalWrite 2E8 0 CODE 0 text6 dist/default/production\Slave_in.X.production.obj
+_GO_nDONE 4E9 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+pinMode@pin 33 0 BANK0 1 cstackBANK0 dist/default/production\Slave_in.X.production.obj
+clear_ram0 3C8 0 CODE 0 clrtext dist/default/production\Slave_in.X.production.obj
+__pcstackBANK0 32 0 BANK0 1 cstackBANK0 dist/default/production\Slave_in.X.production.obj
+_SSP1IE 48B 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1IF 8B 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_rcv_flg 20 0 BANK0 1 bssBANK0 dist/default/production\Slave_in.X.production.obj
+___int_sp 0 0 STACK 2 stack D:\ライブラリ\Temp\s7ts.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 BANK2 1 bank2 -
@@ -384,10 +391,10 @@ __Hbank30 0 0 BANK30 1 bank30 -
 __Hbank31 0 0 BANK31 1 bank31 -
 __Hbigram 0 0 ABS 0 bigram -
 __Hmaintext 0 0 ABS 0 maintext -
-__CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 10012 0 CONFIG 0 config -
-__size_of_digitalWrite 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__size_of_digitalWrite 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 BANK2 1 bank2 -
@@ -423,7 +430,7 @@ __Lsfr29 0 0 ABS 0 sfr29 -
 __Lsfr30 0 0 ABS 0 sfr30 -
 __Lsfr31 0 0 ABS 0 sfr31 -
 __Lstack 0 0 STACK 2 stack -
-__end_of_pinMode 1EE 0 CODE 0 text1 dist/default/production/Slave_in.X.production.obj
+__end_of_pinMode 1EE 0 CODE 0 text1 dist/default/production\Slave_in.X.production.obj
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
 __Hinit C4 0 CODE 0 init -
@@ -452,27 +459,27 @@ __Lsfr7 0 0 ABS 0 sfr7 -
 __Lsfr8 0 0 ABS 0 sfr8 -
 __Lsfr9 0 0 ABS 0 sfr9 -
 __Ltext 0 0 ABS 0 text -
-_SSP1CON1 215 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1STAT 214 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_SSP1CON1 215 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1STAT 214 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
-int$flags 7E 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+int$flags 7E 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-_GIE 5F 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_GIE 5F 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __S0 8009 0 ABS 0 - -
 __S1 7B 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
-_rcv 22 0 BANK0 1 bssBANK0 dist/default/production/Slave_in.X.production.obj
-_snd 2A 0 BANK0 1 bssBANK0 dist/default/production/Slave_in.X.production.obj
-__end_of_digitalWrite 318 0 CODE 0 text6 dist/default/production/Slave_in.X.production.obj
-__size_of_digitalRead 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-i2cReceiveCheck@ans 75 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-?_i2cReceiveCheck 73 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-delay_us@time 73 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-__end_of_i2cReceiveCheck 346 0 CODE 0 text4 dist/default/production/Slave_in.X.production.obj
-__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_rcv 22 0 BANK0 1 bssBANK0 dist/default/production\Slave_in.X.production.obj
+_snd 2A 0 BANK0 1 bssBANK0 dist/default/production\Slave_in.X.production.obj
+__end_of_digitalWrite 322 0 CODE 0 text6 dist/default/production\Slave_in.X.production.obj
+__size_of_digitalRead 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+i2cReceiveCheck@ans 75 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+?_i2cReceiveCheck 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+delay_us@time 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+__end_of_i2cReceiveCheck 388 0 CODE 0 text4 dist/default/production\Slave_in.X.production.obj
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec /tmp/xcCxol1Rr.obj
+reset_vec 0 0 CODE 0 reset_vec D:\ライブラリ\Temp\s7ts.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __Lbank10 0 0 BANK10 1 bank10 -
 __Lbank11 0 0 BANK11 1 bank11 -
@@ -496,82 +503,87 @@ __Lbank28 0 0 BANK28 1 bank28 -
 __Lbank29 0 0 BANK29 1 bank29 -
 __Lbank30 0 0 BANK30 1 bank30 -
 __Lbank31 0 0 BANK31 1 bank31 -
-__pmaintext 1EE 0 CODE 0 maintext dist/default/production/Slave_in.X.production.obj
+__pmaintext 1EE 0 CODE 0 maintext dist/default/production\Slave_in.X.production.obj
 __Lbigram 0 0 ABS 0 bigram -
-__CFG_BORV$HI 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__CFG_BORV$HI 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 1000E 0 CONFIG 0 config -
-__CFG_CP$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_initOSCCON 392 0 CODE 0 text3 dist/default/production/Slave_in.X.production.obj
-_i2cReceiveCheck 318 0 CODE 0 text4 dist/default/production/Slave_in.X.production.obj
-main@Mode 35 0 BANK0 1 cstackBANK0 dist/default/production/Slave_in.X.production.obj
-__size_of_i2cInit 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-stackhi 206F 0 ABS 0 - /tmp/xcCxol1Rr.obj
-stacklo 2017 0 ABS 0 - /tmp/xcCxol1Rr.obj
-pinMode@mode 78 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-__CFG_LVP$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__CFG_CP$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_initOSCCON 3D4 0 CODE 0 text3 dist/default/production\Slave_in.X.production.obj
+_i2cReceiveCheck 35A 0 CODE 0 text4 dist/default/production\Slave_in.X.production.obj
+main@Mode 35 0 BANK0 1 cstackBANK0 dist/default/production\Slave_in.X.production.obj
+__size_of_i2cInit 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+stackhi 206F 0 ABS 0 - D:\ライブラリ\Temp\s7ts.obj
+stacklo 2017 0 ABS 0 - D:\ライブラリ\Temp\s7ts.obj
+pinMode@mode 78 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
-__pbssCOMMON 79 0 COMMON 1 bssCOMMON dist/default/production/Slave_in.X.production.obj
-i2cInit@address 73 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
+__pbssCOMMON 79 0 COMMON 1 bssCOMMON dist/default/production\Slave_in.X.production.obj
+i2cInit@address 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
-delay_us@i 76 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
+delay_ms@i 77 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+delay_us@i 76 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
 __Lend_init C4 0 CODE 0 end_init -
-__size_of_delay_us 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__size_of_delay_ms 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__size_of_delay_us 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-end_of_initialization D6 0 CODE 0 cinit dist/default/production/Slave_in.X.production.obj
+end_of_initialization D6 0 CODE 0 cinit dist/default/production\Slave_in.X.production.obj
 __Hintentry C4 0 CODE 0 intentry -
-__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Lstrings 0 0 ABS 0 strings -
-digitalWrite@pin 75 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
+digitalWrite@pin 75 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
 __Hreset_vec 2 0 CODE 0 reset_vec -
-digitalRead@pin 74 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
+digitalRead@pin 74 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
-__ptext1 DC 0 CODE 0 text1 dist/default/production/Slave_in.X.production.obj
-__ptext2 346 0 CODE 0 text2 dist/default/production/Slave_in.X.production.obj
-__ptext3 392 0 CODE 0 text3 dist/default/production/Slave_in.X.production.obj
-__ptext4 318 0 CODE 0 text4 dist/default/production/Slave_in.X.production.obj
-__ptext5 296 0 CODE 0 text5 dist/default/production/Slave_in.X.production.obj
-__ptext6 2DE 0 CODE 0 text6 dist/default/production/Slave_in.X.production.obj
-__ptext7 36E 0 CODE 0 text7 dist/default/production/Slave_in.X.production.obj
-__end_of_initOSCCON 39E 0 CODE 0 text3 dist/default/production/Slave_in.X.production.obj
+__ptext1 DC 0 CODE 0 text1 dist/default/production\Slave_in.X.production.obj
+__ptext2 388 0 CODE 0 text2 dist/default/production\Slave_in.X.production.obj
+__ptext3 3D4 0 CODE 0 text3 dist/default/production\Slave_in.X.production.obj
+__ptext4 35A 0 CODE 0 text4 dist/default/production\Slave_in.X.production.obj
+__ptext5 2A0 0 CODE 0 text5 dist/default/production\Slave_in.X.production.obj
+__ptext6 2E8 0 CODE 0 text6 dist/default/production\Slave_in.X.production.obj
+__ptext7 3B0 0 CODE 0 text7 dist/default/production\Slave_in.X.production.obj
+__ptext8 322 0 CODE 0 text8 dist/default/production\Slave_in.X.production.obj
+__end_of_initOSCCON 3E0 0 CODE 0 text3 dist/default/production\Slave_in.X.production.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
-_pinMode DC 0 CODE 0 text1 dist/default/production/Slave_in.X.production.obj
-_digitalRead 36E 0 CODE 0 text7 dist/default/production/Slave_in.X.production.obj
-__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__size_of_i2cReceiveCheck 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__end_of__initialization D6 0 CODE 0 cinit dist/default/production/Slave_in.X.production.obj
-_delay_us 346 0 CODE 0 text2 dist/default/production/Slave_in.X.production.obj
+_pinMode DC 0 CODE 0 text1 dist/default/production\Slave_in.X.production.obj
+_digitalRead 3B0 0 CODE 0 text7 dist/default/production\Slave_in.X.production.obj
+__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__size_of_i2cReceiveCheck 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__end_of__initialization D6 0 CODE 0 cinit dist/default/production\Slave_in.X.production.obj
+_delay_ms 322 0 CODE 0 text8 dist/default/production\Slave_in.X.production.obj
+_delay_us 388 0 CODE 0 text2 dist/default/production\Slave_in.X.production.obj
 __Lfunctab 0 0 CODE 0 functab -
-__end_of_i2cInit 2DE 0 CODE 0 text5 dist/default/production/Slave_in.X.production.obj
+__end_of_i2cInit 2E8 0 CODE 0 text5 dist/default/production\Slave_in.X.production.obj
 __Lclrtext 0 0 ABS 0 clrtext -
-_SSP1CON1bits 215 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1CON2bits 216 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__CFG_PLLEN$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__end_of_delay_us 36E 0 CODE 0 text2 dist/default/production/Slave_in.X.production.obj
-__CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-i2cInterrupt@x 72 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
-_SSP1ADD 212 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1BUF 211 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_SSP1MSK 213 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+_SSP1CON1bits 215 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1CON2bits 216 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__CFG_PLLEN$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__end_of_delay_ms 35A 0 CODE 0 text8 dist/default/production\Slave_in.X.production.obj
+__end_of_delay_us 3B0 0 CODE 0 text2 dist/default/production\Slave_in.X.production.obj
+__CFG_PWRTE$ON 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+i2cInterrupt@x 72 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
+_SSP1ADD 212 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1BUF 211 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_SSP1MSK 213 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hend_init C6 0 CODE 0 end_init -
-__end_of_main 296 0 CODE 0 maintext dist/default/production/Slave_in.X.production.obj
-_PORTA C 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-_TRISA 8C 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
+__end_of_main 2A0 0 CODE 0 maintext dist/default/production\Slave_in.X.production.obj
+_PORTA C 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+_TRISA 8C 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
-__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-__pintentry 8 0 CODE 0 intentry dist/default/production/Slave_in.X.production.obj
-__initialization C6 0 CODE 0 cinit dist/default/production/Slave_in.X.production.obj
-__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production/Slave_in.X.production.obj
-__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production/Slave_in.X.production.obj
-digitalWrite@value 73 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X.production.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+__pintentry 8 0 CODE 0 intentry dist/default/production\Slave_in.X.production.obj
+__initialization C6 0 CODE 0 cinit dist/default/production\Slave_in.X.production.obj
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\Slave_in.X.production.obj
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\Slave_in.X.production.obj
+digitalWrite@value 73 0 COMMON 1 cstackCOMMON dist/default/production\Slave_in.X.production.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -598,7 +610,7 @@ digitalWrite@value 73 0 COMMON 1 cstackCOMMON dist/default/production/Slave_in.X
 # All other numeric quantities are in decimal.
 %SEGMENTS
 cstackCOMMON 1 70 70 B 1
-intentry 0 4 8 1CB 2
+intentry 0 4 8 1EC 2
 reset_vec 0 0 0 1 2
 bssBANK0 1 20 20 17 1
 config 0 8007 1000E 2 2

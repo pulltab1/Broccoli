@@ -1,70 +1,58 @@
 #include <Wire.h>
 
 #define BROADCAST_ADDRESS (int)(0x00)
+#define ENTRY_TIMEOUT (10)
 
-byte Mode;
-
+/*
+ * 初期化命令
+ */
 void InitBlopic() {
-  //リセット処理
-  pinMode(9, OUTPUT);
-  digitalWrite(9, LOW);
-  delay(500);
-  digitalWrite(9, HIGH);
   Serial.end();
-
   //起動処理
   Serial.begin(9600);
   while (!Serial)
-    Wire.begin();
-  Serial.print("start@");
-
-  //初期状態に
-  Mode = 0;
+  Wire.begin();
 }
-void EntryRequest() {
-  byte buf = 0x00;
-  byte count = 1;
-  int timeout = 0;
-  while (timeout < 500) {
+
+/*
+ * 新規に接続されたブロックがあるか確認し、ある場合は上位側に通知する。
+ */
+void EntryRequest(){
+  int count = 0;//タイマー用
+  Serial.print("begin@");
+  while (count < ENTRY_TIMEOUT) {
     Wire.requestFrom(BROADCAST_ADDRESS, 1);
     if (Wire.available() > 0) {
-      buf = Wire.read();
+      byte buf = Wire.read();
       Wire.beginTransmission(BROADCAST_ADDRESS);
       Wire.write(count);
-      Wire.endTransmission();
-      Serial.print(String(count, DEC) + ":" + String(buf, DEC) + "@");
-      count++;
-      timeout = 0;
-    }
-    else {
-      timeout++;
+      if(Wire.endTransmission()==0){
+        Serial.print(String(buf, DEC) + "@");//上位側に接続されたブロックの種類を通知する
+        count = 0;
+      }
     }
     delay(1);
+    count++;
   }
   Serial.print("end@");
 }
-
+/*
+ * マスタ側からの命令に従ってデータの送受信を行う
+ */
 void CommandRequest() {
-  byte addr;
-  byte buf;
-  byte len;
-
-  len = Serial.available();
-  if (len) {
-    addr = Serial.read();
-    if (addr == 0xff) {
-      InitBlopic();  //終了処理
-      EntryRequest();
-      return;
-    }
+  byte len = Serial.available();
+  if (len>0) {
+    byte addr = Serial.read();
     for (int i = 1; i < len; i++) { //アドレスとセットでコマンドを受信した場合
-      buf = Serial.read();
+      byte buf = Serial.read();
       Wire.beginTransmission(addr);
       Wire.write(buf);
-      Wire.endTransmission();
-      Wire.requestFrom(addr, 1);
-      if (Wire.available() > 0) {
-        Serial.print(String(Wire.read(), DEC) + "@");
+      if(Wire.endTransmission()==0){
+        Wire.requestFrom(addr, 1);
+        if (Wire.available() > 0) {
+          byte data = Wire.read();
+          Serial.print(String(data, DEC) + "@");
+        }
       }
     }
   }
@@ -72,11 +60,9 @@ void CommandRequest() {
 
 void setup() {
   InitBlopic();
-  EntryRequest();
 }
 
-
-
 void loop() {
+  EntryRequest();
   CommandRequest();
 }

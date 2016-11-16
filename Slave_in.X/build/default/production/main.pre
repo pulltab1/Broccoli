@@ -5,17 +5,17 @@
 void delay_ms(int time);
 void delay_us(int time);
 
-# 26 "/Applications/microchip/xc8/v1.35/include/htc.h"
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
 extern double __fpnormalize(double);
 
 
-# 13 "/Applications/microchip/xc8/v1.35/include/xc8debug.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "/Applications/microchip/xc8/v1.35/include/pic12f1822.h"
+# 49 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic12f1822.h"
 extern volatile unsigned char INDF0 @ 0x000;
 
 asm("INDF0 equ 00h");
@@ -2862,25 +2862,25 @@ extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 extern volatile __bit nWPUEN @ (((unsigned) &OPTION_REG)*8) + 7;
 
 
-# 27 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 27 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 76
+# 77
 extern unsigned int flash_read(unsigned short addr);
 
-# 41 "/Applications/microchip/xc8/v1.35/include/eeprom_routines.h"
+# 114 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 149 "/Applications/microchip/xc8/v1.35/include/pic.h"
+# 151 "C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 184
+# 186
 extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
@@ -2935,6 +2935,8 @@ int Mode = 0;
 
 initOSCCON();
 
+delay_ms(500);
+
 pinMode((0),0x04);
 pinMode((4),0x01);
 i2cInit((0x00));
@@ -2944,14 +2946,14 @@ while(1) {
 if (i2cReceiveCheck() != 0) {
 GIE = 0;
 switch(Mode){
-case 0:
+case 0x00:
 SSP1ADD = rcv[0]<<1;
 digitalWrite((0),1);
 Mode=1;
 break;
-case 1:
+case 0x01:
 switch(rcv[0]){
-case 0:
+case 0x00:
 if(digitalRead((4)))
 snd[0]=1;
 else

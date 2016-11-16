@@ -8,7 +8,7 @@
 //通信用定数
 #define BROADCAST_ADDRESS (0x00)
 #define UNIQUE_ADDRESS (0x01)
-#define DELAY_OF_ADDRESS_CHANGE (100)
+#define DELAY_OF_STARTUP 500
 
 //リクエスト用定数
 #define WALL_PIN (RA0)
@@ -19,6 +19,8 @@ void main()
      int Mode=0;
 
      initOSCCON();
+
+     delay_ms(DELAY_OF_STARTUP);
 
      pinMode(WALL_PIN,OUTPUT);
      pinMode(LED_PIN,OUTPUT);
