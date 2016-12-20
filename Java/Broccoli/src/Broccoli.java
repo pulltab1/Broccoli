@@ -1,31 +1,23 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Broccoli {
-	public HashMap<Byte,ArrayList<Byte>> hash=new HashMap<Byte,ArrayList<Byte>>();
-	public ArrayList<Byte> list=new ArrayList<Byte>();
-
+	public ArrayList<Byte> list;
 	private Serial serial;
 
 	public Broccoli(String port) throws Exception{
 		serial=new Serial(port);
+		list=new ArrayList<Byte>();
 	}
 
-	public void load() throws Exception{
-		while(!serial.read().equals("start"));
+	public void checkEntry() throws Exception{
+		serial.write((byte)0xf0);
+		while(!serial.read().equals("begin"));
 		while(true){
 			String buf=serial.read();
-			System.out.println(buf);
 			if(buf.equals("end")){
 				break;
 			}
-			String[] readbuffer=buf.split(":");
-			list.add((byte)Integer.parseInt(readbuffer[1]));
-			byte[] dat={(byte)Integer.parseInt(readbuffer[0]),(byte)Integer.parseInt(readbuffer[1])};
-			if(!hash.containsKey(dat[1])){
-				hash.put(dat[1],new ArrayList<Byte>());
-			}
-			hash.get(dat[1]).add(dat[0]);
+			list.add((byte)Integer.parseInt(buf));
 		}
 	}
 
@@ -39,7 +31,6 @@ public class Broccoli {
 	}
 
 	public void close() throws Exception{
-		serial.write((byte)0xff);
 		serial.close();
 	}
 }

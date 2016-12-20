@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Point;
+import java.util.ArrayList;
 
 import rennyu.RFrame;
 
@@ -8,57 +9,27 @@ public class Editer {
 	private static final int MODULE_DISTANCE=100;
 	private RFrame frame;
 	private Broccoli broccoli;
-	private Module[] module;
+	private ArrayList<Module> module;
 
-	private int module_select_number;
 	private Point camera_position;
 	private Point old_camera_position;
 
+	
 	public Editer(String port) throws Exception{
 		frame=new RFrame("broccoli",640,480,(byte) 60);
 		frame.setVisible(true);
 		broccoli=new Broccoli(port);
-		broccoli.load();
-		module=new Module[broccoli.list.size()];
-		for(int i=0;i<broccoli.list.size();i++){
-			module[i]=new Module(frame,i*MODULE_DISTANCE,0,broccoli.list.get(i));
-		}
-
+		module=new ArrayList<Module>();
 		camera_position=new Point(10,frame.getHeight()/2);
 		old_camera_position=new Point();
 	}
-
-	private void setOutputState(byte count,int output) throws Exception{
-		byte data[]={1,0};
-		if(count<broccoli.list.size()){
-			if(output>170){
-				data[1]=1;
-			}
-			data[0]=(byte) (count+1);
-			broccoli.query(data);
+	
+	private void checkNewModule() throws Exception{
+		broccoli.checkEntry();
+		while(broccoli.list.size()>0){
+			System.out.println("newmodule "+broccoli.list.get(0)+" in "+module.size());
+			module.add(new Module(frame,broccoli.list.remove(0)));
 		}
-	}
-	private boolean getSwitchState(byte count) throws Exception{
-		byte data[]={2,0};
-		boolean flag=false;
-		if(count<broccoli.list.size()){
-			data[0]=(byte) (count+1);
-			String[] res=broccoli.query(data);
-			flag=Integer.parseInt(res[0])!=0;
-
-		}
-		return flag;
-	}
-	private int getRegisterState(byte count) throws Exception{
-		byte data[]={3,0};
-		boolean flag=false;
-		if(count<broccoli.list.size()){
-			data[0]=(byte) (count+1);
-			String[] res=broccoli.query(data);
-			return Integer.parseInt(res[0]);
-
-		}
-		return -1;
 	}
 
 	private void moveCamera(){
@@ -75,70 +46,17 @@ public class Editer {
 			}
 		}
 	}
-	private void moveModule(){
-		if(frame.getMousePosition()!=null){
-			if(frame.getClick(RFrame.MOUSE_INPUT_LEFT)>0){
-				if(frame.getClick(RFrame.MOUSE_INPUT_LEFT)==1){
-					module_select_number=-1;
-					for(int i=0;i<module.length;i++){
-						if(	module[i].getPositionX()<=frame.getmousePosition().x-camera_position.x&&
-							module[i].getPositionY()<=frame.getmousePosition().y-camera_position.y&&
-							module[i].getPositionX()+Module.MODULE_DRAW_SIZE>=frame.getmousePosition().x-camera_position.x&&
-							module[i].getPositionY()+Module.MODULE_DRAW_SIZE>=frame.getmousePosition().y-camera_position.y){
-							module_select_number=i;
-							break;
-						}
-					}
-					old_camera_position.x=frame.getMousePosition().x;
-					old_camera_position.y=frame.getMousePosition().y;
-				}
-				else{
-					if(module_select_number>=0){
-						module[module_select_number].movePosition(
-								frame.getMousePosition().x-old_camera_position.x,
-								frame.getMousePosition().y-old_camera_position.y);
-						old_camera_position.x=frame.getMousePosition().x;
-						old_camera_position.y=frame.getMousePosition().y;
-					}
-				}
-			}
-		}
-	}
 	private void drawModule(){
-		for(int i=0;i<module.length;i++){
-			module[i].draw(camera_position.x,camera_position.y);
+		for(int i=0;i<module.size();i++){
+			module.get(i).draw(i*MODULE_DISTANCE+camera_position.x,camera_position.y);
 		}
 	}
-
 	public void run() throws Exception{
-		float power;
 		while(!frame.update()){
-			power=256;
 			frame.drawBox(0, 0, frame.getWidth(),frame.getHeight(),BGColor,true);
 			drawModule();
 			moveCamera();
-			moveModule();
-			System.out.print("E["+power+"]");
-			for(int i=0;i<module.length;i++){
-				System.out.print("->");
-				switch(broccoli.list.get(i)){
-				case (byte)0x01:
-					setOutputState((byte)i,(int)power);
-					break;
-				case (byte)0x02:
-					if(!getSwitchState((byte)i))
-						power=0;
-					break;
-				case (byte)0x03:
-					power=getRegisterState((byte)i);
-					break;
-				case (byte)0xff:
-					power=256;
-					break;
-				}
-				System.out.print("B["+power+"]");
-			}
-			System.out.println();
+			checkNewModule();
 		}
 	}
 	public void close() throws Exception{
